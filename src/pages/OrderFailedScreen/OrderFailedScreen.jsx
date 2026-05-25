@@ -92,7 +92,7 @@ export default function OrderFailedScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#f5e6d3] to-[#d4b896] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] flex items-center justify-center p-6">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -160,24 +160,24 @@ export default function OrderFailedScreen() {
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="bg-linear-to-br from-[#3d2817] via-[#5d4433] to-[#3d2817] p-8 text-center relative overflow-hidden">
+          <div className="bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] p-8 text-center relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-10"
               style={{
                 backgroundImage:
-                  "radial-gradient(circle, #f5e6d3 1px, transparent 1px)",
+                  "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
                 backgroundSize: "30px 30px",
               }}
             ></div>
             <motion.h1
               variants={itemVariants}
-              className="text-4xl lg:text-5xl font-bold text-[#f5e6d3] mb-3 relative z-10"
+              className="text-4xl lg:text-5xl font-bold text-[#FFFFFF] mb-3 relative z-10"
             >
               Thanh Toán Thất Bại
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-[#f5e6d3] opacity-90 relative z-10"
+              className="text-lg text-[#FFFFFF] opacity-90 relative z-10"
             >
               Đơn hàng của bạn chưa được hoàn tất
             </motion.p>
@@ -210,15 +210,15 @@ export default function OrderFailedScreen() {
             {errorDetails && (
               <motion.div
                 variants={itemVariants}
-                className="bg-linear-to-br from-[#f5e6d3] to-[#f9f3e8] rounded-2xl p-6"
+                className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] rounded-2xl p-6"
               >
-                <h3 className="text-xl font-bold text-[#3d2817] mb-4 flex items-center gap-2">
-                  <AlertTriangle className="w-6 h-6 text-[#d4af37]" />
+                <h3 className="text-xl font-bold text-[#723F53] mb-4 flex items-center gap-2">
+                  <AlertTriangle className="w-6 h-6 text-[#D97BA8]" />
                   Chi Tiết Lỗi
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#5d4433] font-semibold">
+                    <span className="text-[#8B6B7A] font-semibold">
                       Mã lỗi:
                     </span>
                     <span className="text-[#ef4444] font-bold">
@@ -227,19 +227,19 @@ export default function OrderFailedScreen() {
                   </div>
                   {errorDetails.orderId && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[#5d4433] font-semibold">
+                      <span className="text-[#8B6B7A] font-semibold">
                         Mã tham chiếu:
                       </span>
-                      <span className="text-[#3d2817] font-medium">
+                      <span className="text-[#723F53] font-medium">
                         {errorDetails.orderId}
                       </span>
                     </div>
                   )}
                   <div className="flex justify-between items-center">
-                    <span className="text-[#5d4433] font-semibold">
+                    <span className="text-[#8B6B7A] font-semibold">
                       Thời gian:
                     </span>
-                    <span className="text-[#3d2817] font-medium">
+                    <span className="text-[#723F53] font-medium">
                       {new Date().toLocaleString("vi-VN")}
                     </span>
                   </div>
@@ -249,8 +249,8 @@ export default function OrderFailedScreen() {
 
             {/* Common Reasons */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-[#3d2817] mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-[#d4af37]" />
+              <h3 className="text-xl font-bold text-[#723F53] mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-6 h-6 text-[#D97BA8]" />
                 Nguyên Nhân Thường Gặp
               </h3>
               <div className="space-y-3">
@@ -263,10 +263,10 @@ export default function OrderFailedScreen() {
                       <reason.icon className="w-5 h-5 text-[#991b1b]" />
                     </div>
                     <div>
-                      <p className="font-semibold text-[#3d2817] mb-1">
+                      <p className="font-semibold text-[#723F53] mb-1">
                         {reason.title}
                       </p>
-                      <p className="text-[#5d4433] text-sm">
+                      <p className="text-[#8B6B7A] text-sm">
                         {reason.description}
                       </p>
                     </div>
@@ -307,10 +307,10 @@ export default function OrderFailedScreen() {
             {/* Contact Support */}
             <motion.div
               variants={itemVariants}
-              className="bg-linear-to-br from-[#3d2817] to-[#5d4433] rounded-2xl p-6 text-[#f5e6d3]"
+              className="bg-linear-to-br from-[#723F53] to-[#8B6B7A] rounded-2xl p-6 text-[#FFFFFF]"
             >
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Phone className="w-5 h-5 text-[#d4af37]" />
+                <Phone className="w-5 h-5 text-[#D97BA8]" />
                 Cần Hỗ Trợ?
               </h3>
               <p className="text-sm mb-4 opacity-90">
@@ -318,11 +318,11 @@ export default function OrderFailedScreen() {
               </p>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#d4af37]" />
+                  <Mail className="w-5 h-5 text-[#D97BA8]" />
                   <span>support@caprieux.vn</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#d4af37]" />
+                  <Phone className="w-5 h-5 text-[#D97BA8]" />
                   <span>0123 456 789</span>
                 </div>
               </div>
@@ -337,7 +337,7 @@ export default function OrderFailedScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate(-1)}
-                className="flex-1 py-4 rounded-full bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-5 h-5" />
                 Thử Lại
@@ -346,7 +346,7 @@ export default function OrderFailedScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/bst")}
-                className="flex-1 py-4 rounded-full bg-white border-2 border-[#5d4433] text-[#5d4433] text-lg font-bold shadow-lg flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-white border-2 border-[#8B6B7A] text-[#8B6B7A] text-lg font-bold shadow-lg flex items-center justify-center gap-2"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Quay Lại Cửa Hàng
@@ -358,7 +358,7 @@ export default function OrderFailedScreen() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate("/")}
-              className="w-full py-3 rounded-full bg-[#f9f3e8] text-[#5d4433] font-semibold flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-full bg-[#f9f3e8] text-[#8B6B7A] font-semibold flex items-center justify-center gap-2"
             >
               <Home className="w-5 h-5" />
               Về Trang Chủ
@@ -369,7 +369,7 @@ export default function OrderFailedScreen() {
         {/* Footer Note */}
         <motion.p
           variants={itemVariants}
-          className="text-center text-[#5d4433] mt-6 text-sm"
+          className="text-center text-[#8B6B7A] mt-6 text-sm"
         >
           Không có khoản tiền nào bị trừ từ tài khoản của bạn
         </motion.p>

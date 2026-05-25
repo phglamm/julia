@@ -124,13 +124,13 @@ export default function RegisterScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5e6d3] via-white to-[#f5e6d3] flex items-center justify-center px-6 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-white to-[#FFFFFF] flex items-center justify-center px-6 py-12 relative overflow-hidden">
       {/* Decorative background pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #3d2817 1px, transparent 1px)",
+            "radial-gradient(circle, #723F53 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -146,7 +146,7 @@ export default function RegisterScreen() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-20 left-20 text-[#d4af37] opacity-20"
+        className="absolute top-20 left-20 text-[#D97BA8] opacity-20"
       >
         <Sparkles className="w-16 h-16" />
       </motion.div>
@@ -161,7 +161,7 @@ export default function RegisterScreen() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-20 right-20 text-[#d4af37] opacity-20"
+        className="absolute bottom-20 right-20 text-[#D97BA8] opacity-20"
       >
         <Sparkles className="w-20 h-20" />
       </motion.div>
@@ -175,23 +175,23 @@ export default function RegisterScreen() {
         {/* Logo/Brand Section */}
         <motion.div variants={itemVariants} className="text-center mb-8">
           <motion.h1
-            className="text-5xl font-bold text-[#3d2817] mb-2"
+            className="text-5xl font-bold text-[#723F53] mb-2"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
             The Caprieux
           </motion.h1>
-          <p className="text-lg text-[#5d4433]">Tạo tài khoản mới</p>
+          <p className="text-lg text-[#8B6B7A]">Tạo tài khoản mới</p>
         </motion.div>
 
         {/* Register Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#d4b896]/30"
+          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#EDD5E8]/30"
         >
-          <div className="bg-gradient-to-r from-[#3d2817] via-[#5d4433] to-[#3d2817] p-8 text-center">
-            <h2 className="text-2xl font-bold text-[#f5e6d3]">Đăng Ký</h2>
-            <p className="text-[#f5e6d3]/80 mt-2">
+          <div className="bg-gradient-to-r from-[#723F53] via-[#8B6B7A] to-[#723F53] p-8 text-center">
+            <h2 className="text-2xl font-bold text-[#FFFFFF]">Đăng Ký</h2>
+            <p className="text-[#FFFFFF]/80 mt-2">
               Tạo tài khoản để trải nghiệm
             </p>
           </div>
@@ -210,59 +210,59 @@ export default function RegisterScreen() {
 
             {/* Username Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#3d2817] font-semibold mb-2">
+              <label className="block text-[#723F53] font-semibold mb-2">
                 Tên đăng nhập
               </label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] w-5 h-5" />
+                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] w-5 h-5" />
                 <input
                   type="text"
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
                   placeholder="Nhập tên đăng nhập"
-                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#f5e6d3]/30 to-[#d4b896]/20 border-2 border-[#d4b896]/40 rounded-xl focus:outline-none focus:border-[#d4af37] transition-all text-[#3d2817] placeholder-[#5d4433]/50"
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EDD5E8]/20 border-2 border-[#EDD5E8]/40 rounded-xl focus:outline-none focus:border-[#D97BA8] transition-all text-[#723F53] placeholder-[#8B6B7A]/50"
                 />
               </div>
             </motion.div>
 
             {/* Email Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#3d2817] font-semibold mb-2">
+              <label className="block text-[#723F53] font-semibold mb-2">
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] w-5 h-5" />
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] w-5 h-5" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Nhập địa chỉ email"
-                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#f5e6d3]/30 to-[#d4b896]/20 border-2 border-[#d4b896]/40 rounded-xl focus:outline-none focus:border-[#d4af37] transition-all text-[#3d2817] placeholder-[#5d4433]/50"
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EDD5E8]/20 border-2 border-[#EDD5E8]/40 rounded-xl focus:outline-none focus:border-[#D97BA8] transition-all text-[#723F53] placeholder-[#8B6B7A]/50"
                 />
               </div>
             </motion.div>
 
             {/* Password Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#3d2817] font-semibold mb-2">
+              <label className="block text-[#723F53] font-semibold mb-2">
                 Mật khẩu
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] w-5 h-5" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
-                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#f5e6d3]/30 to-[#d4b896]/20 border-2 border-[#d4b896]/40 rounded-xl focus:outline-none focus:border-[#d4af37] transition-all text-[#3d2817] placeholder-[#5d4433]/50"
+                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EDD5E8]/20 border-2 border-[#EDD5E8]/40 rounded-xl focus:outline-none focus:border-[#D97BA8] transition-all text-[#723F53] placeholder-[#8B6B7A]/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] hover:text-[#d4af37] transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] hover:text-[#D97BA8] transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -275,23 +275,23 @@ export default function RegisterScreen() {
 
             {/* Confirm Password Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#3d2817] font-semibold mb-2">
+              <label className="block text-[#723F53] font-semibold mb-2">
                 Xác nhận mật khẩu
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] w-5 h-5" />
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Nhập lại mật khẩu"
-                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#f5e6d3]/30 to-[#d4b896]/20 border-2 border-[#d4b896]/40 rounded-xl focus:outline-none focus:border-[#d4af37] transition-all text-[#3d2817] placeholder-[#5d4433]/50"
+                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EDD5E8]/20 border-2 border-[#EDD5E8]/40 rounded-xl focus:outline-none focus:border-[#D97BA8] transition-all text-[#723F53] placeholder-[#8B6B7A]/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#5d4433] hover:text-[#d4af37] transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#8B6B7A] hover:text-[#D97BA8] transition-colors"
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -307,16 +307,16 @@ export default function RegisterScreen() {
               <label className="flex items-start cursor-pointer group">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 mt-1 text-[#d4af37] border-[#d4b896] rounded focus:ring-[#d4af37] cursor-pointer"
+                  className="w-4 h-4 mt-1 text-[#D97BA8] border-[#EDD5E8] rounded focus:ring-[#D97BA8] cursor-pointer"
                   required
                 />
-                <span className="ml-2 text-sm text-[#5d4433] group-hover:text-[#3d2817] transition-colors">
+                <span className="ml-2 text-sm text-[#8B6B7A] group-hover:text-[#723F53] transition-colors">
                   Tôi đồng ý với{" "}
-                  <a href="#" className="text-[#d4af37] hover:underline">
+                  <a href="#" className="text-[#D97BA8] hover:underline">
                     Điều khoản dịch vụ
                   </a>{" "}
                   và{" "}
-                  <a href="#" className="text-[#d4af37] hover:underline">
+                  <a href="#" className="text-[#D97BA8] hover:underline">
                     Chính sách bảo mật
                   </a>
                 </span>
@@ -334,7 +334,7 @@ export default function RegisterScreen() {
               className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-lg ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white hover:shadow-xl"
+                  : "bg-gradient-to-r from-[#D97BA8] to-[#C94F89] text-white hover:shadow-xl"
               }`}
             >
               {loading ? (
@@ -362,16 +362,16 @@ export default function RegisterScreen() {
             {/* Divider */}
             <motion.div variants={itemVariants} className="relative my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#d4b896]/40"></div>
+                <div className="w-full border-t border-[#EDD5E8]/40"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-[#5d4433]">hoặc</span>
+                <span className="px-4 bg-white text-[#8B6B7A]">hoặc</span>
               </div>
             </motion.div>
 
             {/* Login Link */}
             <motion.div variants={itemVariants} className="text-center">
-              <p className="text-[#5d4433]">
+              <p className="text-[#8B6B7A]">
                 Đã có tài khoản?{" "}
                 <a
                   href="#"
@@ -379,7 +379,7 @@ export default function RegisterScreen() {
                     e.preventDefault();
                     navigate("/login");
                   }}
-                  className="text-[#d4af37] hover:text-[#b8941f] font-bold transition-colors"
+                  className="text-[#D97BA8] hover:text-[#C94F89] font-bold transition-colors"
                 >
                   Đăng nhập ngay
                 </a>
@@ -391,14 +391,14 @@ export default function RegisterScreen() {
         {/* Footer Text */}
         <motion.p
           variants={itemVariants}
-          className="text-center mt-8 text-sm text-[#5d4433]"
+          className="text-center mt-8 text-sm text-[#8B6B7A]"
         >
           Bằng việc đăng ký, bạn đồng ý với{" "}
-          <a href="#" className="text-[#d4af37] hover:underline">
+          <a href="#" className="text-[#D97BA8] hover:underline">
             Điều khoản dịch vụ
           </a>{" "}
           và{" "}
-          <a href="#" className="text-[#d4af37] hover:underline">
+          <a href="#" className="text-[#D97BA8] hover:underline">
             Chính sách bảo mật
           </a>
         </motion.p>

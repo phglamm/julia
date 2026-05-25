@@ -30,8 +30,8 @@ const Header = ({ scrolled }) => {
     <motion.header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#3d2817]/95 shadow-2xl backdrop-blur-md border-b border-[#d4af37]/20"
-          : "bg-gradient-to-r from-[#3d2817] via-[#4a3520] to-[#5d4433] shadow-lg"
+          ? "bg-[#723F53]/95 shadow-2xl backdrop-blur-md border-b border-[#D97BA8]/20"
+          : "bg-gradient-to-r from-[#723F53] via-[#7a5461] to-[#8B6B7A] shadow-lg"
       }`}
     >
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,10 +48,10 @@ const Header = ({ scrolled }) => {
                 alt="The Caprieux"
                 className="h-12 w-12 lg:h-14 lg:w-14 object-contain transition-transform duration-300 group-hover:rotate-6"
               />
-              <div className="absolute inset-0 bg-[#d4af37]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-[#D97BA8]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-[#f5e6d3] text-2xl lg:text-3xl font-bold tracking-wider uppercase">
+              <span className="text-[#FFFFFF] text-2xl lg:text-3xl font-bold tracking-wider uppercase">
                 The Caprieux
               </span>
             </div>
@@ -66,16 +66,16 @@ const Header = ({ scrolled }) => {
                   key={item.name}
                   href={item.href}
                   whileHover={{ y: -2 }}
-                  className="relative px-4 py-2 text-[#f5e6d3] text-sm font-medium transition-colors duration-300 hover:text-[#d4af37] group"
+                  className="relative px-4 py-2 text-[#FFFFFF] text-sm font-medium transition-colors duration-300 hover:text-[#D97BA8] group"
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-[#D97BA8] to-transparent group-hover:w-full transition-all duration-300" />
                 </motion.a>
               ))}
             </nav>
 
             {/* Action Icons Group */}
-            <div className="flex items-center gap-3 pl-4 border-l border-[#d4af37]/30">
+            <div className="flex items-center gap-3 pl-4 border-l border-[#D97BA8]/30">
               {/* Search Bar */}
               <motion.form
                 onSubmit={(e) => {
@@ -83,7 +83,7 @@ const Header = ({ scrolled }) => {
                   const trimmed = (query || "").trim();
                   if (trimmed) {
                     navigate(
-                      `${route.bst}?searchTerm=${encodeURIComponent(trimmed)}`
+                      `${route.bst}?searchTerm=${encodeURIComponent(trimmed)}`,
                     );
                   } else {
                     navigate(route.bst);
@@ -113,7 +113,7 @@ const Header = ({ scrolled }) => {
                   >
                     <Search
                       className={`w-5 h-5 ${
-                        isSearchExpanded ? "text-[#3d2817]" : "text-[#f5e6d3]"
+                        isSearchExpanded ? "text-[#723F53]" : "text-[#FFFFFF]"
                       }`}
                     />
                   </motion.div>
@@ -122,7 +122,7 @@ const Header = ({ scrolled }) => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm sản phẩm..."
-                    className="w-full h-full pl-12 pr-4 rounded-full bg-[#f5e6d3] text-[#3d2817] placeholder-[#5d4433]/60 focus:outline-none focus:ring-2 focus:ring-[#d4af37] shadow-lg text-sm"
+                    className="w-full h-full pl-12 pr-4 rounded-full bg-[#FAE8F0] text-[#723F53] placeholder-[#8B6B7A]/60 focus:outline-none focus:ring-2 focus:ring-[#D97BA8] shadow-lg text-sm"
                     animate={{
                       opacity: isSearchExpanded ? 1 : 0,
                     }}
@@ -138,12 +138,12 @@ const Header = ({ scrolled }) => {
               <motion.button
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative p-3 rounded-full bg-gradient-to-br from-[#d4af37]/20 to-[#d4af37]/10 backdrop-blur-sm border border-[#d4af37]/40 text-[#f5e6d3] hover:bg-[#d4af37]/30 hover:border-[#d4af37] hover:text-white transition-all duration-300 shadow-lg"
+                className="relative p-3 rounded-full bg-gradient-to-br from-[#D97BA8]/20 to-[#D97BA8]/10 backdrop-blur-sm border border-[#D97BA8]/40 text-[#FFFFFF] hover:bg-[#D97BA8]/30 hover:border-[#D97BA8] hover:text-white transition-all duration-300 shadow-lg"
                 aria-label="Shopping cart"
                 onClick={() => navigate(route.cart)}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#d4af37] text-[#3d2817] text-xs font-bold rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#D97BA8] text-[#723F53] text-xs font-bold rounded-full flex items-center justify-center shadow-md">
                   {countCart}
                 </span>
               </motion.button>
@@ -152,7 +152,7 @@ const Header = ({ scrolled }) => {
               <motion.button
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className=" flex p-3 rounded-full bg-gradient-to-br from-[#d4af37]/20 to-[#d4af37]/10 backdrop-blur-sm border border-[#d4af37]/40 text-[#f5e6d3] hover:bg-[#d4af37]/30 hover:border-[#d4af37] hover:text-white transition-all duration-300 shadow-lg"
+                className=" flex p-3 rounded-full bg-gradient-to-br from-[#D97BA8]/20 to-[#D97BA8]/10 backdrop-blur-sm border border-[#D97BA8]/40 text-[#FFFFFF] hover:bg-[#D97BA8]/30 hover:border-[#D97BA8] hover:text-white transition-all duration-300 shadow-lg"
                 aria-label="User account"
                 onClick={() => {
                   if (user) {
@@ -177,7 +177,7 @@ const Header = ({ scrolled }) => {
                 <motion.button
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-3 rounded-full bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm border border-red-500/40 text-[#f5e6d3] hover:bg-red-500/30 hover:border-red-500 hover:text-white transition-all duration-300 shadow-lg"
+                  className="p-3 rounded-full bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm border border-red-500/40 text-[#FFFFFF] hover:bg-red-500/30 hover:border-red-500 hover:text-white transition-all duration-300 shadow-lg"
                   aria-label="Logout"
                   onClick={() => {
                     logout();
@@ -197,7 +197,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Cart Icon */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="relative p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#d4af37]/30 text-[#f5e6d3] hover:bg-white/20 hover:border-[#d4af37]/60 transition-all duration-300"
+              className="relative p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#D97BA8]/30 text-[#FFFFFF] hover:bg-white/20 hover:border-[#D97BA8]/60 transition-all duration-300"
               aria-label="Shopping cart"
               onClick={() =>
                 user
@@ -206,7 +206,7 @@ const Header = ({ scrolled }) => {
               }
             >
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#d4af37] text-[#3d2817] text-[10px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#D97BA8] text-[#723F53] text-[10px] font-bold rounded-full flex items-center justify-center">
                 {countCart}
               </span>
             </motion.button>
@@ -214,7 +214,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Login Icon */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#d4af37]/30 text-[#f5e6d3] hover:bg-white/20 hover:border-[#d4af37]/60 transition-all duration-300"
+              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#D97BA8]/30 text-[#FFFFFF] hover:bg-white/20 hover:border-[#D97BA8]/60 transition-all duration-300"
               aria-label="User account"
               onClick={() => {
                 if (!user) {
@@ -229,7 +229,7 @@ const Header = ({ scrolled }) => {
             {user && (
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                className="p-2.5 rounded-lg bg-red-500/10 backdrop-blur-sm border border-red-500/30 text-[#f5e6d3] hover:bg-red-500/20 hover:border-red-500/60 transition-all duration-300"
+                className="p-2.5 rounded-lg bg-red-500/10 backdrop-blur-sm border border-red-500/30 text-[#FFFFFF] hover:bg-red-500/20 hover:border-red-500/60 transition-all duration-300"
                 aria-label="Logout"
                 onClick={() => {
                   logout();
@@ -244,7 +244,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setOpen(true)}
-              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#d4af37]/30 text-[#f5e6d3] hover:bg-white/20 hover:border-[#d4af37]/60 transition-all duration-300"
+              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#D97BA8]/30 text-[#FFFFFF] hover:bg-white/20 hover:border-[#D97BA8]/60 transition-all duration-300"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -277,30 +277,30 @@ const Header = ({ scrolled }) => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-[#3d2817] to-[#2a1a0f] shadow-2xl"
+              className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-[#723F53] to-[#5a2d3a] shadow-2xl"
             >
               {/* Close Button */}
-              <div className="flex justify-between items-center p-6 border-b border-[#d4af37]/20">
-                <span className="text-[#d4af37] text-lg font-semibold tracking-wider">
+              <div className="flex justify-between items-center p-6 border-b border-[#D97BA8]/20">
+                <span className="text-[#D97BA8] text-lg font-semibold tracking-wider">
                   MENU
                 </span>
                 <button
                   onClick={() => setOpen(false)}
-                  className="p-2 rounded-full bg-white/10 text-[#f5e6d3] hover:bg-white/20 transition-colors"
+                  className="p-2 rounded-full bg-white/10 text-[#FFFFFF] hover:bg-white/20 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Mobile Search */}
-              <div className="p-6 border-b border-[#d4af37]/20">
+              <div className="p-6 border-b border-[#D97BA8]/20">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     const trimmed = (query || "").trim();
                     if (trimmed) {
                       navigate(
-                        `${route.bst}?searchTerm=${encodeURIComponent(trimmed)}`
+                        `${route.bst}?searchTerm=${encodeURIComponent(trimmed)}`,
                       );
                       setOpen(false);
                     } else {
@@ -310,13 +310,13 @@ const Header = ({ scrolled }) => {
                   }}
                   className="relative"
                 >
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#d4af37]" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#D97BA8]" />
                   <input
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm sản phẩm..."
-                    className="w-full pl-12 pr-4 py-3 rounded-lg bg-white backdrop-blur-sm border border-[#d4af37]/30 text-[#3d2817] placeholder-[#5d4433]/60 focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 transition-all text-sm"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg bg-white backdrop-blur-sm border border-[#D97BA8]/30 text-[#723F53] placeholder-[#8B6B7A]/60 focus:outline-none focus:ring-2 focus:ring-[#D97BA8]/50 transition-all text-sm"
                   />
                 </form>
               </div>
@@ -331,7 +331,7 @@ const Header = ({ scrolled }) => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="block px-4 py-3 text-[#f5e6d3] text-lg font-medium rounded-lg hover:bg-white/10 hover:text-[#d4af37] transition-all duration-300 border border-transparent hover:border-[#d4af37]/30"
+                    className="block px-4 py-3 text-[#FFFFFF] text-lg font-medium rounded-lg hover:bg-white/10 hover:text-[#D97BA8] transition-all duration-300 border border-transparent hover:border-[#D97BA8]/30"
                   >
                     {item.name}
                   </motion.a>

@@ -65,7 +65,7 @@ const CartScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5e6d3] to-[#d4b896] py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EDD5E8] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -74,10 +74,10 @@ const CartScreen = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-[#3d2817] mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-[#723F53] mb-4">
             Giỏ Hàng Của Bạn
           </h1>
-          <p className="text-lg text-[#5d4433]">
+          <p className="text-lg text-[#8B6B7A]">
             {cartItems.length} sản phẩm đang chờ bạn
           </p>
         </motion.div>
@@ -89,17 +89,17 @@ const CartScreen = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white rounded-3xl shadow-2xl p-12 text-center"
           >
-            <ShoppingBag className="w-24 h-24 text-[#d4af37] mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-[#3d2817] mb-4">
+            <ShoppingBag className="w-24 h-24 text-[#D97BA8] mx-auto mb-6" />
+            <h2 className="text-3xl font-bold text-[#723F53] mb-4">
               Giỏ Hàng Trống
             </h2>
-            <p className="text-[#5d4433] mb-8">
+            <p className="text-[#8B6B7A] mb-8">
               Hãy khám phá bộ sưu tập của chúng tôi và thêm sản phẩm yêu thích!
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-[#D97BA8] to-[#C94F89] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg inline-flex items-center gap-2"
             >
               Khám Phá Ngay
               <ArrowRight className="w-5 h-5" />
@@ -123,14 +123,14 @@ const CartScreen = () => {
                 >
                   <div className="flex flex-col sm:flex-row gap-6 p-6">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-[#f5e6d3] to-[#d4b896]">
+                    <div className="relative w-full sm:w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EDD5E8]">
                       <img
                         src={item.imageLink}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
                       {item.brand && (
-                        <div className="absolute top-2 right-2 bg-[#3d2817]/80 backdrop-blur-sm text-[#f5e6d3] px-2 py-1 rounded-full text-xs font-semibold">
+                        <div className="absolute top-2 right-2 bg-[#723F53]/80 backdrop-blur-sm text-[#FFFFFF] px-2 py-1 rounded-full text-xs font-semibold">
                           {item.brand}
                         </div>
                       )}
@@ -139,13 +139,13 @@ const CartScreen = () => {
                     {/* Product Info */}
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
-                        <h3 className="text-xl font-bold text-[#3d2817] mb-2">
+                        <h3 className="text-xl font-bold text-[#723F53] mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-[#5d4433] mb-3 line-clamp-2">
+                        <p className="text-sm text-[#8B6B7A] mb-3 line-clamp-2">
                           {item.shortDescription}
                         </p>
-                        <div className="flex gap-4 text-sm text-[#5d4433] mb-4">
+                        <div className="flex gap-4 text-sm text-[#8B6B7A] mb-4">
                           <span className="flex items-center gap-1">
                             <Package className="w-4 h-4" />
                             Size: {item.size}
@@ -164,18 +164,18 @@ const CartScreen = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => decrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-full bg-[#f5e6d3] border-2 border-[#d4af37] text-[#3d2817] flex items-center justify-center hover:bg-[#d4af37] hover:text-white transition-colors"
+                            className="w-8 h-8 rounded-full bg-[#FFFFFF] border-2 border-[#D97BA8] text-[#723F53] flex items-center justify-center hover:bg-[#D97BA8] hover:text-white transition-colors"
                           >
                             <Minus className="w-4 h-4" />
                           </motion.button>
-                          <span className="text-lg font-bold text-[#3d2817] min-w-[2rem] text-center">
+                          <span className="text-lg font-bold text-[#723F53] min-w-[2rem] text-center">
                             {item.quantity}
                           </span>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => incrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-full bg-[#f5e6d3] border-2 border-[#d4af37] text-[#3d2817] flex items-center justify-center hover:bg-[#d4af37] hover:text-white transition-colors"
+                            className="w-8 h-8 rounded-full bg-[#FFFFFF] border-2 border-[#D97BA8] text-[#723F53] flex items-center justify-center hover:bg-[#D97BA8] hover:text-white transition-colors"
                           >
                             <Plus className="w-4 h-4" />
                           </motion.button>
@@ -184,10 +184,10 @@ const CartScreen = () => {
                         {/* Price and Remove */}
                         <div className="flex items-center gap-4">
                           <div className="text-right">
-                            <div className="text-2xl font-bold text-[#d4af37]">
+                            <div className="text-2xl font-bold text-[#D97BA8]">
                               {formatPrice(item.price * item.quantity)}
                             </div>
-                            <div className="text-xs text-[#5d4433]">
+                            <div className="text-xs text-[#8B6B7A]">
                               {formatPrice(item.price)} / {item.rentalDays} ngày
                             </div>
                           </div>
@@ -215,28 +215,28 @@ const CartScreen = () => {
               className="lg:col-span-1"
             >
               <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-                <h2 className="text-2xl font-bold text-[#3d2817] mb-6 flex items-center gap-2">
-                  <CreditCard className="w-6 h-6 text-[#d4af37]" />
+                <h2 className="text-2xl font-bold text-[#723F53] mb-6 flex items-center gap-2">
+                  <CreditCard className="w-6 h-6 text-[#D97BA8]" />
                   Tổng Đơn Hàng
                 </h2>
 
                 {/* Price Breakdown */}
-                <div className="space-y-4 mb-6 pb-6 border-b-2 border-[#d4af37]/20">
-                  <div className="flex justify-between text-[#5d4433]">
+                <div className="space-y-4 mb-6 pb-6 border-b-2 border-[#D97BA8]/20">
+                  <div className="flex justify-between text-[#8B6B7A]">
                     <span>Tạm tính</span>
                     <span className="font-semibold">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-[#5d4433]">
+                  <div className="flex justify-between text-[#8B6B7A]">
                     <span>Phí vận chuyển</span>
                     <span className="font-semibold">
                       {shipping === 0 ? "Miễn phí" : formatPrice(shipping)}
                     </span>
                   </div>
                   {shipping > 0 && (
-                    <p className="text-xs text-[#5d4433] italic">
+                    <p className="text-xs text-[#8B6B7A] italic">
                       Miễn phí vận chuyển cho đơn hàng trên 500.000đ
                     </p>
                   )}
@@ -244,10 +244,10 @@ const CartScreen = () => {
 
                 {/* Total */}
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-xl font-bold text-[#3d2817]">
+                  <span className="text-xl font-bold text-[#723F53]">
                     Tổng Cộng
                   </span>
-                  <span className="text-3xl font-bold text-[#d4af37]">
+                  <span className="text-3xl font-bold text-[#D97BA8]">
                     {formatPrice(total)}
                   </span>
                 </div>
@@ -260,14 +260,14 @@ const CartScreen = () => {
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => navigate(route.payment)}
-                  className="w-full bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white py-4 rounded-full font-bold text-lg shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#D97BA8] to-[#C94F89] text-white py-4 rounded-full font-bold text-lg shadow-lg flex items-center justify-center gap-2"
                 >
                   Thanh Toán Ngay
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
 
                 {/* Security Badge */}
-                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#5d4433]">
+                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#8B6B7A]">
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-green-600"

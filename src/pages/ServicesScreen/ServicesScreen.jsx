@@ -87,7 +87,7 @@ export default function ServicesScreen() {
       name: "Premium",
       price: "999.000đ",
       period: "/ năm",
-      color: "from-[#d4af37] to-[#b8941f]",
+      color: "from-[#D97BA8] to-[#C94F89]",
       features: [
         "Giảm 20% mọi đơn hàng",
         "Miễn phí ship không giới hạn",
@@ -157,14 +157,14 @@ export default function ServicesScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#f5e6d3] to-[#d4b896]">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8]">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#3d2817] via-[#5d4433] to-[#3d2817] py-24 lg:py-32 text-center text-[#f5e6d3] overflow-hidden">
+      <section className="relative w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-24 lg:py-32 text-center text-[#FFFFFF] overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #f5e6d3 1px, transparent 1px)",
+              "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         />
@@ -175,7 +175,7 @@ export default function ServicesScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-[#d4af37] opacity-60" />
+          <Sparkles className="w-8 h-8 text-[#D97BA8] opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -187,7 +187,7 @@ export default function ServicesScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Crown className="w-6 h-6 text-[#d4af37] opacity-40" />
+          <Crown className="w-6 h-6 text-[#D97BA8] opacity-40" />
         </motion.div>
 
         <motion.div
@@ -211,14 +211,14 @@ export default function ServicesScreen() {
         </motion.div>
       </section>
 
-      <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-16 text-[#3d2817] font-bold"
+            className="text-4xl lg:text-5xl text-center mb-16 text-[#723F53] font-bold"
           >
             Dịch Vụ Nổi Bật
           </motion.h2>
@@ -255,14 +255,14 @@ export default function ServicesScreen() {
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="text-[#d4af37] mb-4 flex justify-center"
+                  className="text-[#D97BA8] mb-4 flex justify-center"
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-2xl mb-3 text-[#3d2817] font-bold group-hover:text-[#d4af37] transition-colors">
+                <h3 className="text-2xl mb-3 text-[#723F53] font-bold group-hover:text-[#D97BA8] transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-[#5d4433] leading-relaxed">{feature.desc}</p>
+                <p className="text-[#8B6B7A] leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -270,14 +270,14 @@ export default function ServicesScreen() {
       </section>
 
       {/* Membership Plans Section */}
-      <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12 text-white">
+      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12 text-white">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl  text-[#3d2817] text-center mb-6 font-bold"
+            className="text-4xl lg:text-5xl  text-[#723F53] text-center mb-6 font-bold"
           >
             Gói Membership
           </motion.h2>
@@ -285,7 +285,7 @@ export default function ServicesScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-[#3d2817] text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-[#723F53] text-lg mb-16 max-w-3xl mx-auto"
           >
             Chọn gói phù hợp và tận hưởng đặc quyền cao cấp
           </motion.p>
@@ -303,11 +303,11 @@ export default function ServicesScreen() {
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
                 className={`bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col ${
-                  plan.popular ? "ring-4 ring-[#d4af37]" : ""
+                  plan.popular ? "ring-4 ring-[#D97BA8]" : ""
                 }`}
               >
                 {plan.popular && (
-                  <div className="bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white text-center py-2 font-bold">
+                  <div className="bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white text-center py-2 font-bold">
                     <Star className="w-4 h-4 inline mr-1" />
                     PHỔ BIẾN NHẤT
                   </div>
@@ -325,7 +325,7 @@ export default function ServicesScreen() {
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                        <span className="text-[#3d2817]">{feature}</span>
+                        <span className="text-[#723F53]">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -333,7 +333,7 @@ export default function ServicesScreen() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full py-4 rounded-full font-bold bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white"
+                      className="w-full py-4 rounded-full font-bold bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white"
                     >
                       Đăng Ký Ngay
                     </motion.button>
@@ -342,14 +342,14 @@ export default function ServicesScreen() {
               </motion.div>
             ))}
           </motion.div>
-          <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12">
+          <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
             <div className="max-w-7xl mx-auto">
               <motion.h2
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl lg:text-5xl text-center mb-16 text-[#3d2817] font-bold"
+                className="text-4xl lg:text-5xl text-center mb-16 text-[#723F53] font-bold"
               >
                 Đặc Quyền Thành Viên
               </motion.h2>
@@ -371,14 +371,14 @@ export default function ServicesScreen() {
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className={` text-[#d4af37] w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto`}
+                      className={` text-[#D97BA8] w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto`}
                     >
                       {benefit.icon}
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-[#3d2817] mb-4 group-hover:text-[#d4af37] transition-colors">
+                    <h3 className="text-2xl font-bold text-[#723F53] mb-4 group-hover:text-[#D97BA8] transition-colors">
                       {benefit.title}
                     </h3>
-                    <p className="text-[#5d4433] leading-relaxed">
+                    <p className="text-[#8B6B7A] leading-relaxed">
                       {benefit.desc}
                     </p>
                   </motion.div>
@@ -393,12 +393,12 @@ export default function ServicesScreen() {
             viewport={{ once: true }}
             className="mt-16 bg-white rounded-3xl p-10 max-w-2xl mx-auto"
           >
-            <h3 className="text-3xl font-bold text-[#3d2817] mb-6 text-center">
+            <h3 className="text-3xl font-bold text-[#723F53] mb-6 text-center">
               Đăng Ký Thành Viên
             </h3>
             <div className="space-y-6">
               <div>
-                <label className="block text-[#3d2817] font-semibold mb-2">
+                <label className="block text-[#723F53] font-semibold mb-2">
                   Họ và Tên *
                 </label>
                 <input
@@ -410,12 +410,12 @@ export default function ServicesScreen() {
                       name: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#d4b896] focus:border-[#d4af37] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors text-gray-900"
                 />
               </div>
 
               <div>
-                <label className="block text-[#3d2817] font-semibold mb-2">
+                <label className="block text-[#723F53] font-semibold mb-2">
                   Email *
                 </label>
                 <input
@@ -427,12 +427,12 @@ export default function ServicesScreen() {
                       email: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#d4b896] focus:border-[#d4af37] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors text-gray-900"
                 />
               </div>
 
               <div>
-                <label className="block text-[#3d2817] font-semibold mb-2">
+                <label className="block text-[#723F53] font-semibold mb-2">
                   Số Điện Thoại *
                 </label>
                 <input
@@ -444,12 +444,12 @@ export default function ServicesScreen() {
                       phone: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#d4b896] focus:border-[#d4af37] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors text-gray-900"
                 />
               </div>
 
               <div>
-                <label className="block text-[#3d2817] font-semibold mb-2">
+                <label className="block text-[#723F53] font-semibold mb-2">
                   Chọn Gói Thành Viên *
                 </label>
                 <select
@@ -460,7 +460,7 @@ export default function ServicesScreen() {
                       plan: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#d4b896] focus:border-[#d4af37] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors text-gray-900"
                 >
                   <option value="basic">Basic - 499.000đ/năm</option>
                   <option value="premium">Premium - 999.000đ/năm</option>
@@ -476,7 +476,7 @@ export default function ServicesScreen() {
                   boxShadow: "0 10px 40px rgba(212, 175, 55, 0.4)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl"
+                className="w-full bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl"
               >
                 <Crown className="w-5 h-5" />
                 Đăng Ký Ngay
@@ -489,7 +489,7 @@ export default function ServicesScreen() {
       {/* Benefits of Membership */}
 
       {/* CTA Section */}
-      <section className="w-full bg-linear-to-br from-[#3d2817] via-[#5d4433] to-[#3d2817] py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
+      <section className="w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -505,7 +505,7 @@ export default function ServicesScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-[#d4af37]" />
+              <Sparkles className="w-16 h-16 text-[#D97BA8]" />
             </motion.div>
           </motion.div>
 
@@ -517,7 +517,7 @@ export default function ServicesScreen() {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl mb-10 text-[#f5e6d3] leading-relaxed"
+            className="text-xl mb-10 text-[#FFFFFF] leading-relaxed"
           >
             Liên hệ với chúng tôi để được tư vấn chi tiết về các dịch vụ
           </motion.p>
@@ -532,7 +532,7 @@ export default function ServicesScreen() {
                 boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#d4af37] text-[#3d2817] px-8 py-4 rounded-full text-lg font-bold shadow-xl flex items-center gap-2"
+              className="bg-[#D97BA8] text-[#723F53] px-8 py-4 rounded-full text-lg font-bold shadow-xl flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Hotline: +84 xxx xxx xxx
@@ -540,11 +540,11 @@ export default function ServicesScreen() {
             <motion.button
               whileHover={{
                 scale: 1.05,
-                backgroundColor: "#f5e6d3",
-                color: "#3d2817",
+                backgroundColor: "#FFFFFF",
+                color: "#723F53",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#f5e6d3] px-8 py-4 rounded-full text-lg font-bold border-2 border-[#f5e6d3] transition-all flex items-center gap-2"
+              className="bg-transparent text-[#FFFFFF] px-8 py-4 rounded-full text-lg font-bold border-2 border-[#FFFFFF] transition-all flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Email: hello@thecaprieux.vn

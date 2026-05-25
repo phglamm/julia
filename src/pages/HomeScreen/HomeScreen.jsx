@@ -187,9 +187,9 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#f5e6d3] to-[#d4b896]">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8]">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#3d2817] via-[#5d4433] to-[#3d2817] py-40 lg:py-56 text-center text-[#f5e6d3] overflow-hidden min-h-[80vh] lg:min-h-[95vh] flex items-center justify-center">
+      <section className="relative w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-40 lg:py-56 text-center text-[#FFFFFF] overflow-hidden min-h-[80vh] lg:min-h-[95vh] flex items-center justify-center">
         {/* Background video (show on sm+). Keep full-bleed and cover the hero */}
         <video
           className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
@@ -209,7 +209,7 @@ const HomeScreen = () => {
           className="absolute inset-0 opacity-10 z-20"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #f5e6d3 1px, transparent 1px)",
+              "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         ></div>
@@ -245,7 +245,7 @@ const HomeScreen = () => {
               }}
               onClick={() => navigate(route.bst)}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#d4af37] text-[#3d2817] px-12 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
+              className="bg-[#D97BA8] text-[#723F53] px-12 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
             >
               <span>Xem Bộ Sưu Tập</span>
               <ChevronRight className="w-5 h-5" />
@@ -253,11 +253,11 @@ const HomeScreen = () => {
             <motion.button
               whileHover={{
                 scale: 1.1,
-                backgroundColor: "#f5e6d3",
-                color: "#3d2817",
+                backgroundColor: "#FFFFFF",
+                color: "#723F53",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#f5e6d3] px-12 py-4 rounded-full text-lg font-bold border-2 border-[#f5e6d3] transition-all duration-300"
+              className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-full text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
             >
               Cách Thuê Đồ
             </motion.button>
@@ -266,14 +266,14 @@ const HomeScreen = () => {
       </section>
 
       {/* Features Section */}
-      <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-16 text-[#3d2817] font-bold"
+            className="text-4xl lg:text-5xl text-center mb-16 text-[#723F53] font-bold"
           >
             Tại Sao Chọn The Caprieux?
           </motion.h2>
@@ -310,14 +310,14 @@ const HomeScreen = () => {
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="text-[#d4af37] mb-4 flex justify-center"
+                  className="text-[#D97BA8] mb-4 flex justify-center"
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-2xl mb-3 text-[#3d2817] font-bold group-hover:text-[#d4af37] transition-colors">
+                <h3 className="text-2xl mb-3 text-[#723F53] font-bold group-hover:text-[#D97BA8] transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-[#5d4433] leading-relaxed">{feature.desc}</p>
+                <p className="text-[#8B6B7A] leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -325,13 +325,13 @@ const HomeScreen = () => {
       </section>
 
       {/* Sản phẩm mới về - New Arrivals */}
-      <section className="w-full bg-linear-to-br from-[#f5e6d3] via-white to-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
+      <section className="w-full bg-linear-to-br from-[#FFFFFF] via-white to-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
         {/* Decorative pattern overlay */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #3d2817 1px, transparent 1px)",
+              "radial-gradient(circle, #723F53 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         ></div>
@@ -344,10 +344,10 @@ const HomeScreen = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl text-[#3d2817] font-bold mb-4">
+            <h2 className="text-4xl lg:text-5xl text-[#723F53] font-bold mb-4">
               Sản Phẩm Mới Về
             </h2>
-            <p className="text-lg text-[#5d4433] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-[#8B6B7A] max-w-2xl mx-auto leading-relaxed">
               Khám phá những thiết kế độc đáo và sang trọng nhất trong bộ sưu
               tập của chúng tôi
             </p>
@@ -364,9 +364,9 @@ const HomeScreen = () => {
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 className="inline-block"
               >
-                <Sparkles className="w-12 h-12 text-[#d4af37]" />
+                <Sparkles className="w-12 h-12 text-[#D97BA8]" />
               </motion.div>
-              <p className="text-2xl text-[#5d4433] font-semibold mt-4">
+              <p className="text-2xl text-[#8B6B7A] font-semibold mt-4">
                 Đang tải sản phẩm mới...
               </p>
             </motion.div>
@@ -415,7 +415,7 @@ const HomeScreen = () => {
                       className="bg-white rounded-3xl shadow-2xs overflow-hidden cursor-pointer h-[80%] relative"
                     >
                       {/* Image Container */}
-                      <div className="h-80 bg-linear-to-br from-[#f5e6d3] to-[#d4b896] flex items-center justify-center overflow-hidden relative">
+                      <div className="h-80 bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] flex items-center justify-center overflow-hidden relative">
                         <motion.img
                           whileHover={{ scale: 1.15 }}
                           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -431,7 +431,7 @@ const HomeScreen = () => {
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute inset-0 bg-linear-to-t from-[#3d2817]/60 via-transparent to-transparent"
+                          className="absolute inset-0 bg-linear-to-t from-[#723F53]/60 via-transparent to-transparent"
                         >
                           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                             <motion.div
@@ -457,29 +457,29 @@ const HomeScreen = () => {
 
                       {/* Product Info */}
                       <div className="p-6 bg-linear-to-br from-white to-[#f9f3e8]">
-                        <h3 className="text-xl font-bold text-[#3d2817] line-clamp-2 min-h-14 group-hover:text-[#d4af37] transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-[#723F53] line-clamp-2 min-h-14 group-hover:text-[#D97BA8] transition-colors duration-300">
                           {p.title}
                         </h3>
 
                         {p.shortDescription && (
-                          <p className="text-sm text-[#5d4433] mb-4 line-clamp-2 leading-relaxed">
+                          <p className="text-sm text-[#8B6B7A] mb-4 line-clamp-2 leading-relaxed">
                             {p.shortDescription}
                           </p>
                         )}
 
-                        <div className="flex items-center justify-between pt-4 border-t border-[#d4b896]/30">
+                        <div className="flex items-center justify-between pt-4 border-t border-[#EDD5E8]/30">
                           <div>
-                            <div className="text-2xl font-bold text-[#3d2817] group-hover:text-[#d4af37] transition-colors duration-300">
+                            <div className="text-2xl font-bold text-[#723F53] group-hover:text-[#D97BA8] transition-colors duration-300">
                               {formatPrice(p.price)}
                             </div>
-                            <div className="text-xs text-[#5d4433] mt-1">
+                            <div className="text-xs text-[#8B6B7A] mt-1">
                               / 3 ngày
                             </div>
                           </div>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-1"
+                            className="bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-1"
                             onClick={(e) => {
                               e.stopPropagation();
                               navigate(`/product/${p._id}`);
@@ -513,7 +513,7 @@ const HomeScreen = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate(route.bst)}
-                className="bg-linear-to-r from-[#3d2817] to-[#5d4433] text-[#f5e6d3] px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all duration-300 inline-flex items-center gap-3 group"
+                className="bg-linear-to-r from-[#723F53] to-[#8B6B7A] text-[#FFFFFF] px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all duration-300 inline-flex items-center gap-3 group"
               >
                 <span>Xem Tất Cả Sản Phẩm</span>
                 <motion.div
@@ -529,14 +529,14 @@ const HomeScreen = () => {
       </section>
 
       {/* How It Works */}
-      <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl mb-16 text-[#3d2817] font-bold"
+            className="text-4xl lg:text-5xl mb-16 text-[#723F53] font-bold"
           >
             Quy Trình Thuê Đơn Giản
           </motion.h2>
@@ -581,21 +581,21 @@ const HomeScreen = () => {
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="bg-linear-to-br from-[#3d2817] to-[#5d4433] text-[#f5e6d3] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
+                  className="bg-linear-to-br from-[#723F53] to-[#8B6B7A] text-[#FFFFFF] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
                 >
                   {item.icon}
                 </motion.div>
                 {/* <motion.div
                   initial={{ opacity: 0.2 }}
                   whileHover={{ opacity: 0.4, scale: 1.1 }}
-                  className="absolute top-2 right-[20%] text-6xl font-bold text-[#d4af37] opacity-20"
+                  className="absolute top-2 right-[20%] text-6xl font-bold text-[#D97BA8] opacity-20"
                 >
                   {item.step}
                 </motion.div> */}
-                <h3 className="text-2xl mb-3 text-[#3d2817] font-bold group-hover:text-[#d4af37] transition-colors duration-300">
+                <h3 className="text-2xl mb-3 text-[#723F53] font-bold group-hover:text-[#D97BA8] transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-[#5d4433] leading-relaxed">{item.desc}</p>
+                <p className="text-[#8B6B7A] leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -603,7 +603,7 @@ const HomeScreen = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="w-full bg-linear-to-br from-[#3d2817] via-[#5d4433] to-[#3d2817] text-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] text-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -625,7 +625,7 @@ const HomeScreen = () => {
               <motion.div
                 key={testimonial.id}
                 variants={scaleVariants}
-                whileHover={{ scale: 1.05, borderColor: "#d4af37" }}
+                whileHover={{ scale: 1.05, borderColor: "#D97BA8" }}
                 className="bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20 cursor-pointer"
               >
                 <div className="flex gap-1 mb-4 justify-center">
@@ -637,14 +637,14 @@ const HomeScreen = () => {
                       transition={{ delay: i * 0.1, duration: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      <Star className="w-5 h-5 text-[#d4af37] fill-[#d4af37]" />
+                      <Star className="w-5 h-5 text-[#D97BA8] fill-[#D97BA8]" />
                     </motion.div>
                   ))}
                 </div>
                 <p className="text-lg mb-4 italic leading-relaxed">
                   "{testimonial.text}"
                 </p>
-                <p className="font-bold text-[#d4af37]">— {testimonial.name}</p>
+                <p className="font-bold text-[#D97BA8]">— {testimonial.name}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -652,7 +652,7 @@ const HomeScreen = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-[#f5e6d3] py-20 lg:py-28 px-6 lg:px-12 text-center">
+      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12 text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -662,13 +662,13 @@ const HomeScreen = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl lg:text-5xl mb-6 text-[#3d2817] font-bold"
+            className="text-4xl lg:text-5xl mb-6 text-[#723F53] font-bold"
           >
             Sẵn Sàng Nâng Tầm Phong Cách?
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl mb-10 text-[#5d4433] leading-relaxed"
+            className="text-xl mb-10 text-[#8B6B7A] leading-relaxed"
           >
             Tham gia cùng hàng trăm người yêu thời trang chọn sự xa xỉ bền vững
           </motion.p>
@@ -679,7 +679,7 @@ const HomeScreen = () => {
               boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-linear-to-r from-[#d4af37] to-[#b8941f] text-[#3d2817] px-12 py-5 rounded-full text-xl font-bold shadow-xl transition-all duration-300"
+            className="bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-[#723F53] px-12 py-5 rounded-full text-xl font-bold shadow-xl transition-all duration-300"
           >
             Khám Phá Bộ Sưu Tập
           </motion.button>
@@ -707,7 +707,7 @@ const HomeScreen = () => {
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute top-4 right-4 bg-[#3d2817] text-[#f5e6d3] rounded-full w-12 h-12 flex items-center justify-center z-10 hover:bg-[#5d4433] transition-colors"
+                className="absolute top-4 right-4 bg-[#723F53] text-[#FFFFFF] rounded-full w-12 h-12 flex items-center justify-center z-10 hover:bg-[#8B6B7A] transition-colors"
                 onClick={() => setSelectedProduct(null)}
               >
                 <X className="w-6 h-6" />
@@ -716,7 +716,7 @@ const HomeScreen = () => {
                 initial={{ scale: 1.2 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-linear-to-br from-[#f5e6d3] to-[#d4b896] h-96 flex items-center justify-center text-[12rem] rounded-t-3xl overflow-hidden"
+                className="bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] h-96 flex items-center justify-center text-[12rem] rounded-t-3xl overflow-hidden"
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
@@ -734,7 +734,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-4xl mb-4 text-[#3d2817] font-bold"
+                  className="text-4xl mb-4 text-[#723F53] font-bold"
                 >
                   {selectedProduct.name}
                 </motion.h2>
@@ -753,17 +753,17 @@ const HomeScreen = () => {
                         transition={{ delay: 0.4 + i * 0.1 }}
                       >
                         <Star
-                          className="w-5 h-5 text-[#d4af37]"
+                          className="w-5 h-5 text-[#D97BA8]"
                           fill={
                             i < Math.floor(selectedProduct.rating)
-                              ? "#d4af37"
+                              ? "#D97BA8"
                               : "none"
                           }
                         />
                       </motion.div>
                     ))}
                   </div>
-                  <span className="text-[#5d4433]">
+                  <span className="text-[#8B6B7A]">
                     {selectedProduct.rating} ({selectedProduct.reviews} đánh
                     giá)
                   </span>
@@ -772,7 +772,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-4xl font-bold text-[#3d2817] mb-2"
+                  className="text-4xl font-bold text-[#723F53] mb-2"
                 >
                   {formatPrice(selectedProduct.price)}{" "}
                   <span className="text-lg font-normal">/ 3 ngày</span>
@@ -781,7 +781,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-[#5d4433] mb-8 leading-relaxed text-lg"
+                  className="text-[#8B6B7A] mb-8 leading-relaxed text-lg"
                 >
                   Bộ trang phục thanh lịch hoàn hảo cho mọi dịp đặc biệt. Được
                   tuyển chọn cẩn thận và vệ sinh chuyên nghiệp sau mỗi lần thuê.
@@ -800,7 +800,7 @@ const HomeScreen = () => {
                   whileTap={{ scale: selectedProduct.available ? 0.95 : 1 }}
                   className={`w-full py-5 rounded-full text-xl font-bold flex items-center justify-center gap-2 transition-all ${
                     selectedProduct.available
-                      ? "bg-linear-to-r from-[#d4af37] to-[#b8941f] text-white"
+                      ? "bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white"
                       : "bg-gray-400 text-gray-700 cursor-not-allowed"
                   }`}
                   disabled={!selectedProduct.available}

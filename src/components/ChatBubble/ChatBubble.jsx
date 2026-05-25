@@ -141,7 +141,7 @@ export default function ChatBubble() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="relative bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center group overflow-hidden"
+            className="relative bg-gradient-to-r from-[#D97BA8] to-[#b8941f] text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center group overflow-hidden"
           >
             {/* Pulse animation */}
             <motion.div
@@ -154,7 +154,7 @@ export default function ChatBubble() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute inset-0 bg-[#d4af37] rounded-full"
+              className="absolute inset-0 bg-[#D97BA8] rounded-full"
             />
 
             <MessageCircle className="w-7 h-7 relative z-10" />
@@ -176,16 +176,16 @@ export default function ChatBubble() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-white rounded-3xl shadow-2xl overflow-hidden w-96 h-[600px] flex flex-col border border-[#d4b896]/30"
+            className="bg-white rounded-3xl shadow-2xl overflow-hidden w-96 h-[600px] flex flex-col border border-[#EDD5E8]/30"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#3d2817] via-[#5d4433] to-[#3d2817] p-4 flex items-center justify-between relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[#723F53] via-[#8B6B7A] to-[#723F53] p-4 flex items-center justify-between relative overflow-hidden">
               {/* Decorative pattern */}
               <div
                 className="absolute inset-0 opacity-10"
                 style={{
                   backgroundImage:
-                    "radial-gradient(circle, #f5e6d3 1px, transparent 1px)",
+                    "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
                   backgroundSize: "20px 20px",
                 }}
               />
@@ -194,17 +194,17 @@ export default function ChatBubble() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  className="bg-[#d4af37] p-2 rounded-full"
+                  className="bg-[#D97BA8] p-2 rounded-full"
                 >
-                  <Bot className="w-5 h-5 text-[#3d2817]" />
+                  <Bot className="w-5 h-5 text-[#723F53]" />
                 </motion.div>
                 <div>
-                  <h3 className="text-[#f5e6d3] font-bold text-lg">
+                  <h3 className="text-[#FFFFFF] font-bold text-lg">
                     AI Assistant
                   </h3>
                   <div className="flex items-center gap-1">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-[#f5e6d3]/80 text-xs">Online</span>
+                    <span className="text-[#FFFFFF]/80 text-xs">Online</span>
                   </div>
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function ChatBubble() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-[#f5e6d3] hover:text-[#d4af37] transition-colors p-2"
+                  className="text-[#FFFFFF] hover:text-[#D97BA8] transition-colors p-2"
                 >
                   <Minimize2 className="w-5 h-5" />
                 </motion.button>
@@ -222,7 +222,7 @@ export default function ChatBubble() {
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsOpen(false)}
-                  className="text-[#f5e6d3] hover:text-red-400 transition-colors p-2"
+                  className="text-[#FFFFFF] hover:text-red-400 transition-colors p-2"
                 >
                   <X className="w-5 h-5" />
                 </motion.button>
@@ -232,7 +232,7 @@ export default function ChatBubble() {
             {/* Messages */}
             <div
               ref={listRef}
-              className="flex-1 overflow-y-auto p-4 bg-gradient-to-br from-[#f5e6d3]/20 via-white to-[#f5e6d3]/20 space-y-4"
+              className="flex-1 overflow-y-auto p-4 bg-gradient-to-br from-[#FFFFFF]/20 via-white to-[#FFFFFF]/20 space-y-4"
             >
               <AnimatePresence initial={false}>
                 {messages.map((m, index) => (
@@ -253,8 +253,8 @@ export default function ChatBubble() {
                       transition={{ delay: 0.1 }}
                       className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                         m.sender === "assistant"
-                          ? "bg-gradient-to-br from-[#d4af37] to-[#b8941f]"
-                          : "bg-gradient-to-br from-[#3d2817] to-[#5d4433]"
+                          ? "bg-gradient-to-br from-[#D97BA8] to-[#b8941f]"
+                          : "bg-gradient-to-br from-[#723F53] to-[#8B6B7A]"
                       }`}
                     >
                       {m.sender === "assistant" ? (
@@ -269,8 +269,8 @@ export default function ChatBubble() {
                       whileHover={{ scale: 1.02 }}
                       className={`max-w-[75%] rounded-2xl px-4 py-3 shadow-md ${
                         m.sender === "assistant"
-                          ? "bg-white border border-[#d4b896]/30 text-[#3d2817]"
-                          : "bg-gradient-to-r from-[#d4af37] to-[#b8941f] text-white"
+                          ? "bg-white border border-[#EDD5E8]/30 text-[#723F53]"
+                          : "bg-gradient-to-r from-[#D97BA8] to-[#b8941f] text-white"
                       }`}
                     >
                       {m.typing ? (
@@ -286,7 +286,7 @@ export default function ChatBubble() {
                                 repeat: Infinity,
                                 delay: i * 0.2,
                               }}
-                              className="w-2 h-2 bg-[#d4af37] rounded-full"
+                              className="w-2 h-2 bg-[#D97BA8] rounded-full"
                             />
                           ))}
                         </div>
@@ -300,7 +300,7 @@ export default function ChatBubble() {
                         <div
                           className={`text-xs mt-1 ${
                             m.sender === "assistant"
-                              ? "text-[#5d4433]/60"
+                              ? "text-[#8B6B7A]/60"
                               : "text-white/70"
                           }`}
                         >
@@ -317,7 +317,7 @@ export default function ChatBubble() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white border-t border-[#d4b896]/30">
+            <div className="p-4 bg-white border-t border-[#EDD5E8]/30">
               <div className="flex gap-2 items-end">
                 <div className="flex-1 relative">
                   <textarea
@@ -326,7 +326,7 @@ export default function ChatBubble() {
                     onKeyDown={handleKeyDown}
                     placeholder="Nhập tin nhắn..."
                     rows={1}
-                    className="w-full px-4 py-3 bg-gradient-to-br from-[#f5e6d3]/30 to-[#d4b896]/20 border-2 border-[#d4b896]/40 rounded-2xl focus:outline-none focus:border-[#d4af37] transition-all text-[#3d2817] placeholder-[#5d4433]/50 resize-none"
+                    className="w-full px-4 py-3 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EDD5E8]/20 border-2 border-[#EDD5E8]/40 rounded-2xl focus:outline-none focus:border-[#D97BA8] transition-all text-[#723F53] placeholder-[#8B6B7A]/50 resize-none"
                     style={{ maxHeight: "120px" }}
                   />
                 </div>
@@ -339,7 +339,7 @@ export default function ChatBubble() {
                   className={`p-3 rounded-xl transition-all shadow-lg ${
                     !input.trim() || isSending
                       ? "bg-gray-300 cursor-not-allowed"
-                      : "bg-gradient-to-r from-[#d4af37] to-[#b8941f] hover:shadow-xl"
+                      : "bg-gradient-to-r from-[#D97BA8] to-[#b8941f] hover:shadow-xl"
                   }`}
                 >
                   {isSending ? (
@@ -359,7 +359,7 @@ export default function ChatBubble() {
                 </motion.button>
               </div>
 
-              <div className="mt-2 text-xs text-[#5d4433]/60 text-center">
+              <div className="mt-2 text-xs text-[#8B6B7A]/60 text-center">
                 Nhấn Enter để gửi, Shift + Enter để xuống dòng
               </div>
             </div>
