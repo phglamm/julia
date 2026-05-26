@@ -2,7 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { route } from "../../router";
 import { useNavigate } from "react-router-dom";
-import { Search, X, Menu, ShoppingCart, User, LogOut, UserCircle, ChevronDown } from "lucide-react";
+import {
+  Search,
+  X,
+  Menu,
+  ShoppingCart,
+  User,
+  LogOut,
+  UserCircle,
+  ChevronDown,
+} from "lucide-react";
 import logo from "../../assets/logo.png";
 import toast from "react-hot-toast";
 import { useUserStore } from "../../stores/userStore";
@@ -182,7 +191,9 @@ const Header = ({ scrolled }) => {
                     <div className="w-7 h-7 rounded-full bg-[#C599A6]/30 border border-[#C599A6]/60 flex items-center justify-center">
                       <User className="w-4 h-4" />
                     </div>
-                    <span className="text-sm font-medium max-w-[100px] truncate">{user.username}</span>
+                    <span className="text-sm font-medium max-w-[100px] truncate">
+                      {user.username}
+                    </span>
                     <motion.div
                       animate={{ rotate: userMenuOpen ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -201,15 +212,13 @@ const Header = ({ scrolled }) => {
                         transition={{ duration: 0.18 }}
                         className="absolute right-0 mt-2 w-48 bg-white border border-[#EAD2D8]/60 shadow-xl overflow-hidden z-50"
                       >
-                        {/* User info header */}
-                        <div className="px-4 py-3 bg-gradient-to-r from-[#682535] to-[#874D5F]">
-                          <p className="text-xs text-white/70">Đang đăng nhập</p>
-                          <p className="text-sm font-semibold text-white truncate">{user.username}</p>
-                        </div>
                         {/* Profile link */}
                         <motion.button
                           whileHover={{ backgroundColor: "#fdf6f8" }}
-                          onClick={() => { navigate(route.profile); setUserMenuOpen(false); }}
+                          onClick={() => {
+                            navigate(route.profile);
+                            setUserMenuOpen(false);
+                          }}
                           className="w-full flex items-center gap-3 px-4 py-3 text-sm text-[#682535] font-medium transition-colors border-b border-[#EAD2D8]/40"
                           id="dropdown-profile-link"
                         >
@@ -391,7 +400,10 @@ const Header = ({ scrolled }) => {
                 {/* Profile link — only when logged in */}
                 {user && (
                   <motion.button
-                    onClick={() => { navigate(route.profile); setOpen(false); }}
+                    onClick={() => {
+                      navigate(route.profile);
+                      setOpen(false);
+                    }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navigationItems.length * 0.1 }}
