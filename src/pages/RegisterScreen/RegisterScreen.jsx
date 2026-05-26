@@ -187,7 +187,7 @@ export default function RegisterScreen() {
         {/* Register Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#EAD2D8]/30"
+          className="bg-white rounded-none shadow-md border border-[#EAD2D8]/50 overflow-hidden border border-[#EAD2D8]/30"
         >
           <div className="bg-gradient-to-r from-[#682535] via-[#874D5F] to-[#682535] p-8 text-center">
             <h2 className="text-2xl font-bold text-[#FFFFFF]">Đăng Ký</h2>
@@ -202,7 +202,7 @@ export default function RegisterScreen() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm"
+                className="mb-6 p-4 bg-red-50 border border-red-200 rounded-none text-red-600 text-sm"
               >
                 {error}
               </motion.div>
@@ -221,7 +221,7 @@ export default function RegisterScreen() {
                   value={formData.username}
                   onChange={handleChange}
                   placeholder="Nhập tên đăng nhập"
-                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-xl focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-none focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
                 />
               </div>
             </motion.div>
@@ -239,7 +239,7 @@ export default function RegisterScreen() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Nhập địa chỉ email"
-                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-xl focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-none focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
                 />
               </div>
             </motion.div>
@@ -257,7 +257,7 @@ export default function RegisterScreen() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
-                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-xl focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
+                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-none focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
                 />
                 <button
                   type="button"
@@ -286,7 +286,7 @@ export default function RegisterScreen() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Nhập lại mật khẩu"
-                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-xl focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
+                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#EAD2D8]/20 border-2 border-[#EAD2D8]/40 rounded-none focus:outline-none focus:border-[#C599A6] transition-all text-[#682535] placeholder-[#874D5F]/50"
                 />
                 <button
                   type="button"
@@ -331,7 +331,7 @@ export default function RegisterScreen() {
               disabled={loading}
               whileHover={!loading ? { scale: 1.02 } : {}}
               whileTap={!loading ? { scale: 0.98 } : {}}
-              className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-lg ${
+              className={`w-full py-4 rounded-none font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-lg ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white hover:shadow-xl"

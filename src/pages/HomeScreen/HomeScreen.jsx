@@ -224,7 +224,7 @@ const HomeScreen = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg"
+            className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
           >
             Julia
           </motion.h1>
@@ -245,7 +245,7 @@ const HomeScreen = () => {
               }}
               onClick={() => navigate(route.bst)}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#C599A6] text-[#682535] px-12 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
+              className="bg-[#C599A6] text-[#682535] px-12 py-4 rounded-none text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
             >
               <span>Xem Bộ Sưu Tập</span>
               <ChevronRight className="w-5 h-5" />
@@ -257,7 +257,7 @@ const HomeScreen = () => {
                 color: "#682535",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-full text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
+              className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
             >
               Cách Thuê Đồ
             </motion.button>
@@ -273,7 +273,7 @@ const HomeScreen = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
           >
             Tại Sao Chọn Julia?
           </motion.h2>
@@ -305,7 +305,7 @@ const HomeScreen = () => {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-linear-to-br from-white to-[#F6F3E6] p-10 rounded-3xl text-center shadow-xl cursor-pointer group"
+                className="bg-linear-to-br from-white to-[#F6F3E6] p-10 rounded-none text-center shadow-sm border border-[#EAD2D8]/50 cursor-pointer group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
@@ -344,7 +344,7 @@ const HomeScreen = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl text-[#682535] font-bold mb-4">
+            <h2 className="font-serif text-4xl lg:text-5xl text-[#682535] font-bold mb-4">
               Sản Phẩm Mới Về
             </h2>
             <p className="text-lg text-[#874D5F] max-w-2xl mx-auto leading-relaxed">
@@ -376,7 +376,7 @@ const HomeScreen = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center py-10 bg-red-50 rounded-3xl border-2 border-red-200"
+              className="text-center py-10 bg-red-50 rounded-none border-2 border-red-200"
             >
               <p className="text-xl text-red-600 font-semibold">
                 Lỗi: {newError}
@@ -412,7 +412,7 @@ const HomeScreen = () => {
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       whileHover={{ y: -12 }}
                       onClick={() => navigate(`/product/${p._id}`)}
-                      className="bg-white rounded-3xl shadow-2xs overflow-hidden cursor-pointer h-[80%] relative"
+                      className="bg-white rounded-none shadow-2xs overflow-hidden cursor-pointer h-[80%] relative"
                     >
                       {/* Image Container */}
                       <div className="h-80 bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
@@ -438,7 +438,7 @@ const HomeScreen = () => {
                               initial={{ x: -20, opacity: 0 }}
                               whileHover={{ x: 0, opacity: 1 }}
                               transition={{ duration: 0.3 }}
-                              className="text-white font-semibold flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full"
+                              className="text-white font-semibold flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-none"
                             >
                               <Heart className="w-4 h-4" />
                               Yêu thích
@@ -479,7 +479,7 @@ const HomeScreen = () => {
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-1"
+                            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-white px-5 py-2 rounded-none font-semibold shadow-lg hover:shadow-sm border border-[#EAD2D8]/50 transition-all duration-300 flex items-center gap-1"
                             onClick={(e) => {
                               e.stopPropagation();
                               navigate(`/product/${p._id}`);
@@ -513,7 +513,7 @@ const HomeScreen = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate(route.bst)}
-                className="bg-linear-to-r from-[#682535] to-[#874D5F] text-[#FFFFFF] px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all duration-300 inline-flex items-center gap-3 group"
+                className="bg-linear-to-r from-[#682535] to-[#874D5F] text-[#FFFFFF] px-10 py-4 rounded-none text-lg font-bold shadow-sm border border-[#EAD2D8]/50 transition-all duration-300 inline-flex items-center gap-3 group"
               >
                 <span>Xem Tất Cả Sản Phẩm</span>
                 <motion.div
@@ -536,7 +536,7 @@ const HomeScreen = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl mb-16 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-16 text-[#682535] font-bold"
           >
             Quy Trình Thuê Đơn Giản
           </motion.h2>
@@ -581,7 +581,7 @@ const HomeScreen = () => {
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="bg-linear-to-br from-[#682535] to-[#874D5F] text-[#FFFFFF] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
+                  className="bg-linear-to-br from-[#682535] to-[#874D5F] text-[#FFFFFF] w-20 h-20 rounded-none flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#EAD2D8]/50"
                 >
                   {item.icon}
                 </motion.div>
@@ -610,7 +610,7 @@ const HomeScreen = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl mb-16 font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-16 font-bold"
           >
             Khách Hàng Nói Gì
           </motion.h2>
@@ -626,7 +626,7 @@ const HomeScreen = () => {
                 key={testimonial.id}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, borderColor: "#C599A6" }}
-                className="bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20 cursor-pointer"
+                className="bg-white/10 backdrop-blur-lg p-8 rounded-none border border-white/20 cursor-pointer"
               >
                 <div className="flex gap-1 mb-4 justify-center">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -662,7 +662,7 @@ const HomeScreen = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl lg:text-5xl mb-6 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-6 text-[#682535] font-bold"
           >
             Sẵn Sàng Nâng Tầm Phong Cách?
           </motion.h2>
@@ -679,7 +679,7 @@ const HomeScreen = () => {
               boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-[#682535] px-12 py-5 rounded-full text-xl font-bold shadow-xl transition-all duration-300"
+            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-[#682535] px-12 py-5 rounded-none text-xl font-bold shadow-sm border border-[#EAD2D8]/50 transition-all duration-300"
           >
             Khám Phá Bộ Sưu Tập
           </motion.button>
@@ -702,12 +702,12 @@ const HomeScreen = () => {
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-auto relative"
+              className="bg-white rounded-none max-w-4xl w-full max-h-[90vh] overflow-auto relative"
             >
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute top-4 right-4 bg-[#682535] text-[#FFFFFF] rounded-full w-12 h-12 flex items-center justify-center z-10 hover:bg-[#874D5F] transition-colors"
+                className="absolute top-4 right-4 bg-[#682535] text-[#FFFFFF] rounded-none w-12 h-12 flex items-center justify-center z-10 hover:bg-[#874D5F] transition-colors"
                 onClick={() => setSelectedProduct(null)}
               >
                 <X className="w-6 h-6" />
@@ -798,7 +798,7 @@ const HomeScreen = () => {
                       : undefined,
                   }}
                   whileTap={{ scale: selectedProduct.available ? 0.95 : 1 }}
-                  className={`w-full py-5 rounded-full text-xl font-bold flex items-center justify-center gap-2 transition-all ${
+                  className={`w-full py-5 rounded-none text-xl font-bold flex items-center justify-center gap-2 transition-all ${
                     selectedProduct.available
                       ? "bg-linear-to-r from-[#C599A6] to-[#A47784] text-white"
                       : "bg-gray-400 text-gray-700 cursor-not-allowed"

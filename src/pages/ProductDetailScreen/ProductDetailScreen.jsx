@@ -180,7 +180,7 @@ export default function ProductDetailScreen() {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl lg:text-6xl font-bold mb-4 drop-shadow-lg"
+            className="font-serif text-4xl lg:text-6xl font-bold mb-4 "
           >
             Chi Tiết Sản Phẩm
           </motion.h1>
@@ -204,7 +204,7 @@ export default function ProductDetailScreen() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Image */}
             <motion.div variants={itemVariants}>
-              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden sticky top-6">
+              <div className="bg-white rounded-none shadow-sm border border-[#EAD2D8]/50 overflow-hidden sticky top-6">
                 <div className="bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] w-full h-[700px] flex items-center justify-center">
                   <img
                     src={imgSrc(product.imageLink)}
@@ -221,7 +221,7 @@ export default function ProductDetailScreen() {
             {/* Product Information */}
             <motion.div variants={itemVariants} className="space-y-6">
               {/* Title & Rating */}
-              <div className="bg-white rounded-3xl shadow-xl p-8">
+              <div className="bg-white rounded-none shadow-sm border border-[#EAD2D8]/50 p-8">
                 <motion.h2
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -266,7 +266,7 @@ export default function ProductDetailScreen() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="bg-white rounded-3xl shadow-xl p-8"
+                className="bg-white rounded-none shadow-sm border border-[#EAD2D8]/50 p-8"
               >
                 <h3 className="text-2xl font-bold text-[#682535] mb-3 flex items-center gap-2">
                   <Sparkles className="w-6 h-6 text-[#C599A6]" />
@@ -283,7 +283,7 @@ export default function ProductDetailScreen() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="bg-white rounded-3xl shadow-xl p-8 space-y-6"
+                  className="bg-white rounded-none shadow-sm border border-[#EAD2D8]/50 p-8 space-y-6"
                 >
                   <h3 className="text-2xl font-bold text-[#682535] mb-4 flex items-center gap-2">
                     <Package className="w-6 h-6 text-[#C599A6]" />
@@ -292,7 +292,7 @@ export default function ProductDetailScreen() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Basic Info */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3 flex items-center gap-2">
                         <Package className="w-5 h-5 text-[#C599A6]" />
                         Thông Tin Cơ Bản
@@ -303,7 +303,7 @@ export default function ProductDetailScreen() {
                     </div>
 
                     {/* Sizes */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Size
                       </h4>
@@ -313,7 +313,7 @@ export default function ProductDetailScreen() {
                     </div>
 
                     {/* Material */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Chất Liệu
                       </h4>
@@ -323,7 +323,7 @@ export default function ProductDetailScreen() {
                     </div>
 
                     {/* Care Instructions */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Hướng Dẫn Bảo Quản
                       </h4>
@@ -334,7 +334,7 @@ export default function ProductDetailScreen() {
 
                     {/* Measurements */}
                     {product.details.measurements && (
-                      <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl md:col-span-2">
+                      <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none md:col-span-2">
                         <h4 className="text-xl font-bold text-[#682535] mb-4">
                           Số Đo Chi Tiết
                         </h4>
@@ -343,7 +343,7 @@ export default function ProductDetailScreen() {
                             ([key, value]) => (
                               <div
                                 key={key}
-                                className="bg-white/50 p-3 rounded-xl"
+                                className="bg-white/50 p-3 rounded-none"
                               >
                                 <p className="text-sm text-[#874D5F] mb-1 capitalize">
                                   {key === "length"

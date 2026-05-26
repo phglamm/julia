@@ -198,7 +198,7 @@ export default function ServicesScreen() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg"
+            className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
           >
             Dịch Vụ Của Chúng Tôi
           </motion.h1>
@@ -218,7 +218,7 @@ export default function ServicesScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
           >
             Dịch Vụ Nổi Bật
           </motion.h2>
@@ -250,7 +250,7 @@ export default function ServicesScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-linear-to-br from-white to-[#F6F3E6] p-10 rounded-3xl text-center shadow-xl cursor-pointer group"
+                className="bg-linear-to-br from-white to-[#F6F3E6] p-10 rounded-none text-center shadow-xl cursor-pointer group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
@@ -277,7 +277,7 @@ export default function ServicesScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl  text-[#682535] text-center mb-6 font-bold"
+            className="font-serif text-4xl lg:text-5xl  text-[#682535] text-center mb-6 font-bold"
           >
             Gói Membership
           </motion.h2>
@@ -302,7 +302,7 @@ export default function ServicesScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className={`bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col ${
+                className={`bg-white rounded-none overflow-hidden shadow-2xl flex flex-col ${
                   plan.popular ? "ring-4 ring-[#C599A6]" : ""
                 }`}
               >
@@ -333,7 +333,7 @@ export default function ServicesScreen() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full py-4 rounded-full font-bold bg-linear-to-r from-[#C599A6] to-[#A47784] text-white"
+                      className="w-full py-4 rounded-none font-bold bg-linear-to-r from-[#C599A6] to-[#A47784] text-white"
                     >
                       Đăng Ký Ngay
                     </motion.button>
@@ -349,7 +349,7 @@ export default function ServicesScreen() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
+                className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
               >
                 Đặc Quyền Thành Viên
               </motion.h2>
@@ -366,12 +366,12 @@ export default function ServicesScreen() {
                     key={idx}
                     variants={scaleVariants}
                     whileHover={{ scale: 1.05, y: -10 }}
-                    className="bg-white rounded-3xl p-8 text-center shadow-xl group"
+                    className="bg-white rounded-none p-8 text-center shadow-xl group"
                   >
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className={` text-[#C599A6] w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto`}
+                      className={` text-[#C599A6] w-20 h-20 rounded-none flex items-center justify-center mb-6 mx-auto`}
                     >
                       {benefit.icon}
                     </motion.div>
@@ -391,7 +391,7 @@ export default function ServicesScreen() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-16 bg-white rounded-3xl p-10 max-w-2xl mx-auto"
+            className="mt-16 bg-white rounded-none p-10 max-w-2xl mx-auto"
           >
             <h3 className="text-3xl font-bold text-[#682535] mb-6 text-center">
               Đăng Ký Thành Viên
@@ -410,7 +410,7 @@ export default function ServicesScreen() {
                       name: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-none border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
                 />
               </div>
 
@@ -427,7 +427,7 @@ export default function ServicesScreen() {
                       email: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-none border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
                 />
               </div>
 
@@ -444,7 +444,7 @@ export default function ServicesScreen() {
                       phone: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-none border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
                 />
               </div>
 
@@ -460,7 +460,7 @@ export default function ServicesScreen() {
                       plan: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-none border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors text-gray-900"
                 >
                   <option value="basic">Basic - 499.000đ/năm</option>
                   <option value="premium">Premium - 999.000đ/năm</option>
@@ -476,7 +476,7 @@ export default function ServicesScreen() {
                   boxShadow: "0 10px 40px rgba(212, 175, 55, 0.4)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl"
+                className="w-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 shadow-xl"
               >
                 <Crown className="w-5 h-5" />
                 Đăng Ký Ngay
@@ -511,7 +511,7 @@ export default function ServicesScreen() {
 
           <motion.h2
             variants={itemVariants}
-            className="text-4xl lg:text-5xl mb-6 font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-6 font-bold"
           >
             Bắt Đầu Trải Nghiệm Ngay Hôm Nay
           </motion.h2>
@@ -532,7 +532,7 @@ export default function ServicesScreen() {
                 boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#C599A6] text-[#682535] px-8 py-4 rounded-full text-lg font-bold shadow-xl flex items-center gap-2"
+              className="bg-[#C599A6] text-[#682535] px-8 py-4 rounded-none text-lg font-bold shadow-xl flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Hotline: +84 xxx xxx xxx
@@ -544,7 +544,7 @@ export default function ServicesScreen() {
                 color: "#682535",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#FFFFFF] px-8 py-4 rounded-full text-lg font-bold border-2 border-[#FFFFFF] transition-all flex items-center gap-2"
+              className="bg-transparent text-[#FFFFFF] px-8 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Email: hello@thejulia.vn

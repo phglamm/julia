@@ -87,7 +87,7 @@ const CartScreen = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-3xl shadow-2xl p-12 text-center"
+            className="bg-white rounded-none shadow-md border border-[#EAD2D8]/50 p-12 text-center"
           >
             <ShoppingBag className="w-24 h-24 text-[#C599A6] mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-[#682535] mb-4">
@@ -99,7 +99,7 @@ const CartScreen = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white px-8 py-4 rounded-none font-bold text-lg shadow-lg inline-flex items-center gap-2"
             >
               Khám Phá Ngay
               <ArrowRight className="w-5 h-5" />
@@ -119,18 +119,18 @@ const CartScreen = () => {
                   key={item._id}
                   variants={itemVariants}
                   layout
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                  className="bg-white rounded-none shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="flex flex-col sm:flex-row gap-6 p-6">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
+                    <div className="relative w-full sm:w-40 h-40 flex-shrink-0 rounded-none overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
                       <img
                         src={item.imageLink}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
                       {item.brand && (
-                        <div className="absolute top-2 right-2 bg-[#682535]/80 backdrop-blur-sm text-[#FFFFFF] px-2 py-1 rounded-full text-xs font-semibold">
+                        <div className="absolute top-2 right-2 bg-[#682535]/80 backdrop-blur-sm text-[#FFFFFF] px-2 py-1 rounded-none text-xs font-semibold">
                           {item.brand}
                         </div>
                       )}
@@ -164,7 +164,7 @@ const CartScreen = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => decrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-full bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
+                            className="w-8 h-8 rounded-none bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
                           >
                             <Minus className="w-4 h-4" />
                           </motion.button>
@@ -175,7 +175,7 @@ const CartScreen = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => incrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-full bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
+                            className="w-8 h-8 rounded-none bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
                           >
                             <Plus className="w-4 h-4" />
                           </motion.button>
@@ -195,7 +195,7 @@ const CartScreen = () => {
                             whileHover={{ scale: 1.1, rotate: 15 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => removeItem(item._id)}
-                            className="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"
+                            className="w-10 h-10 rounded-none bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"
                           >
                             <Trash2 className="w-5 h-5" />
                           </motion.button>
@@ -214,7 +214,7 @@ const CartScreen = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="lg:col-span-1"
             >
-              <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+              <div className="bg-white rounded-none shadow-lg p-6 sticky top-24">
                 <h2 className="text-2xl font-bold text-[#682535] mb-6 flex items-center gap-2">
                   <CreditCard className="w-6 h-6 text-[#C599A6]" />
                   Tổng Đơn Hàng
@@ -260,7 +260,7 @@ const CartScreen = () => {
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => navigate(route.payment)}
-                  className="w-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-full font-bold text-lg shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-none font-bold text-lg shadow-lg flex items-center justify-center gap-2"
                 >
                   Thanh Toán Ngay
                   <ArrowRight className="w-5 h-5" />
@@ -268,7 +268,7 @@ const CartScreen = () => {
 
                 {/* Security Badge */}
                 <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#874D5F]">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-green-100 rounded-none flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-green-600"
                       fill="currentColor"

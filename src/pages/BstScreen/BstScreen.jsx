@@ -197,7 +197,7 @@ export default function BstScreen() {
           >
             <motion.h1
               variants={itemVariants}
-              className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg"
+              className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
             >
               Sản Phẩm Của Chúng Tôi
             </motion.h1>
@@ -247,7 +247,7 @@ export default function BstScreen() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden mb-8"
               >
-                <div className="bg-white rounded-3xl shadow-xl p-8">
+                <div className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm p-8">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-[#682535]">
                       Lọc Sản Phẩm
@@ -423,7 +423,7 @@ export default function BstScreen() {
                       // variants={itemVariants}
                       // whileHover={{ scale: 1.03, y: -10 }}
                       onClick={() => navigate(`/product/${product._id}`)}
-                      className="bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer group"
+                      className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm overflow-hidden cursor-pointer group"
                     >
                       <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
                         <img
