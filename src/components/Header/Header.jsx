@@ -151,7 +151,7 @@ const Header = ({ scrolled }) => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm sản phẩm..."
-                    className="w-full h-full pl-12 pr-4 rounded-full bg-[#EAD2D8] text-[#682535] placeholder-[#874D5F]/60 focus:outline-none focus:ring-2 focus:ring-[#C599A6] shadow-lg text-sm"
+                    className="w-full h-full pl-12 pr-4 rounded-full bg-[#ffffff] text-[#682535] placeholder-[#874D5F]/60 focus:outline-none focus:ring-2 focus:ring-[#C599A6] shadow-lg text-sm"
                     animate={{
                       opacity: isSearchExpanded ? 1 : 0,
                     }}
