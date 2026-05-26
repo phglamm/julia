@@ -63,10 +63,10 @@ export default function BstScreen() {
       setSearchError(null);
       try {
         // const url = searchQuery
-        //   ? `https://caprieux-be.onrender.com/api/products?searchTerm=${encodeURIComponent(
+        //   ? `https://julia-be.onrender.com/api/products?searchTerm=${encodeURIComponent(
         //       searchQuery
         //     )}`
-        //   : "https://caprieux-be.onrender.com/api/products";
+        //   : "https://julia-be.onrender.com/api/products";
 
         const resp = searchQuery
           ? await productService.searchProducts(searchQuery)
@@ -177,7 +177,7 @@ export default function BstScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EDD5E8]">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
       {/* Hero Section */}
       {/* Hero Section */}
       <section className="relative w-full h-[700px] lg:h-[900px] text-center text-[#FFFFFF] overflow-hidden">
@@ -216,19 +216,19 @@ export default function BstScreen() {
         <div className="max-w-7xl mx-auto">
           {/* Filter Toggle Button */}
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-[#723F53]">
+            <h2 className="text-2xl font-bold text-[#682535]">
               {filteredProducts.length} sản phẩm
             </h2>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-6 py-3 bg-[#723F53] text-[#FFFFFF] rounded-full font-semibold shadow-lg"
+              className="flex items-center gap-2 px-6 py-3 bg-[#682535] text-[#FFFFFF] rounded-full font-semibold shadow-lg"
             >
               <SlidersHorizontal className="w-5 h-5" />
               Bộ Lọc
               {hasActiveFilters && (
-                <span className="bg-[#D97BA8] text-[#723F53] px-2 py-1 rounded-full text-xs">
+                <span className="bg-[#C599A6] text-[#682535] px-2 py-1 rounded-full text-xs">
                   {selectedSizes.length +
                     selectedBrands.length +
                     (priceRange[0] > 0 || priceRange[1] < 20000000 ? 1 : 0)}
@@ -249,13 +249,13 @@ export default function BstScreen() {
               >
                 <div className="bg-white rounded-3xl shadow-xl p-8">
                   <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-2xl font-bold text-[#723F53]">
+                    <h3 className="text-2xl font-bold text-[#682535]">
                       Lọc Sản Phẩm
                     </h3>
                     {hasActiveFilters && (
                       <button
                         onClick={clearFilters}
-                        className="text-[#D97BA8] hover:text-[#C94F89] font-semibold flex items-center gap-2"
+                        className="text-[#C599A6] hover:text-[#A47784] font-semibold flex items-center gap-2"
                       >
                         <X className="w-4 h-4" />
                         Xóa Bộ Lọc
@@ -266,10 +266,10 @@ export default function BstScreen() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Price Filter */}
                     <div>
-                      <h4 className="font-bold text-[#723F53] mb-4">Giá</h4>
+                      <h4 className="font-bold text-[#682535] mb-4">Giá</h4>
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm text-[#8B6B7A] mb-2 block">
+                          <label className="text-sm text-[#874D5F] mb-2 block">
                             Từ: {formatPrice(priceRange[0])}
                           </label>
                           <input
@@ -288,7 +288,7 @@ export default function BstScreen() {
                           />
                         </div>
                         <div>
-                          <label className="text-sm text-[#8B6B7A] mb-2 block">
+                          <label className="text-sm text-[#874D5F] mb-2 block">
                             Đến: {formatPrice(priceRange[1])}
                           </label>
                           <input
@@ -311,7 +311,7 @@ export default function BstScreen() {
 
                     {/* Size Filter */}
                     <div>
-                      <h4 className="font-bold text-[#723F53] mb-4">Kích Cỡ</h4>
+                      <h4 className="font-bold text-[#682535] mb-4">Kích Cỡ</h4>
                       <div className="flex flex-wrap gap-2">
                         {availableSizes.map((size) => (
                           <button
@@ -319,8 +319,8 @@ export default function BstScreen() {
                             onClick={() => toggleSize(size)}
                             className={`px-4 py-2 rounded-full font-semibold transition-all ${
                               selectedSizes.includes(size)
-                                ? "bg-[#D97BA8] text-[#723F53]"
-                                : "bg-[#FFFFFF] text-[#8B6B7A] hover:bg-[#EDD5E8]"
+                                ? "bg-[#C599A6] text-[#682535]"
+                                : "bg-[#FFFFFF] text-[#874D5F] hover:bg-[#EAD2D8]"
                             }`}
                           >
                             {size}
@@ -331,7 +331,7 @@ export default function BstScreen() {
 
                     {/* Brand Filter */}
                     <div>
-                      <h4 className="font-bold text-[#723F53] mb-4">
+                      <h4 className="font-bold text-[#682535] mb-4">
                         Thương Hiệu
                       </h4>
                       <div className="space-y-2">
@@ -344,9 +344,9 @@ export default function BstScreen() {
                               type="checkbox"
                               checked={selectedBrands.includes(brand)}
                               onChange={() => toggleBrand(brand)}
-                              className="w-5 h-5 accent-[#D97BA8]"
+                              className="w-5 h-5 accent-[#C599A6]"
                             />
-                            <span className="text-[#8B6B7A] font-medium capitalize">
+                            <span className="text-[#874D5F] font-medium capitalize">
                               {brand}
                             </span>
                           </label>
@@ -363,9 +363,9 @@ export default function BstScreen() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-20 text-2xl text-[#8B6B7A] font-semibold"
+              className="text-center py-20 text-2xl text-[#874D5F] font-semibold"
             >
-              <Package className="w-16 h-16 mx-auto mb-4 text-[#D97BA8] animate-pulse" />
+              <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6] animate-pulse" />
               {searchQuery
                 ? `Đang tìm kiếm sản phẩm "${searchQuery}"...`
                 : "Đang tải sản phẩm..."}
@@ -399,12 +399,12 @@ export default function BstScreen() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-20 col-span-full"
                 >
-                  <div className="bg-[#f9f3e8] border-2 border-[#EDD5E8] rounded-3xl p-8 max-w-md mx-auto">
-                    <Package className="w-16 h-16 mx-auto mb-4 text-[#D97BA8]" />
-                    <p className="text-2xl font-bold text-[#723F53] mb-2">
+                  <div className="bg-[#F6F3E6] border-2 border-[#EAD2D8] rounded-3xl p-8 max-w-md mx-auto">
+                    <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6]" />
+                    <p className="text-2xl font-bold text-[#682535] mb-2">
                       Không tìm thấy sản phẩm
                     </p>
-                    <p className="text-[#8B6B7A]">
+                    <p className="text-[#874D5F]">
                       {searchQuery
                         ? `Không có sản phẩm nào phù hợp với từ khóa "${searchQuery}"`
                         : "Không có sản phẩm nào phù hợp với bộ lọc"}
@@ -426,7 +426,7 @@ export default function BstScreen() {
                       onClick={() => navigate(`/product/${product._id}`)}
                       className="bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer group"
                     >
-                      <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#EDD5E8] flex items-center justify-center overflow-hidden relative">
+                      <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
                         <img
                           src={imgSrc(product.imageLink)}
                           alt={product.title}
@@ -435,19 +435,19 @@ export default function BstScreen() {
                             e.currentTarget.src = "/images/placeholder.png";
                           }}
                         />
-                        <div className="absolute inset-0 bg-[#723F53]/0 group-hover:bg-[#723F53]/20 transition-all duration-300"></div>
+                        <div className="absolute inset-0 bg-[#682535]/0 group-hover:bg-[#682535]/20 transition-all duration-300"></div>
                       </div>
                       <div className="p-6">
-                        <h3 className="text-2xl font-bold text-[#723F53] mb-3 group-hover:text-[#D97BA8] transition-colors">
+                        <h3 className="text-2xl font-bold text-[#682535] mb-3 group-hover:text-[#C599A6] transition-colors">
                           {product.title}
                         </h3>
-                        <p className="text-[#8B6B7A] mb-4 text-sm leading-relaxed line-clamp-2">
+                        <p className="text-[#874D5F] mb-4 text-sm leading-relaxed line-clamp-2">
                           {product.shortDescription}
                         </p>
                         <div className="flex items-center justify-between mb-4">
-                          <div className="text-3xl font-bold text-[#723F53]">
+                          <div className="text-3xl font-bold text-[#682535]">
                             {formatPrice(product.price)}
-                            <span className="text-lg font-normal text-[#8B6B7A]">
+                            <span className="text-lg font-normal text-[#874D5F]">
                               / 3 ngày
                             </span>
                           </div>
@@ -455,7 +455,7 @@ export default function BstScreen() {
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-full py-3 rounded-full bg-gradient-to-r from-[#D97BA8] to-[#C94F89] text-[#723F53] font-bold shadow-lg flex items-center justify-center gap-2"
+                          className="w-full py-3 rounded-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-[#682535] font-bold shadow-lg flex items-center justify-center gap-2"
                         >
                           <Calendar className="w-5 h-5" />
                           Xem Chi Tiết

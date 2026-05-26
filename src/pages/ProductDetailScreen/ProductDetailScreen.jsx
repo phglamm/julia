@@ -85,14 +85,14 @@ export default function ProductDetailScreen() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <Package className="w-16 h-16 mx-auto mb-4 text-[#D97BA8] animate-pulse" />
-          <p className="text-2xl text-[#8B6B7A] font-semibold">
+          <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6] animate-pulse" />
+          <p className="text-2xl text-[#874D5F] font-semibold">
             Đang tải sản phẩm...
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ export default function ProductDetailScreen() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] flex items-center justify-center p-6">
+      <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +117,7 @@ export default function ProductDetailScreen() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/bst")}
-              className="px-6 py-3 bg-[#D97BA8] text-white rounded-full font-bold"
+              className="px-6 py-3 bg-[#C599A6] text-white rounded-full font-bold"
             >
               Quay lại bộ sưu tập
             </motion.button>
@@ -128,9 +128,9 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8]">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8]">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-20 lg:py-28 text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-20 lg:py-28 text-center text-[#FFFFFF] overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -146,7 +146,7 @@ export default function ProductDetailScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-[#D97BA8] opacity-60" />
+          <Sparkles className="w-8 h-8 text-[#C599A6] opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -158,7 +158,7 @@ export default function ProductDetailScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-[#D97BA8] opacity-40" />
+          <Sparkles className="w-6 h-6 text-[#C599A6] opacity-40" />
         </motion.div>
 
         <motion.div
@@ -172,7 +172,7 @@ export default function ProductDetailScreen() {
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/bst")}
-            className="mb-6 inline-flex items-center gap-2 text-[#FFFFFF] hover:text-[#D97BA8] transition-colors"
+            className="mb-6 inline-flex items-center gap-2 text-[#FFFFFF] hover:text-[#C599A6] transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             <span className="text-lg font-semibold">Quay lại</span>
@@ -205,7 +205,7 @@ export default function ProductDetailScreen() {
             {/* Product Image */}
             <motion.div variants={itemVariants}>
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden sticky top-6">
-                <div className="bg-linear-to-br from-[#FFFFFF] to-[#EDD5E8] w-full h-[700px] flex items-center justify-center">
+                <div className="bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] w-full h-[700px] flex items-center justify-center">
                   <img
                     src={imgSrc(product.imageLink)}
                     alt={product.title}
@@ -226,7 +226,7 @@ export default function ProductDetailScreen() {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-4xl mb-4 text-[#723F53] font-bold"
+                  className="text-4xl mb-4 text-[#682535] font-bold"
                 >
                   {product.title}
                 </motion.h2>
@@ -235,10 +235,10 @@ export default function ProductDetailScreen() {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-4xl font-bold text-[#D97BA8] mb-6"
+                  className="text-4xl font-bold text-[#C599A6] mb-6"
                 >
                   {formatPrice(product.price)}{" "}
-                  <span className="text-lg font-normal text-[#8B6B7A]">
+                  <span className="text-lg font-normal text-[#874D5F]">
                     / 3 ngày
                   </span>
                 </motion.div>
@@ -254,7 +254,7 @@ export default function ProductDetailScreen() {
                     addItem(product);
                     toast.success("Đã thêm vào giỏ hàng");
                   }}
-                  className="w-full py-5 rounded-full bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white text-xl font-bold flex items-center justify-center gap-2 shadow-xl"
+                  className="w-full py-5 rounded-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white text-xl font-bold flex items-center justify-center gap-2 shadow-xl"
                 >
                   <ShoppingCart className="w-6 h-6" />
                   Chọn Thuê
@@ -268,11 +268,11 @@ export default function ProductDetailScreen() {
                 transition={{ delay: 0.5 }}
                 className="bg-white rounded-3xl shadow-xl p-8"
               >
-                <h3 className="text-2xl font-bold text-[#723F53] mb-3 flex items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-[#D97BA8]" />
+                <h3 className="text-2xl font-bold text-[#682535] mb-3 flex items-center gap-2">
+                  <Sparkles className="w-6 h-6 text-[#C599A6]" />
                   Mô Tả
                 </h3>
-                <p className="text-[#8B6B7A] leading-relaxed text-lg">
+                <p className="text-[#874D5F] leading-relaxed text-lg">
                   {product.shortDescription}
                 </p>
               </motion.div>
@@ -285,57 +285,57 @@ export default function ProductDetailScreen() {
                   transition={{ delay: 0.6 }}
                   className="bg-white rounded-3xl shadow-xl p-8 space-y-6"
                 >
-                  <h3 className="text-2xl font-bold text-[#723F53] mb-4 flex items-center gap-2">
-                    <Package className="w-6 h-6 text-[#D97BA8]" />
+                  <h3 className="text-2xl font-bold text-[#682535] mb-4 flex items-center gap-2">
+                    <Package className="w-6 h-6 text-[#C599A6]" />
                     Thông Tin Chi Tiết
                   </h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Basic Info */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] p-6 rounded-2xl">
-                      <h4 className="text-xl font-bold text-[#723F53] mb-3 flex items-center gap-2">
-                        <Package className="w-5 h-5 text-[#D97BA8]" />
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                      <h4 className="text-xl font-bold text-[#682535] mb-3 flex items-center gap-2">
+                        <Package className="w-5 h-5 text-[#C599A6]" />
                         Thông Tin Cơ Bản
                       </h4>
-                      <p className="text-[#8B6B7A] leading-relaxed">
+                      <p className="text-[#874D5F] leading-relaxed">
                         {product.details.basicInfo}
                       </p>
                     </div>
 
                     {/* Sizes */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] p-6 rounded-2xl">
-                      <h4 className="text-xl font-bold text-[#723F53] mb-3">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                      <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Size
                       </h4>
-                      <p className="text-[#8B6B7A] text-2xl font-bold">
+                      <p className="text-[#874D5F] text-2xl font-bold">
                         {product.details.sizes}
                       </p>
                     </div>
 
                     {/* Material */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] p-6 rounded-2xl">
-                      <h4 className="text-xl font-bold text-[#723F53] mb-3">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                      <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Chất Liệu
                       </h4>
-                      <p className="text-[#8B6B7A] leading-relaxed">
+                      <p className="text-[#874D5F] leading-relaxed">
                         {product.details.material}
                       </p>
                     </div>
 
                     {/* Care Instructions */}
-                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] p-6 rounded-2xl">
-                      <h4 className="text-xl font-bold text-[#723F53] mb-3">
+                    <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl">
+                      <h4 className="text-xl font-bold text-[#682535] mb-3">
                         Hướng Dẫn Bảo Quản
                       </h4>
-                      <p className="text-[#8B6B7A] leading-relaxed">
+                      <p className="text-[#874D5F] leading-relaxed">
                         {product.details.careInstructions}
                       </p>
                     </div>
 
                     {/* Measurements */}
                     {product.details.measurements && (
-                      <div className="bg-linear-to-br from-[#FFFFFF] to-[#f9f3e8] p-6 rounded-2xl md:col-span-2">
-                        <h4 className="text-xl font-bold text-[#723F53] mb-4">
+                      <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-2xl md:col-span-2">
+                        <h4 className="text-xl font-bold text-[#682535] mb-4">
                           Số Đo Chi Tiết
                         </h4>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -345,7 +345,7 @@ export default function ProductDetailScreen() {
                                 key={key}
                                 className="bg-white/50 p-3 rounded-xl"
                               >
-                                <p className="text-sm text-[#8B6B7A] mb-1 capitalize">
+                                <p className="text-sm text-[#874D5F] mb-1 capitalize">
                                   {key === "length"
                                     ? "Dài"
                                     : key === "waist"
@@ -368,7 +368,7 @@ export default function ProductDetailScreen() {
                                     ? "Dài trong"
                                     : key}
                                 </p>
-                                <p className="text-lg font-bold text-[#723F53]">
+                                <p className="text-lg font-bold text-[#682535]">
                                   {value}
                                 </p>
                               </div>
@@ -386,31 +386,31 @@ export default function ProductDetailScreen() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.7 }}
-                className="bg-linear-to-br from-[#723F53] to-[#8B6B7A] rounded-3xl shadow-xl p-8 text-[#FFFFFF]"
+                className="bg-linear-to-br from-[#682535] to-[#874D5F] rounded-3xl shadow-xl p-8 text-[#FFFFFF]"
               >
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Calendar className="w-6 h-6 text-[#D97BA8]" />
+                  <Calendar className="w-6 h-6 text-[#C599A6]" />
                   Điều Khoản Thuê
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
-                    <span className="text-[#D97BA8] font-bold mt-1">•</span>
+                    <span className="text-[#C599A6] font-bold mt-1">•</span>
                     <span>Thời gian thuê: 3 ngày</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#D97BA8] font-bold mt-1">•</span>
+                    <span className="text-[#C599A6] font-bold mt-1">•</span>
                     <span>Cọc trước: 30% giá trị đơn hàng</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#D97BA8] font-bold mt-1">•</span>
+                    <span className="text-[#C599A6] font-bold mt-1">•</span>
                     <span>Hoàn trả sản phẩm trong tình trạng ban đầu</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#D97BA8] font-bold mt-1">•</span>
+                    <span className="text-[#C599A6] font-bold mt-1">•</span>
                     <span>Miễn phí vận chuyển trong nội thành</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#D97BA8] font-bold mt-1">•</span>
+                    <span className="text-[#C599A6] font-bold mt-1">•</span>
                     <span>Hỗ trợ đổi size miễn phí trước ngày thuê</span>
                   </li>
                 </ul>

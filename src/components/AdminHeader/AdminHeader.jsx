@@ -47,11 +47,11 @@ export default function AdminHeader({ onToggleSidebar }) {
             <img
               src={logo}
               className=" w-8 bg-black h-8 rounded-2xl"
-              alt="The Caprieux"
+              alt="Julia"
             />
             <div className="hidden sm:block">
               <h1 className="text-lg font-semibold text-gray-900">
-                The Caprieux
+                Julia
               </h1>
             </div>
           </div>

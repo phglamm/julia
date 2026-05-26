@@ -114,7 +114,7 @@ export default function AboutUsScreen() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["hello@thecaprieux.vn"],
+      details: ["hello@thejulia.vn"],
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -153,9 +153,9 @@ export default function AboutUsScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FAE8F0] to-[#EDD5E8]">
+    <div className="min-h-screen bg-linear-to-br from-[#EAD2D8] to-[#EAD2D8]">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-24 lg:py-32 text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-24 lg:py-32 text-center text-[#FFFFFF] overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -171,7 +171,7 @@ export default function AboutUsScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Heart className="w-8 h-8 text-[#D97BA8] opacity-60" />
+          <Heart className="w-8 h-8 text-[#C599A6] opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -183,7 +183,7 @@ export default function AboutUsScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-[#D97BA8] opacity-40" />
+          <Sparkles className="w-6 h-6 text-[#C599A6] opacity-40" />
         </motion.div>
 
         <motion.div
@@ -196,7 +196,7 @@ export default function AboutUsScreen() {
             variants={itemVariants}
             className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg"
           >
-            Giới thiệu "THE CAPRIEUX"
+            Giới thiệu "Julia"
           </motion.h1>
           <motion.p
             variants={itemVariants}
@@ -217,12 +217,12 @@ export default function AboutUsScreen() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl text-[#723F53] font-bold mb-6">
+            <h2 className="text-4xl lg:text-5xl text-[#682535] font-bold mb-6">
               Câu Chuyện Của Chúng Tôi
             </h2>
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-[#8B6B7A] leading-relaxed">
+            <div className="max-w-4xl mx-auto space-y-6 text-lg text-[#874D5F] leading-relaxed">
               <p>
-                The Caprieux biến thời trang cao cấp thành trải nghiệm gần gũi
+                Julia biến thời trang cao cấp thành trải nghiệm gần gũi
                 và dễ tiếp cận, giúp khách hàng tự tin tỏa sáng trong từng
                 khoảnh khắc đặc biệt.
               </p>
@@ -249,10 +249,10 @@ export default function AboutUsScreen() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-white rounded-3xl p-8 text-center shadow-xl"
               >
-                <div className="text-4xl lg:text-5xl font-bold text-[#D97BA8] mb-2">
+                <div className="text-4xl lg:text-5xl font-bold text-[#C599A6] mb-2">
                   {stat.number}
                 </div>
-                <div className="text-[#8B6B7A] font-semibold">{stat.label}</div>
+                <div className="text-[#874D5F] font-semibold">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -260,14 +260,14 @@ export default function AboutUsScreen() {
       </section>
 
       {/* Core Values Section */}
-      <section className="w-full bg-linear-to-b from-[#F5D7E8] to-[#EDD5E8] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-linear-to-b from-[#F5D7E8] to-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-[#723F53] font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-[#682535] font-bold"
           >
             Giá Trị Cốt Lõi
           </motion.h2>
@@ -275,7 +275,7 @@ export default function AboutUsScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-[#8B6B7A] text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-[#874D5F] text-lg mb-16 max-w-3xl mx-auto"
           >
             Sáng tạo trong xu hướng, tận tâm với khách hàng, bền vững và uy tín
             trong từng trải nghiệm chia sẻ
@@ -299,15 +299,15 @@ export default function AboutUsScreen() {
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className={` text-[#D97BA8] w-20 h-20 rounded-2xl flex items-center justify-center mb-6`}
+                    className={` text-[#C599A6] w-20 h-20 rounded-2xl flex items-center justify-center mb-6`}
                   >
                     {value.icon}
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-[#723F53] mb-4 group-hover:text-[#D97BA8] transition-colors">
+                  <h3 className="text-2xl font-bold text-[#682535] mb-4 group-hover:text-[#C599A6] transition-colors">
                     {value.title}
                   </h3>
                 </div>
-                <p className="text-[#8B6B7A] leading-relaxed">
+                <p className="text-[#874D5F] leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -317,14 +317,14 @@ export default function AboutUsScreen() {
       </section>
 
       {/* Contact Section */}
-      <section className="w-full bg-[#FAE8F0] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-[#723F53] font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-[#682535] font-bold"
           >
             Liên Hệ Với Chúng Tôi
           </motion.h2>
@@ -332,7 +332,7 @@ export default function AboutUsScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-[#8B6B7A] text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-[#874D5F] text-lg mb-16 max-w-3xl mx-auto"
           >
             Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn
           </motion.p>
@@ -356,16 +356,16 @@ export default function AboutUsScreen() {
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white p-4 rounded-2xl shrink-0"
+                    className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-white p-4 rounded-2xl shrink-0"
                   >
                     {info.icon}
                   </motion.div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#723F53] mb-2">
+                    <h3 className="text-xl font-bold text-[#682535] mb-2">
                       {info.title}
                     </h3>
                     {info.details.map((detail, i) => (
-                      <p key={i} className="text-[#8B6B7A]">
+                      <p key={i} className="text-[#874D5F]">
                         {detail}
                       </p>
                     ))}
@@ -378,7 +378,7 @@ export default function AboutUsScreen() {
                 variants={itemVariants}
                 className="bg-white rounded-3xl p-6 shadow-xl"
               >
-                <h3 className="text-xl font-bold text-[#723F53] mb-4">
+                <h3 className="text-xl font-bold text-[#682535] mb-4">
                   Theo Dõi Chúng Tôi
                 </h3>
                 <div className="flex gap-4">
@@ -388,7 +388,7 @@ export default function AboutUsScreen() {
                       href={social.link}
                       whileHover={{ scale: 1.2, rotate: 360 }}
                       whileTap={{ scale: 0.9 }}
-                      className="bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white p-4 rounded-full shadow-lg"
+                      className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-white p-4 rounded-full shadow-lg"
                     >
                       {social.icon}
                     </motion.a>
@@ -405,12 +405,12 @@ export default function AboutUsScreen() {
               transition={{ duration: 0.8 }}
               className="bg-white rounded-3xl p-8 shadow-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#723F53] mb-6">
+              <h3 className="text-2xl font-bold text-[#682535] mb-6">
                 Gửi Tin Nhắn
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-[#723F53] font-semibold mb-2">
+                  <label className="block text-[#682535] font-semibold mb-2">
                     Họ và Tên *
                   </label>
                   <input
@@ -419,12 +419,12 @@ export default function AboutUsScreen() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#723F53] font-semibold mb-2">
+                  <label className="block text-[#682535] font-semibold mb-2">
                     Email *
                   </label>
                   <input
@@ -433,12 +433,12 @@ export default function AboutUsScreen() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#723F53] font-semibold mb-2">
+                  <label className="block text-[#682535] font-semibold mb-2">
                     Số Điện Thoại
                   </label>
                   <input
@@ -446,12 +446,12 @@ export default function AboutUsScreen() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#723F53] font-semibold mb-2">
+                  <label className="block text-[#682535] font-semibold mb-2">
                     Chủ Đề *
                   </label>
                   <input
@@ -460,12 +460,12 @@ export default function AboutUsScreen() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#723F53] font-semibold mb-2">
+                  <label className="block text-[#682535] font-semibold mb-2">
                     Nội Dung *
                   </label>
                   <textarea
@@ -474,7 +474,7 @@ export default function AboutUsScreen() {
                     onChange={handleInputChange}
                     required
                     rows="4"
-                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EDD5E8] focus:border-[#D97BA8] outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#EAD2D8] focus:border-[#C599A6] outline-none transition-colors resize-none"
                   ></textarea>
                 </div>
 
@@ -486,7 +486,7 @@ export default function AboutUsScreen() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   disabled={formStatus === "loading"}
-                  className="w-full bg-linear-to-r from-[#D97BA8] to-[#C94F89] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transition-all disabled:opacity-50"
+                  className="w-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transition-all disabled:opacity-50"
                 >
                   {formStatus === "loading" ? (
                     <>
@@ -534,7 +534,7 @@ export default function AboutUsScreen() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-linear-to-br from-[#723F53] via-[#8B6B7A] to-[#723F53] py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
+      <section className="w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -550,7 +550,7 @@ export default function AboutUsScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-[#D97BA8]" />
+              <Sparkles className="w-16 h-16 text-[#C599A6]" />
             </motion.div>
           </motion.div>
 
@@ -578,7 +578,7 @@ export default function AboutUsScreen() {
                 boxShadow: "0 20px 60px rgba(217, 123, 168, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#D97BA8] text-[#FFFFFF] px-8 py-4 rounded-full text-lg font-bold shadow-xl"
+              className="bg-[#C599A6] text-[#FFFFFF] px-8 py-4 rounded-full text-lg font-bold shadow-xl"
             >
               Xem Bộ Sưu Tập
             </motion.button>
@@ -586,7 +586,7 @@ export default function AboutUsScreen() {
               whileHover={{
                 scale: 1.05,
                 backgroundColor: "#FFFFFF",
-                color: "#723F53",
+                color: "#682535",
               }}
               whileTap={{ scale: 0.95 }}
               className="bg-transparent text-[#FFFFFF] px-8 py-4 rounded-full text-lg font-bold border-2 border-[#FFFFFF] transition-all"
