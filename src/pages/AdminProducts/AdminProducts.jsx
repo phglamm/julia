@@ -31,7 +31,7 @@ export default function AdminProducts() {
     setError(null);
     try {
       const resp = await productService.getAllProducts();
-      setProducts(resp.data || []);
+      setProducts(resp.data.products || []);
     } catch (err) {
       setError(err.message || "Lỗi khi tải sản phẩm");
     } finally {
@@ -157,8 +157,8 @@ export default function AdminProducts() {
                 details: { ...p.details, ...payload.details },
                 brand: payload.brand,
               }
-            : p
-        )
+            : p,
+        ),
       );
 
       cancelEdit();

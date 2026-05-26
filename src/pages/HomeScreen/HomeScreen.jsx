@@ -26,7 +26,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import productService from "../../services/productService";
 import { useCartStore } from "../../stores/cartStore";
-import CurvedLoop from "../../component/CurvedLoop";
+import CurvedLoop from "../../components/CurvedLoop/CurvedLoop";
 const HomeScreen = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();

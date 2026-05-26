@@ -50,9 +50,7 @@ export default function AdminHeader({ onToggleSidebar }) {
               alt="Julia"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold text-gray-900">
-                Julia
-              </h1>
+              <h1 className="text-lg font-semibold text-gray-900">Julia</h1>
             </div>
           </div>
         </div>
