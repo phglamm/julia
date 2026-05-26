@@ -15,6 +15,7 @@ export const route = {
   admin: "/admin",
   adminProducts: "/admin/products",
   adminOrders: "/admin/orders",
+  adminCategories: "/admin/categories",
   adminUsers: "/admin/users",
   adminSettings: "/admin/settings",
   cart: "/cart",

@@ -14,6 +14,7 @@ import OrderFailedScreen from "../pages/OrderFailedScreen/OrderFailedScreen";
 import AboutUsScreen from "../pages/AboutUsScreen/AboutUsScreen";
 import AdminOrderScreen from "../pages/AdminOrderScreen/AdminOrderScreen";
 import AdminProducts from "../pages/AdminProducts/AdminProducts";
+import AdminCategories from "../pages/AdminCategories/AdminCategories";
 import LoginScreen from "../pages/LoginScreen/LoginScreen";
 import CartScreen from "../pages/CartScreen/CartScreen";
 import RegisterScreen from "../pages/RegisterScreen/RegisterScreen";
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: route.adminOrders,
         element: <AdminOrderScreen />,
+      },
+      {
+        path: route.adminCategories,
+        element: <AdminCategories />,
       },
     ],
   },

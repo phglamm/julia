@@ -1,51 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader/AdminHeader";
 import AdminSidebar from "../components/AdminSidebar/AdminSidebar";
 import "./layout.css";
+
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <AdminHeader onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+    <div className="min-h-screen bg-slate-50/50 flex">
+      {/* Sidebar - Persistent on desktop, drawer on mobile */}
+      <AdminSidebar
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
 
-      {/* Main Container */}
-      <div className="flex relative">
-        {/* Sidebar */}
-        <AdminSidebar
-          open={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-        />
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-h-screen lg:pl-64 transition-all duration-300">
+        {/* Header - Sticky at top of content area */}
+        <AdminHeader onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
         {/* Main Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 min-h-[calc(100vh-4rem)]">
-          {/* Content wrapper with max width and shadow */}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>
         </main>
       </div>
 
-      {/* Optional: Scroll to top button */}
+      {/* Scroll to top button */}
       <ScrollToTop />
     </div>
   );
 }
 
-// Optional scroll to top component
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled down
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,17 +57,12 @@ function ScrollToTop() {
     });
   };
 
-  // Add scroll event listener
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", toggleVisibility);
-  }
-
   return (
     <>
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-30"
+          className="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 hover:scale-110 z-30 flex items-center justify-center"
           aria-label="Scroll to top"
         >
           <svg
@@ -76,7 +74,7 @@ function ScrollToTop() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={2.5}
               d="M5 10l7-7m0 0l7 7m-7-7v18"
             />
           </svg>
@@ -85,3 +83,4 @@ function ScrollToTop() {
     </>
   );
 }
+
