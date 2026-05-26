@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
 /* Global typography: vintage, polished serif look */
 @theme {
