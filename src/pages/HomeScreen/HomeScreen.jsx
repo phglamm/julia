@@ -26,6 +26,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import productService from "../../services/productService";
 import { useCartStore } from "../../stores/cartStore";
+import CurvedLoop from "../../component/CurvedLoop";
 const HomeScreen = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
@@ -189,7 +190,7 @@ const HomeScreen = () => {
   return (
     <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8]">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-40 lg:py-56 text-center text-[#FFFFFF] overflow-hidden min-h-[80vh] lg:min-h-[95vh] flex items-center justify-center">
+      <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-40 lg:py-56 text-center text-[#FFFFFF] overflow-hidden min-h-[50vh] lg:min-h-[55vh] flex items-center justify-center">
         {/* Background video (show on sm+). Keep full-bleed and cover the hero */}
         <video
           className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
@@ -264,7 +265,12 @@ const HomeScreen = () => {
           </motion.div>
         </motion.div>
       </section>
-
+      <CurvedLoop
+        marqueeText="Julia ✦"
+        speed={0.3}
+        direction="right"
+        interactive
+      />
       {/* Features Section */}
       <section className="w-full bg-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
