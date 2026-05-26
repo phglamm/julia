@@ -5,11 +5,9 @@ console.log("API_BASE_URL:", API_BASE_URL);
 import Cookies from "js-cookie";
 const request = async (method, url, data = null, headers = {}, params = {}) => {
   try {
-    const accessToken = Cookies.get("accessToken");
-
-    const authHeaders = accessToken
-      ? { Authorization: `Bearer ${accessToken}` }
-      : {};
+    const token = Cookies.get("token");
+    console.log("token:", token);
+    const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     const response = await axios({
       method,
       url: `${API_BASE_URL}${url}`,

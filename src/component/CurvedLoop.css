@@ -1,19 +1,19 @@
 .curved-loop-jacket {
-  min-height: 10vh;
+  min-height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-   background-color: #682535; /* Add your background color here */
+  background-color: #682535; /* Add your background color here */
 }
 
 .curved-loop-svg {
   user-select: none;
   width: 100%;
-  aspect-ratio: 12 / 1;
+  aspect-ratio: 24 / 1;
   overflow: visible;
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
   fill: #ffffff;
   user-select: none;
   -moz-user-select: none;

@@ -18,4 +18,5 @@ export const route = {
   adminUsers: "/admin/users",
   adminSettings: "/admin/settings",
   cart: "/cart",
+  profile: "/profile",
 };

@@ -9,9 +9,11 @@ const CurvedLoop = ({
   interactive = true,
 }) => {
   const text = useMemo(() => {
-    const hasTrailing = /\s|\u00A0$/.test(marqueeText);
+    // Add extra non-breaking spaces to increase the gap and show less text
+    // Also converts regular spaces to non-breaking spaces so they are rendered properly in SVG
     return (
-      (hasTrailing ? marqueeText.replace(/\s+$/, "") : marqueeText) + "\u00A0"
+      marqueeText.replace(/ /g, "\u00A0") +
+      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
     );
   }, [marqueeText]);
 
@@ -22,7 +24,7 @@ const CurvedLoop = ({
   const [offset, setOffset] = useState(0);
   const uid = useId();
   const pathId = `curve-${uid}`;
-  const pathD = `M-100,60 L1540,60`;
+  const pathD = `M-100,30 L1540,30`;
 
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
@@ -123,7 +125,7 @@ const CurvedLoop = ({
       onPointerUp={endDrag}
       onPointerLeave={endDrag}
     >
-      <svg className="curved-loop-svg" viewBox="0 0 1440 120">
+      <svg className="curved-loop-svg" viewBox="0 0 1440 60">
         <text
           ref={measureRef}
           xmlSpace="preserve"

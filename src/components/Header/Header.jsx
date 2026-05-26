@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { route } from "../../router";
 import { useNavigate } from "react-router-dom";
-import { Search, X, Menu, ShoppingCart, User, LogOut } from "lucide-react";
+import { Search, X, Menu, ShoppingCart, User, LogOut, UserCircle, ChevronDown } from "lucide-react";
 import logo from "../../assets/logo.png";
 import toast from "react-hot-toast";
 import { useUserStore } from "../../stores/userStore";
@@ -19,12 +19,32 @@ const Header = ({ scrolled }) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
   const navigate = useNavigate();
   const user = useUserStore((state) => state.user);
   const logout = useUserStore((state) => state.logout);
   const clearCart = useCartStore((state) => state.clearCart);
-  console.log("Header user:", user);
   const countCart = useCartStore((state) => state.getItemCount());
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    clearCart();
+    setUserMenuOpen(false);
+    toast.success("Đăng xuất thành công");
+    navigate(route.home);
+  };
 
   return (
     <motion.header
@@ -148,45 +168,78 @@ const Header = ({ scrolled }) => {
                 </span>
               </motion.button>
 
-              {/* Login Icon */}
-              <motion.button
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center p-2 rounded-full text-[#FFFFFF] hover:bg-[#FFFFFF]/10 transition-all duration-300"
-                aria-label="User account"
-                onClick={() => {
-                  if (user) {
-                    return;
-                  } else {
-                    navigate(route.login);
-                  }
-                }}
-              >
-                <User className="w-5 h-5" />
-                {user ? (
-                  <span className="ml-2 text-sm font-medium">
-                    {user.username}
-                  </span>
-                ) : (
-                  <span className="ml-2 text-sm font-medium">Đăng Nhập</span>
-                )}
-              </motion.button>
+              {/* User Menu */}
+              {user ? (
+                <div className="relative" ref={userMenuRef}>
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -1 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setUserMenuOpen((v) => !v)}
+                    className="flex items-center gap-2 px-3 py-2 rounded-full text-[#FFFFFF] hover:bg-[#FFFFFF]/10 transition-all duration-300"
+                    aria-label="User menu"
+                    id="desktop-user-menu-btn"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-[#C599A6]/30 border border-[#C599A6]/60 flex items-center justify-center">
+                      <User className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-medium max-w-[100px] truncate">{user.username}</span>
+                    <motion.div
+                      animate={{ rotate: userMenuOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="w-4 h-4 opacity-70" />
+                    </motion.div>
+                  </motion.button>
 
-              {/* Logout Icon - Only show when user is logged in */}
-              {user && (
+                  {/* Dropdown */}
+                  <AnimatePresence>
+                    {userMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute right-0 mt-2 w-48 bg-white border border-[#EAD2D8]/60 shadow-xl overflow-hidden z-50"
+                      >
+                        {/* User info header */}
+                        <div className="px-4 py-3 bg-gradient-to-r from-[#682535] to-[#874D5F]">
+                          <p className="text-xs text-white/70">Đang đăng nhập</p>
+                          <p className="text-sm font-semibold text-white truncate">{user.username}</p>
+                        </div>
+                        {/* Profile link */}
+                        <motion.button
+                          whileHover={{ backgroundColor: "#fdf6f8" }}
+                          onClick={() => { navigate(route.profile); setUserMenuOpen(false); }}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-[#682535] font-medium transition-colors border-b border-[#EAD2D8]/40"
+                          id="dropdown-profile-link"
+                        >
+                          <UserCircle className="w-4 h-4 text-[#C599A6]" />
+                          Trang cá nhân
+                        </motion.button>
+                        {/* Logout */}
+                        <motion.button
+                          whileHover={{ backgroundColor: "#fff5f5" }}
+                          onClick={handleLogout}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-500 font-medium transition-colors"
+                          id="dropdown-logout-btn"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          Đăng xuất
+                        </motion.button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
                 <motion.button
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-full text-[#FFFFFF] hover:bg-red-500/20 hover:text-red-400 transition-all duration-300"
-                  aria-label="Logout"
-                  onClick={() => {
-                    logout();
-                    clearCart();
-                    toast.success("Đăng xuất thành công");
-                    navigate(route.home);
-                  }}
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full text-[#FFFFFF] hover:bg-[#FFFFFF]/10 transition-all duration-300"
+                  aria-label="Login"
+                  onClick={() => navigate(route.login)}
                 >
-                  <LogOut className="w-5 h-5" />
+                  <User className="w-5 h-5" />
+                  <span className="text-sm font-medium">Đăng Nhập</span>
                 </motion.button>
               )}
             </div>
@@ -211,13 +264,15 @@ const Header = ({ scrolled }) => {
               </span>
             </motion.button>
 
-            {/* Mobile Login Icon */}
+            {/* Mobile Login / Profile Icon */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-[#C599A6]/30 text-[#FFFFFF] hover:bg-white/20 hover:border-[#C599A6]/60 transition-all duration-300"
               aria-label="User account"
               onClick={() => {
-                if (!user) {
+                if (user) {
+                  navigate(route.profile);
+                } else {
                   navigate(route.login);
                 }
               }}
@@ -231,11 +286,7 @@ const Header = ({ scrolled }) => {
                 whileTap={{ scale: 0.9 }}
                 className="p-2.5 rounded-lg bg-red-500/10 backdrop-blur-sm border border-red-500/30 text-[#FFFFFF] hover:bg-red-500/20 hover:border-red-500/60 transition-all duration-300"
                 aria-label="Logout"
-                onClick={() => {
-                  logout();
-                  toast.success("Đăng xuất thành công");
-                  navigate(route.home);
-                }}
+                onClick={handleLogout}
               >
                 <LogOut className="w-5 h-5" />
               </motion.button>
@@ -336,6 +387,21 @@ const Header = ({ scrolled }) => {
                     {item.name}
                   </motion.a>
                 ))}
+
+                {/* Profile link — only when logged in */}
+                {user && (
+                  <motion.button
+                    onClick={() => { navigate(route.profile); setOpen(false); }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navigationItems.length * 0.1 }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-[#C599A6] text-lg font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 border border-[#C599A6]/30 hover:border-[#C599A6]/60"
+                    id="mobile-profile-link"
+                  >
+                    <UserCircle className="w-5 h-5" />
+                    Trang cá nhân
+                  </motion.button>
+                )}
               </nav>
             </motion.div>
           </motion.div>

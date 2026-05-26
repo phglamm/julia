@@ -17,6 +17,7 @@ import AdminProducts from "../pages/AdminProducts/AdminProducts";
 import LoginScreen from "../pages/LoginScreen/LoginScreen";
 import CartScreen from "../pages/CartScreen/CartScreen";
 import RegisterScreen from "../pages/RegisterScreen/RegisterScreen";
+import ProfileScreen from "../pages/ProfileScreen/ProfileScreen";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: route.register,
         element: <RegisterScreen />,
+      },
+      {
+        path: route.profile,
+        element: <ProfileScreen />,
       },
     ],
   },

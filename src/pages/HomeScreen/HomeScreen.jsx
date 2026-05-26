@@ -187,90 +187,116 @@ const HomeScreen = () => {
     },
   };
 
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const fadeUpVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8]">
-      {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] py-40 lg:py-56 text-center text-[#FFFFFF] overflow-hidden min-h-[50vh] lg:min-h-[55vh] flex items-center justify-center">
-        {/* Background video (show on sm+). Keep full-bleed and cover the hero */}
-        <video
-          className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
-          src={videoBanner}
-          // poster={posterImage}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-        />
+      <div className="h-[calc(100vh-5rem)] flex flex-col w-full">
+        {/* Hero Section */}
+        <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] flex-grow text-center text-[#FFFFFF] overflow-hidden flex items-center justify-center">
+          {/* Background video (show on sm+). Keep full-bleed and cover the hero */}
+          <video
+            className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
+            src={videoBanner}
+            // poster={posterImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
 
-        {/* dark overlay to keep text readable */}
-        <div className="absolute inset-0 bg-black/45 z-10"></div>
+          {/* dark overlay to keep text readable */}
+          <div className="absolute inset-0 bg-black/45 z-10"></div>
 
-        <div
-          className="absolute inset-0 opacity-10 z-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-          }}
-        ></div>
+          <div
+            className="absolute inset-0 opacity-10 z-20"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #FFFFFF 1px, transparent 1px)",
+              backgroundSize: "30px 30px",
+            }}
+          ></div>
 
-        {/* Floating sparkles */}
+          {/* Floating sparkles */}
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="relative z-30 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center justify-center text-center"
-        >
-          <motion.h1
-            variants={itemVariants}
-            className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
-          >
-            Julia
-          </motion.h1>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl lg:text-2xl mb-10 opacity-95 leading-relaxed max-w-4xl"
-          >
-            Trải nghiệm trang phục thiết kế cao cấp không giới hạn
-          </motion.p>
           <motion.div
-            variants={itemVariants}
-            className="flex gap-6 justify-center flex-wrap"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="relative z-30 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center justify-center text-center"
           >
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                boxShadow: "0 20px 40px rgba(212, 175, 55, 0.5)",
-              }}
-              onClick={() => navigate(route.bst)}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#C599A6] text-[#682535] px-12 py-4 rounded-none text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
+            <motion.h1
+              variants={itemVariants}
+              className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
             >
-              <span>Xem Bộ Sưu Tập</span>
-              <ChevronRight className="w-5 h-5" />
-            </motion.button>
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                backgroundColor: "#FFFFFF",
-                color: "#682535",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
+              Julia
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="text-xl lg:text-2xl mb-10 opacity-95 leading-relaxed max-w-4xl"
             >
-              Cách Thuê Đồ
-            </motion.button>
+              Trải nghiệm trang phục thiết kế cao cấp không giới hạn
+            </motion.p>
+            <motion.div
+              variants={itemVariants}
+              className="flex gap-6 justify-center flex-wrap"
+            >
+              <motion.button
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0 20px 40px rgba(212, 175, 55, 0.5)",
+                }}
+                onClick={() => navigate(route.bst)}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#C599A6] text-[#682535] px-12 py-4 rounded-none text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
+              >
+                <span>Xem Bộ Sưu Tập</span>
+                <ChevronRight className="w-5 h-5" />
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "#FFFFFF",
+                  color: "#682535",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
+              >
+                Cách Thuê Đồ
+              </motion.button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </section>
-      <CurvedLoop
-        marqueeText="Julia ✦"
-        speed={0.3}
-        direction="right"
-        interactive
-      />
+        </section>
+        <CurvedLoop
+          marqueeText="⋆˙⟡ Julia ⟡˙⋆"
+          speed={0.3}
+          direction="right"
+          interactive
+        />
+      </div>
+
       {/* Features Section */}
       <section className="w-full bg-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
