@@ -30,8 +30,8 @@ const Header = ({ scrolled }) => {
     <motion.header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#682535]/95 shadow-2xl backdrop-blur-md border-b border-[#C599A6]/20"
-          : "bg-gradient-to-r from-[#682535] via-[#7a5461] to-[#874D5F] shadow-lg"
+          ? "bg-[#682535]/95 shadow-sm backdrop-blur-md border-b border-[#FFFFFF]/10"
+          : "bg-[#682535] border-b border-transparent transition-colors duration-300"
       }`}
     >
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,7 +138,7 @@ const Header = ({ scrolled }) => {
               <motion.button
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative p-3 rounded-full bg-gradient-to-br from-[#C599A6]/20 to-[#C599A6]/10 backdrop-blur-sm border border-[#C599A6]/40 text-[#FFFFFF] hover:bg-[#C599A6]/30 hover:border-[#C599A6] hover:text-white transition-all duration-300 shadow-lg"
+                className="relative p-2 rounded-full text-[#FFFFFF] hover:bg-[#FFFFFF]/10 transition-all duration-300"
                 aria-label="Shopping cart"
                 onClick={() => navigate(route.cart)}
               >
@@ -152,7 +152,7 @@ const Header = ({ scrolled }) => {
               <motion.button
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className=" flex p-3 rounded-full bg-gradient-to-br from-[#C599A6]/20 to-[#C599A6]/10 backdrop-blur-sm border border-[#C599A6]/40 text-[#FFFFFF] hover:bg-[#C599A6]/30 hover:border-[#C599A6] hover:text-white transition-all duration-300 shadow-lg"
+                className="flex items-center p-2 rounded-full text-[#FFFFFF] hover:bg-[#FFFFFF]/10 transition-all duration-300"
                 aria-label="User account"
                 onClick={() => {
                   if (user) {
@@ -177,7 +177,7 @@ const Header = ({ scrolled }) => {
                 <motion.button
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-3 rounded-full bg-gradient-to-br from-red-500/20 to-red-500/10 backdrop-blur-sm border border-red-500/40 text-[#FFFFFF] hover:bg-red-500/30 hover:border-red-500 hover:text-white transition-all duration-300 shadow-lg"
+                  className="p-2 rounded-full text-[#FFFFFF] hover:bg-red-500/20 hover:text-red-400 transition-all duration-300"
                   aria-label="Logout"
                   onClick={() => {
                     logout();

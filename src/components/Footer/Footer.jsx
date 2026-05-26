@@ -1,11 +1,11 @@
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 const Footer = () => (
-  <footer className="w-full bg-linear-to-r from-[#682535] to-[#874D5F] text-[#FFFFFF] py-16 px-6 lg:px-12">
+  <footer className="w-full bg-[#682535] text-[#FFFFFF] py-16 px-6 lg:px-12 border-t border-[#FFFFFF]/10">
     <div className="max-w-7xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 items-start">
         <div className="space-y-4">
-          <h3 className="text-3xl text-[#C599A6] font-bold">THE julia</h3>
+          <h3 className="text-3xl text-[#F6F3E6] font-bold tracking-widest uppercase">Julia</h3>
           <p className="text-sm opacity-90 leading-relaxed">
             Tiên phong trong cho thuê thời trang xa xỉ bền vững tại TP. Hồ Chí
             Minh từ năm 2025
@@ -13,7 +13,7 @@ const Footer = () => (
         </div>
 
         <div className="space-y-4">
-          <h4 className="text-2xl text-[#C599A6] font-bold">Khám Phá</h4>
+          <h4 className="text-xl text-[#F6F3E6] font-semibold tracking-wider uppercase mb-6">Khám Phá</h4>
           <ul className="space-y-2">
             <li>
               <a
@@ -43,7 +43,7 @@ const Footer = () => (
         </div>
 
         <div className="space-y-4">
-          <h4 className="text-2xl text-[#C599A6] font-bold">Liên Hệ</h4>
+          <h4 className="text-xl text-[#F6F3E6] font-semibold tracking-wider uppercase mb-6">Liên Hệ</h4>
           <ul className="space-y-3 text-sm leading-relaxed">
             <li>
               <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ const Footer = () => (
         </div>
 
         <div className="space-y-4">
-          <h4 className="text-2xl text-[#C599A6] font-bold">Theo Dõi</h4>
+          <h4 className="text-xl text-[#F6F3E6] font-semibold tracking-wider uppercase mb-6">Theo Dõi</h4>
           <div className="flex items-center gap-4">
             <a
               href="#"

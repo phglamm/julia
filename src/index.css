@@ -2,12 +2,18 @@
 @plugin "daisyui";
 
 /* Global typography: vintage, polished serif look */
+@theme {
+  --font-serif: "Merriweather", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
 :root {
-  --brand-serif: "Merriweather", serif;
+  --brand-serif: var(--font-serif);
+  --brand-sans: var(--font-sans);
 }
 
 body {
-  font-family: var(--brand-serif);
+  font-family: var(--brand-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2A1A1E;

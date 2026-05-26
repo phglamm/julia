@@ -44,7 +44,7 @@ export default function BstScreen() {
       setLoading(true);
       try {
         const response = await productService.getAllProducts();
-        setProducts(response.data || []);
+        setProducts(response.data?.products || []);
         setError(null);
       } catch (err) {
         setError(err.message || "Failed to load products");
@@ -72,7 +72,7 @@ export default function BstScreen() {
           ? await productService.searchProducts(searchQuery)
           : await productService.getAllProducts();
         console.log("Search response:", resp);
-        setProducts(resp.data || []);
+        setProducts(resp.data?.products || []);
       } catch (err) {
         setSearchError(err.message || "Search failed");
       } finally {
@@ -84,10 +84,10 @@ export default function BstScreen() {
 
   // Extract unique sizes and brands from products
   const availableSizes = [
-    ...new Set(products.map((p) => p.details?.sizes).filter(Boolean)),
+    ...new Set(products?.map((p) => p.details?.sizes).filter(Boolean)),
   ];
   const availableBrands = [
-    ...new Set(products.map((p) => p.brand).filter(Boolean)),
+    ...new Set(products?.map((p) => p.brand).filter(Boolean)),
   ];
 
   // Apply filters whenever products or filter states change
@@ -317,11 +317,10 @@ export default function BstScreen() {
                           <button
                             key={size}
                             onClick={() => toggleSize(size)}
-                            className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                              selectedSizes.includes(size)
-                                ? "bg-[#C599A6] text-[#682535]"
-                                : "bg-[#FFFFFF] text-[#874D5F] hover:bg-[#EAD2D8]"
-                            }`}
+                            className={`px-4 py-2 rounded-full font-semibold transition-all ${selectedSizes.includes(size)
+                              ? "bg-[#C599A6] text-[#682535]"
+                              : "bg-[#FFFFFF] text-[#874D5F] hover:bg-[#EAD2D8]"
+                              }`}
                           >
                             {size}
                           </button>
