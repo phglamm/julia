@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Eye, Package, X } from "lucide-react";
+import { Eye, Package, X, Download } from "lucide-react";
 import orderService from "../../services/orderService";
 import toast from "react-hot-toast";
 
@@ -16,7 +15,6 @@ export default function AdminOrderScreen() {
     setError(null);
     try {
       const resp = await orderService.getOrders();
-      console.log("Fetched orders:", resp);
       setOrders(resp.data || []);
     } catch (err) {
       setError(err.message || "Lỗi khi tải đơn hàng");
@@ -88,271 +86,264 @@ export default function AdminOrderScreen() {
     URL.revokeObjectURL(url);
   };
 
+  const statusStyle = (status) => {
+    const map = {
+      paid: "bg-emerald-50 text-emerald-700",
+      cancelled: "bg-red-50 text-red-700",
+    };
+    return map[status] || "bg-amber-50 text-amber-700";
+  };
+
+  const statusLabel = (status) => {
+    const map = {
+      paid: "Đã thanh toán",
+      pending: "Chờ xử lý",
+      cancelled: "Đã huỷ",
+    };
+    return map[status] || status;
+  };
+
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-blue-500 rounded-lg">
-                <Package className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">
-                  Quản lý đơn hàng
-                </h1>
-                <p className="text-slate-500 mt-1">{orders.length} đơn hàng</p>
-              </div>
+    <div className="space-y-5">
+      {/* ── Header ─────────────────────────────────────────── */}
+      <div className="bg-white rounded-xl border border-gray-200 p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-blue-600 rounded-lg">
+              <Package className="w-5 h-5 text-white" />
             </div>
             <div>
+              <h1 className="text-xl font-bold text-gray-900">Quản lý đơn hàng</h1>
+              <p className="text-xs text-gray-500 mt-0.5">{orders.length} đơn hàng</p>
+            </div>
+          </div>
+          <button
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium"
+            onClick={exportToCSV}
+          >
+            <Download className="w-4 h-4" />
+            Xuất Excel
+          </button>
+        </div>
+      </div>
+
+      {/* ── Loading ──────────────────────────────────────────── */}
+      {loading && (
+        <div className="bg-white rounded-xl border border-gray-200 p-16 text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-gray-200 border-t-blue-600"></div>
+          <p className="mt-3 text-gray-500 text-sm">Đang tải đơn hàng...</p>
+        </div>
+      )}
+
+      {/* ── Error ────────────────────────────────────────────── */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+          <p className="text-red-700 text-sm">Lỗi: {error}</p>
+        </div>
+      )}
+
+      {/* ── Table ────────────────────────────────────────────── */}
+      {!loading && !error && (
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  {["STT","Mã đơn","Khách hàng","SĐT","Sản phẩm","Tổng tiền","Trạng thái",""].map((h, i) => (
+                    <th
+                      key={i}
+                      className={`px-4 py-3 text-[11px] font-semibold text-gray-500 uppercase tracking-wider ${
+                        i === 7 ? "text-right" : "text-left"
+                      }`}
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {orders.map((o, idx) => (
+                  <tr key={o._id} className="hover:bg-gray-50/50">
+                    <td className="px-4 py-3 text-sm text-gray-400">{idx + 1}</td>
+                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                      {o.orderCode}
+                    </td>
+                    <td className="px-4 py-3">
+                      <p className="text-sm text-gray-700">{o.fullName}</p>
+                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">
+                      {o.phoneNumber}
+                    </td>
+                    <td className="px-4 py-3">
+                      <p className="text-sm text-gray-600 line-clamp-1 max-w-[200px]">
+                        {o.items?.length > 0
+                          ? o.items.map((item) => item.product?.title || "-").join(", ")
+                          : "-"}
+                      </p>
+                      <p className="text-[11px] text-gray-400 mt-0.5">
+                        {o.items?.length || 0} sản phẩm
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                      {formatCurrency(o.amount)}
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded ${statusStyle(o.status)}`}>
+                        {statusLabel(o.status)}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex justify-end">
+                        <button
+                          className="p-1.5 rounded-md text-gray-400 hover:text-blue-600 hover:bg-blue-50"
+                          title="Xem chi tiết"
+                          onClick={() => {
+                            setSelectedOrder(o);
+                            setShowModal(true);
+                          }}
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Empty */}
+          {orders.length === 0 && !loading && (
+            <div className="p-16 text-center">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-100 rounded-xl mb-3">
+                <Package className="w-6 h-6 text-gray-400" />
+              </div>
+              <h3 className="text-base font-semibold text-gray-900 mb-1">
+                Chưa có đơn hàng
+              </h3>
+              <p className="text-gray-500 text-sm">
+                Đơn hàng sẽ hiển thị ở đây khi có giao dịch
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ═══════════════ ORDER DETAIL MODAL ═══════════════ */}
+      {showModal && selectedOrder && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => {
+              setShowModal(false);
+              setSelectedOrder(null);
+            }}
+          />
+          <div className="relative bg-white rounded-xl shadow-lg w-full max-w-lg overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-200">
+              <h3 className="text-base font-bold text-gray-900">Chi tiết đơn hàng</h3>
               <button
-                className="inline-flex items-center gap-2 px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg transition-colors text-sm font-medium"
-                onClick={exportToCSV}
+                className="p-1.5 hover:bg-gray-100 rounded-md"
+                onClick={() => {
+                  setShowModal(false);
+                  setSelectedOrder(null);
+                }}
               >
-                Xuất Excel
+                <X className="w-5 h-5 text-gray-400" />
               </button>
             </div>
-          </div>
-        </div>
 
-        {/* Loading */}
-        {loading && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-blue-500"></div>
-            <p className="mt-4 text-slate-600">Đang tải đơn hàng...</p>
-          </div>
-        )}
-
-        {/* Error */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-              <p className="text-red-800 font-medium">Lỗi: {error}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Table */}
-        {!loading && !error && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200">
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      STT
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Mã đơn
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Khách hàng
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Số điện thoại
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Địa chỉ
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Sản phẩm
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Số lượng
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Tổng tiền
-                    </th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Trạng thái
-                    </th>
-                    <th className="px-6 py-4 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">
-                      Hành động
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200">
-                  {orders.map((o, idx) => (
-                    <tr
-                      key={o._id}
-                      className="hover:bg-slate-50 transition-colors"
-                    >
-                      <td className="px-6 py-4 text-sm text-slate-600">
-                        {idx + 1}
-                      </td>
-                      <td className="px-6 py-4 text-sm font-medium text-slate-900">
-                        {o.orderCode}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
-                        {o.fullName}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
-                        {o.phoneNumber}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
-                        {o.address}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
-                        {o.items && o.items.length > 0
-                          ? o.items
-                              .map((item) => item.product?.title || "-")
-                              .join(" | ")
-                          : "-"}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
-                        {o.items && o.items.length > 0
-                          ? o.items.map((item) => item.quantity).join(" | ")
-                          : "-"}{" "}
-                      </td>
-                      <td className="px-6 py-4 text-sm font-semibold text-slate-900">
-                        {formatCurrency(o.amount)}
-                      </td>
-                      <td className="px-6 py-4 text-sm">
-                        <span
-                          className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                            o.status === "paid"
-                              ? "bg-green-50 text-green-700"
-                              : o.status === "cancelled"
-                              ? "bg-red-50 text-red-700"
-                              : "bg-yellow-50 text-yellow-700"
-                          }`}
-                        >
-                          {o.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex gap-2 justify-end">
-                          <button
-                            className="inline-flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors text-sm font-medium"
-                            title="Xem chi tiết"
-                            onClick={() => {
-                              setSelectedOrder(o);
-                              setShowModal(true);
-                            }}
-                          >
-                            <Eye className="w-4 h-4" />
-                          </button>
-                          {/* delete removed per request */}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Empty */}
-            {orders.length === 0 && (
-              <div className="p-12 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 rounded-full mb-4">
-                  <Package className="w-8 h-8 text-slate-400" />
-                </div>
-                <h3 className="text-lg font-medium text-slate-900 mb-1">
-                  Chưa có đơn hàng
-                </h3>
-                <p className="text-slate-500">
-                  Đơn hàng sẽ hiển thị ở đây khi có giao dịch
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Modal for order details */}
-        {showModal && selectedOrder && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white rounded-lg shadow-xl w-[95%] max-w-2xl p-6">
-              <div className="flex items-start justify-between">
-                <h3 className="text-lg font-semibold">Chi tiết đơn hàng</h3>
-                <button
-                  className="inline-flex items-center p-2 text-slate-600 hover:text-slate-900"
-                  onClick={() => {
-                    setShowModal(false);
-                    setSelectedOrder(null);
-                  }}
-                  aria-label="Đóng"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+            {/* Body */}
+            <div className="p-5 space-y-4 max-h-[70vh] overflow-y-auto">
+              {/* Info rows */}
+              <div className="grid grid-cols-2 gap-3">
+                <InfoRow label="Mã đơn" value={selectedOrder.orderCode} />
+                <InfoRow label="Trạng thái">
+                  <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded ${statusStyle(selectedOrder.status)}`}>
+                    {statusLabel(selectedOrder.status)}
+                  </span>
+                </InfoRow>
+                <InfoRow label="Khách hàng" value={selectedOrder.fullName} />
+                <InfoRow label="Số điện thoại" value={selectedOrder.phoneNumber} />
+                <InfoRow label="Địa chỉ" value={selectedOrder.address} className="col-span-2" />
+                <InfoRow label="Ngày tạo" value={new Date(selectedOrder.createdAt).toLocaleString("vi-VN")} />
+                <InfoRow label="Tổng tiền">
+                  <span className="text-sm font-semibold text-gray-900">
+                    {formatCurrency(selectedOrder.amount)}
+                  </span>
+                </InfoRow>
               </div>
 
-              <div className="mt-4 grid grid-cols-1 gap-3 text-sm text-slate-700">
+              {/* Products table */}
+              {selectedOrder.items?.length > 0 && (
                 <div>
-                  <span className="font-medium">Mã đơn: </span>
-                  {selectedOrder.orderCode}
-                </div>
-                <div>
-                  <span className="font-medium">Khách hàng: </span>
-                  {selectedOrder.fullName}
-                </div>
-                <div>
-                  <span className="font-medium">Số điện thoại: </span>
-                  {selectedOrder.phoneNumber}
-                </div>
-                <div>
-                  <span className="font-medium">Địa chỉ: </span>
-                  {selectedOrder.address}
-                </div>
-                <div>
-                  <span className="font-medium">Sản phẩm: </span>
-                  {selectedOrder.items && selectedOrder.items.length > 0 ? (
-                    <table className="w-full mt-2 border rounded">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                    Sản phẩm
+                  </p>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                    <table className="w-full">
                       <thead>
-                        <tr className="bg-slate-50">
-                          <th className="px-2 py-1 text-left">Tên sản phẩm</th>
-                          <th className="px-2 py-1 text-left">Số lượng</th>
-                          <th className="px-2 py-1 text-left">Đơn giá</th>
+                        <tr className="bg-gray-50">
+                          <th className="px-3 py-2 text-left text-[11px] font-semibold text-gray-500 uppercase">
+                            Tên
+                          </th>
+                          <th className="px-3 py-2 text-left text-[11px] font-semibold text-gray-500 uppercase">
+                            SL
+                          </th>
+                          <th className="px-3 py-2 text-left text-[11px] font-semibold text-gray-500 uppercase">
+                            Đơn giá
+                          </th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="divide-y divide-gray-100">
                         {selectedOrder.items.map((item) => (
                           <tr key={item._id}>
-                            <td className="px-2 py-1">
+                            <td className="px-3 py-2 text-sm text-gray-700">
                               {item.product?.title || "-"}
                             </td>
-                            <td className="px-2 py-1">{item.quantity}</td>
-                            <td className="px-2 py-1">
+                            <td className="px-3 py-2 text-sm text-gray-700">
+                              {item.quantity}
+                            </td>
+                            <td className="px-3 py-2 text-sm text-gray-700">
                               {formatCurrency(item.price)}
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
-                  ) : (
-                    "-"
-                  )}
+                  </div>
                 </div>
-                <div>
-                  <span className="font-medium">Tổng tiền: </span>
-                  {formatCurrency(selectedOrder.amount)}
-                </div>
-                <div>
-                  <span className="font-medium">Trạng thái: </span>
-                  {selectedOrder.status}
-                </div>
-                <div>
-                  <span className="font-medium">Ngày tạo: </span>
-                  {new Date(selectedOrder.createdAt).toLocaleString("vi-VN")}
-                </div>
-              </div>
+              )}
+            </div>
 
-              <div className="mt-6 text-right">
-                <button
-                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-md text-sm"
-                  onClick={() => {
-                    setShowModal(false);
-                    setSelectedOrder(null);
-                  }}
-                >
-                  Đóng
-                </button>
-              </div>
+            {/* Footer */}
+            <div className="px-5 py-3.5 border-t border-gray-200 bg-gray-50 text-right">
+              <button
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                onClick={() => {
+                  setShowModal(false);
+                  setSelectedOrder(null);
+                }}
+              >
+                Đóng
+              </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Info row helper ──────────────────────────────────────── */
+function InfoRow({ label, value, children, className = "" }) {
+  return (
+    <div className={className}>
+      <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-0.5">
+        {label}
+      </p>
+      {children || <p className="text-sm text-gray-700">{value || "—"}</p>}
     </div>
   );
 }

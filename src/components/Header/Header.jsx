@@ -11,6 +11,7 @@ import {
   LogOut,
   UserCircle,
   ChevronDown,
+  ShoppingBag,
 } from "lucide-react";
 import logo from "../../assets/logo.png";
 import toast from "react-hot-toast";
@@ -225,6 +226,19 @@ const Header = ({ scrolled }) => {
                           <UserCircle className="w-4 h-4 text-[#C599A6]" />
                           Trang cá nhân
                         </motion.button>
+                        {/* My Orders link */}
+                        <motion.button
+                          whileHover={{ backgroundColor: "#fdf6f8" }}
+                          onClick={() => {
+                            navigate(route.myOrders);
+                            setUserMenuOpen(false);
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-[#682535] font-medium transition-colors border-b border-[#EAD2D8]/40"
+                          id="dropdown-orders-link"
+                        >
+                          <ShoppingBag className="w-4 h-4 text-[#C599A6]" />
+                          Đơn hàng của tôi
+                        </motion.button>
                         {/* Logout */}
                         <motion.button
                           whileHover={{ backgroundColor: "#fff5f5" }}
@@ -412,6 +426,24 @@ const Header = ({ scrolled }) => {
                   >
                     <UserCircle className="w-5 h-5" />
                     Trang cá nhân
+                  </motion.button>
+                )}
+
+                {/* My Orders link — only when logged in */}
+                {user && (
+                  <motion.button
+                    onClick={() => {
+                      navigate(route.myOrders);
+                      setOpen(false);
+                    }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navigationItems.length * 0.1 + 0.1 }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-[#C599A6] text-lg font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 border border-[#C599A6]/30 hover:border-[#C599A6]/60"
+                    id="mobile-orders-link"
+                  >
+                    <ShoppingBag className="w-5 h-5" />
+                    Đơn hàng của tôi
                   </motion.button>
                 )}
               </nav>

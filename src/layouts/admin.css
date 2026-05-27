@@ -1,0 +1,8 @@
+/* Admin-specific overrides — prevents the customer-facing
+   pink/maroon body colors from leaking into admin pages. */
+
+.admin-root {
+  background-color: #f8fafc; /* slate-50 */
+  color: #1e293b;            /* slate-800 */
+  min-height: 100vh;
+}

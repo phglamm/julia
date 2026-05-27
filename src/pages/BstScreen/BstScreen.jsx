@@ -6,152 +6,135 @@ import {
   Package,
   Sparkles,
   SlidersHorizontal,
+  Search,
   X,
 } from "lucide-react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import productService from "../../services/productService";
+import categoryService from "../../services/categoryService";
+import brandService from "../../services/brandService";
 import banner3 from "../../assets/banner3.png";
+
+const SIZE_OPTIONS = ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "Free Size"];
+const GENDER_OPTIONS = [
+  { value: "male", label: "Nam" },
+  { value: "female", label: "Nữ" },
+  { value: "unisex", label: "Unisex" },
+];
+const CONDITION_OPTIONS = [
+  { value: "new", label: "Mới" },
+  { value: "like_new", label: "Như mới" },
+  { value: "good", label: "Tốt" },
+  { value: "fair", label: "Khá" },
+];
 
 export default function BstScreen() {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchError, setSearchError] = useState(null);
-  const [showFilters, setShowFilters] = useState(false);
-
-  // Filter states
-  const [priceRange, setPriceRange] = useState([0, 20000000]);
-  const [selectedSizes, setSelectedSizes] = useState([]);
-  const [selectedBrands, setSelectedBrands] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Filter states
+  const [filters, setFilters] = useState({
+    searchTerm: "",
+    category: "",
+    brand: "",
+    size: "",
+    gender: "",
+    condition: "",
+  });
 
   // Read searchTerm from query string
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const term = params.get("searchTerm") || "";
-    setSearchQuery(term);
+    if (term) {
+      setFilters((prev) => ({ ...prev, searchTerm: term }));
+    }
   }, [location.search]);
 
-  // Initial fetch
+  // Fetch options (Categories, Brands)
+  useEffect(() => {
+    const fetchOptions = async () => {
+      try {
+        const [catResp, brandResp] = await Promise.all([
+          categoryService.getAllCategories(),
+          brandService.getAllBrands(),
+        ]);
+        setCategories(catResp.data || []);
+        setBrands(brandResp.data || []);
+      } catch (err) {
+        console.error("Failed to fetch filter options", err);
+      }
+    };
+    fetchOptions();
+  }, []);
+
+  // Fetch products whenever filters change
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
+      setError(null);
       try {
-        const response = await productService.getAllProducts();
-        setProducts(response.data?.products || []);
-        setError(null);
-      } catch (err) {
-        setError(err.message || "Failed to load products");
-      } finally {
-        setLoading(false);
-      }
-    };
+        // Remove empty filters
+        const activeFilters = Object.entries(filters).reduce(
+          (acc, [key, val]) => {
+            if (val) acc[key] = val;
+            return acc;
+          },
+          {},
+        );
 
-    fetchProducts();
-  }, []);
-
-  // Search when query changes
-  useEffect(() => {
-    const doSearch = async () => {
-      setLoading(true);
-      setSearchError(null);
-      try {
-        // const url = searchQuery
-        //   ? `https://julia-be.onrender.com/api/products?searchTerm=${encodeURIComponent(
-        //       searchQuery
-        //     )}`
-        //   : "https://julia-be.onrender.com/api/products";
-
-        const resp = searchQuery
-          ? await productService.searchProducts(searchQuery)
-          : await productService.getAllProducts();
-        console.log("Search response:", resp);
+        const resp = await productService.getAllProducts(activeFilters);
         setProducts(resp.data?.products || []);
       } catch (err) {
-        setSearchError(err.message || "Search failed");
+        setError(err.message || "Lỗi khi tải sản phẩm");
       } finally {
         setLoading(false);
       }
     };
-    doSearch();
-  }, [searchQuery]);
 
-  // Extract unique sizes and brands from products
-  const availableSizes = [
-    ...new Set(products?.map((p) => p.details?.sizes).filter(Boolean)),
-  ];
-  const availableBrands = [
-    ...new Set(products?.map((p) => p.brand).filter(Boolean)),
-  ];
+    // Debounce to prevent rapid API calls on typing
+    const timeoutId = setTimeout(() => {
+      fetchProducts();
+    }, 300);
 
-  // Apply filters whenever products or filter states change
-  useEffect(() => {
-    let filtered = [...products];
+    return () => clearTimeout(timeoutId);
+  }, [filters]);
 
-    // Price filter
-    filtered = filtered.filter(
-      (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
-    );
+  const handleFilterChange = (key, value) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
 
-    // Size filter
-    if (selectedSizes.length > 0) {
-      filtered = filtered.filter((p) =>
-        selectedSizes.includes(p.details?.sizes)
-      );
-    }
-
-    // Brand filter
-    if (selectedBrands.length > 0) {
-      filtered = filtered.filter((p) =>
-        selectedBrands.some(
-          (brand) => p.brand?.toLowerCase() === brand.toLowerCase()
-        )
-      );
-    }
-
-    setFilteredProducts(filtered);
-  }, [products, priceRange, selectedSizes, selectedBrands]);
+  const clearFilters = () => {
+    setFilters({
+      searchTerm: "",
+      category: "",
+      brand: "",
+      size: "",
+      gender: "",
+      condition: "",
+    });
+    navigate("/bst"); // clear URL query params if any
+  };
 
   const formatPrice = (price) =>
     new Intl.NumberFormat("vi-VN", {
       style: "currency",
       currency: "VND",
-    }).format(price);
+    }).format(price || 0);
 
   const imgSrc = (link) => {
     if (!link) return "/images/placeholder.png";
     return link;
   };
 
-  const toggleSize = (size) => {
-    setSelectedSizes((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-    );
-  };
-
-  const toggleBrand = (brand) => {
-    setSelectedBrands((prev) =>
-      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
-    );
-  };
-
-  const clearFilters = () => {
-    setPriceRange([0, 20000000]);
-    setSelectedSizes([]);
-    setSelectedBrands([]);
-  };
-
-  const hasActiveFilters =
-    priceRange[0] > 0 ||
-    priceRange[1] < 20000000 ||
-    selectedSizes.length > 0 ||
-    selectedBrands.length > 0;
+  const hasActiveFilters = Object.values(filters).some((val) => val !== "");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -179,16 +162,14 @@ export default function BstScreen() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
       {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative w-full h-[700px] lg:h-[900px] text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full h-[100vh] text-center text-[#FFFFFF] overflow-hidden">
         <img
           src={banner3}
           alt="Banner"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-fitt z-0"
         />
         <div className="absolute inset-0 bg-black/40 z-5"></div>
         <div className="relative z-10 h-full flex flex-col items-center justify-center">
-          {/* Text Content */}
           <motion.div
             initial="hidden"
             animate="visible"
@@ -197,7 +178,7 @@ export default function BstScreen() {
           >
             <motion.h1
               variants={itemVariants}
-              className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
+              className="font-serif text-5xl lg:text-7xl font-bold mb-6"
             >
               Sản Phẩm Của Chúng Tôi
             </motion.h1>
@@ -213,259 +194,309 @@ export default function BstScreen() {
 
       {/* Products Section */}
       <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          {/* Filter Toggle Button */}
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-[#682535]">
-              {filteredProducts.length} sản phẩm
-            </h2>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-6 py-3 bg-[#682535] text-[#FFFFFF] rounded-full font-semibold shadow-lg"
-            >
-              <SlidersHorizontal className="w-5 h-5" />
-              Bộ Lọc
-              {hasActiveFilters && (
-                <span className="bg-[#C599A6] text-[#682535] px-2 py-1 rounded-full text-xs">
-                  {selectedSizes.length +
-                    selectedBrands.length +
-                    (priceRange[0] > 0 || priceRange[1] < 20000000 ? 1 : 0)}
-                </span>
-              )}
-            </motion.button>
+        <div className=" flex flex-col lg:flex-row gap-12">
+          {/* LEFT SIDEBAR (FILTERS) */}
+          <div className="w-full lg:w-1/4 shrink-0">
+            <div className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm p-8 sticky top-24">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-[#682535]">Bộ Lọc</h3>
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearFilters}
+                    className="text-[#C599A6] hover:text-[#A47784] font-semibold flex items-center gap-2 text-sm"
+                  >
+                    <X className="w-4 h-4" />
+                    Xóa
+                  </button>
+                )}
+              </div>
+
+              <div className="space-y-6">
+                {/* Search */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-2 block">
+                    Tìm kiếm
+                  </label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#C599A6]" />
+                    <input
+                      type="text"
+                      placeholder="Tên, mô tả..."
+                      value={filters.searchTerm}
+                      onChange={(e) =>
+                        handleFilterChange("searchTerm", e.target.value)
+                      }
+                      className="w-full pl-9 pr-3 py-3 border border-[#EAD2D8]/50 rounded-none bg-[#FFFFFF] text-[#874D5F] focus:outline-none focus:border-[#C599A6] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* Category */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-2 block">
+                    Danh mục
+                  </label>
+                  <select
+                    value={filters.category}
+                    onChange={(e) =>
+                      handleFilterChange("category", e.target.value)
+                    }
+                    className="w-full px-3 py-3 border border-[#EAD2D8]/50 rounded-none bg-[#FFFFFF] text-[#874D5F] focus:outline-none focus:border-[#C599A6] transition-colors"
+                  >
+                    <option value="">Tất cả</option>
+                    {categories.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Brand */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-2 block">
+                    Thương hiệu
+                  </label>
+                  <select
+                    value={filters.brand}
+                    onChange={(e) =>
+                      handleFilterChange("brand", e.target.value)
+                    }
+                    className="w-full px-3 py-3 border border-[#EAD2D8]/50 rounded-none bg-[#FFFFFF] text-[#874D5F] focus:outline-none focus:border-[#C599A6] transition-colors"
+                  >
+                    <option value="">Tất cả</option>
+                    {brands.map((b) => (
+                      <option key={b._id} value={b._id}>
+                        {b.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Size */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-3 block">
+                    Kích cỡ
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {SIZE_OPTIONS.map((size) => (
+                      <button
+                        key={size}
+                        onClick={() =>
+                          handleFilterChange(
+                            "size",
+                            filters.size === size ? "" : size,
+                          )
+                        }
+                        className={`px-3 py-2 rounded-full font-semibold transition-all text-sm ${
+                          filters.size === size
+                            ? "bg-[#C599A6] text-[#682535]"
+                            : "bg-[#FFFFFF] text-[#874D5F] hover:bg-[#EAD2D8] border border-[#EAD2D8]"
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Gender */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-2 block">
+                    Giới tính
+                  </label>
+                  <select
+                    value={filters.gender}
+                    onChange={(e) =>
+                      handleFilterChange("gender", e.target.value)
+                    }
+                    className="w-full px-3 py-3 border border-[#EAD2D8]/50 rounded-none bg-[#FFFFFF] text-[#874D5F] focus:outline-none focus:border-[#C599A6] transition-colors"
+                  >
+                    <option value="">Tất cả</option>
+                    {GENDER_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>
+                        {o.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Condition */}
+                <div>
+                  <label className="text-sm font-bold text-[#682535] mb-2 block">
+                    Tình trạng
+                  </label>
+                  <select
+                    value={filters.condition}
+                    onChange={(e) =>
+                      handleFilterChange("condition", e.target.value)
+                    }
+                    className="w-full px-3 py-3 border border-[#EAD2D8]/50 rounded-none bg-[#FFFFFF] text-[#874D5F] focus:outline-none focus:border-[#C599A6] transition-colors"
+                  >
+                    <option value="">Tất cả</option>
+                    {CONDITION_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>
+                        {o.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Filter Panel */}
-          <AnimatePresence>
-            {showFilters && (
+          {/* RIGHT CONTENT (PRODUCTS) */}
+          <div className="w-full lg:w-3/4">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold text-[#682535]">
+                {products.length} sản phẩm
+              </h2>
+            </div>
+
+            {loading && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20 text-2xl text-[#874D5F] font-semibold"
               >
-                <div className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm p-8">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-2xl font-bold text-[#682535]">
-                      Lọc Sản Phẩm
-                    </h3>
-                    {hasActiveFilters && (
-                      <button
-                        onClick={clearFilters}
-                        className="text-[#C599A6] hover:text-[#A47784] font-semibold flex items-center gap-2"
-                      >
-                        <X className="w-4 h-4" />
-                        Xóa Bộ Lọc
-                      </button>
-                    )}
-                  </div>
+                <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6] animate-pulse" />
+                Đang tải sản phẩm...
+              </motion.div>
+            )}
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Price Filter */}
-                    <div>
-                      <h4 className="font-bold text-[#682535] mb-4">Giá</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="text-sm text-[#874D5F] mb-2 block">
-                            Từ: {formatPrice(priceRange[0])}
-                          </label>
-                          <input
-                            type="range"
-                            min="0"
-                            max="20000000"
-                            step="50000"
-                            value={priceRange[0]}
-                            onChange={(e) =>
-                              setPriceRange([
-                                Number(e.target.value),
-                                priceRange[1],
-                              ])
-                            }
-                            className="w-full"
-                          />
-                        </div>
-                        <div>
-                          <label className="text-sm text-[#874D5F] mb-2 block">
-                            Đến: {formatPrice(priceRange[1])}
-                          </label>
-                          <input
-                            type="range"
-                            min="0"
-                            max="20000000"
-                            step="50000"
-                            value={priceRange[1]}
-                            onChange={(e) =>
-                              setPriceRange([
-                                priceRange[0],
-                                Number(e.target.value),
-                              ])
-                            }
-                            className="w-full"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Size Filter */}
-                    <div>
-                      <h4 className="font-bold text-[#682535] mb-4">Kích Cỡ</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {availableSizes.map((size) => (
-                          <button
-                            key={size}
-                            onClick={() => toggleSize(size)}
-                            className={`px-4 py-2 rounded-full font-semibold transition-all ${selectedSizes.includes(size)
-                              ? "bg-[#C599A6] text-[#682535]"
-                              : "bg-[#FFFFFF] text-[#874D5F] hover:bg-[#EAD2D8]"
-                              }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Brand Filter */}
-                    <div>
-                      <h4 className="font-bold text-[#682535] mb-4">
-                        Thương Hiệu
-                      </h4>
-                      <div className="space-y-2">
-                        {availableBrands.map((brand) => (
-                          <label
-                            key={brand}
-                            className="flex items-center gap-3 cursor-pointer hover:bg-[#FFFFFF] p-2 rounded-lg transition-colors"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={selectedBrands.includes(brand)}
-                              onChange={() => toggleBrand(brand)}
-                              className="w-5 h-5 accent-[#C599A6]"
-                            />
-                            <span className="text-[#874D5F] font-medium capitalize">
-                              {brand}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-20 text-red-600 text-xl"
+              >
+                <div className="bg-red-50 border-2 border-red-200 rounded-3xl p-8 max-w-md mx-auto">
+                  <p className="font-bold mb-2">Lỗi tải dữ liệu</p>
+                  <p className="text-base">{error}</p>
                 </div>
               </motion.div>
             )}
-          </AnimatePresence>
 
-          {loading && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20 text-2xl text-[#874D5F] font-semibold"
-            >
-              <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6] animate-pulse" />
-              {searchQuery
-                ? `Đang tìm kiếm sản phẩm "${searchQuery}"...`
-                : "Đang tải sản phẩm..."}
-            </motion.div>
-          )}
-
-          {error && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-20 text-red-600 text-xl"
-            >
-              <div className="bg-red-50 border-2 border-red-200 rounded-3xl p-8 max-w-md mx-auto">
-                <p className="font-bold mb-2">Lỗi tải dữ liệu</p>
-                <p className="text-base">{error}</p>
-              </div>
-            </motion.div>
-          )}
-
-          {searchError && (
-            <div className="text-center py-4 text-sm text-red-600">
-              Lỗi tìm kiếm: {searchError}
-            </div>
-          )}
-
-          {!loading && !error && (
-            <>
-              {filteredProducts.length === 0 ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-20 col-span-full"
-                >
-                  <div className="bg-[#F6F3E6] border-2 border-[#EAD2D8] rounded-3xl p-8 max-w-md mx-auto">
-                    <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6]" />
-                    <p className="text-2xl font-bold text-[#682535] mb-2">
-                      Không tìm thấy sản phẩm
-                    </p>
-                    <p className="text-[#874D5F]">
-                      {searchQuery
-                        ? `Không có sản phẩm nào phù hợp với từ khóa "${searchQuery}"`
-                        : "Không có sản phẩm nào phù hợp với bộ lọc"}
-                    </p>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={containerVariants}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                  {filteredProducts.map((product) => (
-                    <motion.div
-                      key={product._id}
-                      // variants={itemVariants}
-                      // whileHover={{ scale: 1.03, y: -10 }}
-                      onClick={() => navigate(`/product/${product._id}`)}
-                      className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm overflow-hidden cursor-pointer group"
+            {!loading && !error && products.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-20"
+              >
+                <div className="bg-[#F6F3E6] border-2 border-[#EAD2D8] rounded-3xl p-8 max-w-md mx-auto">
+                  <Package className="w-16 h-16 mx-auto mb-4 text-[#C599A6]" />
+                  <p className="text-2xl font-bold text-[#682535] mb-2">
+                    Không tìm thấy sản phẩm
+                  </p>
+                  <p className="text-[#874D5F]">
+                    Hãy thử thay đổi bộ lọc để xem nhiều kết quả hơn
+                  </p>
+                  {hasActiveFilters && (
+                    <button
+                      onClick={clearFilters}
+                      className="mt-6 px-6 py-2 bg-[#C599A6] text-[#FFFFFF] rounded-full font-bold hover:bg-[#A47784] transition-colors"
                     >
-                      <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
-                        <img
-                          src={imgSrc(product.imageLink)}
-                          alt={product.title}
-                          className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                          onError={(e) => {
-                            e.currentTarget.src = "/images/placeholder.png";
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-[#682535]/0 group-hover:bg-[#682535]/20 transition-all duration-300"></div>
+                      Xóa bộ lọc
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            )}
+
+            {!loading && !error && products.length > 0 && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8"
+              >
+                {products.map((product) => (
+                  <motion.div
+                    key={product._id}
+                    onClick={() => navigate(`/product/${product._id}`)}
+                    className="bg-white rounded-none border border-[#EAD2D8]/50 shadow-sm overflow-hidden cursor-pointer group flex flex-col"
+                  >
+                    <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
+                      <img
+                        src={imgSrc(product.images?.[0] || product.imageLink)}
+                        alt={product.title}
+                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          e.currentTarget.src = "/images/placeholder.png";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-[#682535]/0 group-hover:bg-[#682535]/20 transition-all duration-300"></div>
+
+                      {/* Tags */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+                        {product.condition === "new" && (
+                          <span className="px-2 py-1 bg-[#682535] text-[#FFFFFF] text-[10px] font-bold uppercase rounded-none shadow-sm">
+                            Mới
+                          </span>
+                        )}
+                        {product.brand && (
+                          <span className="px-2 py-1 bg-[#FFFFFF]/90 text-[#874D5F] text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-[#EAD2D8]/50">
+                            {typeof product.brand === "object"
+                              ? product.brand.name
+                              : product.brand}
+                          </span>
+                        )}
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-2xl font-bold text-[#682535] mb-3 group-hover:text-[#C599A6] transition-colors">
-                          {product.title}
-                        </h3>
-                        <p className="text-[#874D5F] mb-4 text-sm leading-relaxed line-clamp-2">
-                          {product.shortDescription}
-                        </p>
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="text-3xl font-bold text-[#682535]">
-                            {formatPrice(product.price)}
-                            <span className="text-lg font-normal text-[#874D5F]">
-                              / 3 ngày
-                            </span>
-                          </div>
+                    </div>
+
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl font-bold text-[#682535] mb-2 group-hover:text-[#C599A6] transition-colors line-clamp-1">
+                        {product.title}
+                      </h3>
+
+                      <div className="flex items-center gap-2 text-xs text-[#874D5F] mb-4">
+                        <span className="px-2 py-1 bg-[#F6F3E6] rounded-none">
+                          {product.size}
+                        </span>
+                        <span>•</span>
+                        <span className="capitalize">
+                          {product.gender === "male"
+                            ? "Nam"
+                            : product.gender === "female"
+                              ? "Nữ"
+                              : "Unisex"}
+                        </span>
+                      </div>
+
+                      <div className="mt-auto pt-4 border-t border-[#EAD2D8]/30">
+                        <div className="flex flex-col gap-1 mb-4">
+                          <p className="text-sm font-bold text-[#682535]">
+                            Giá trị:{" "}
+                            {formatPrice(
+                              product.depositAmount || product.price,
+                            )}
+                          </p>
+                          <p className="text-xs text-[#874D5F]">
+                            Phí thuê:{" "}
+                            <span className="font-bold text-[#C599A6] text-base">
+                              {formatPrice(
+                                product.rentalPrice || product.price,
+                              )}
+                            </span>{" "}
+                            / Ngày
+                          </p>
                         </div>
+
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-full py-3 rounded-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-[#682535] font-bold shadow-lg flex items-center justify-center gap-2"
+                          className="w-full py-3 rounded-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-[#FFFFFF] font-bold shadow-lg flex items-center justify-center gap-2"
                         >
                           <Calendar className="w-5 h-5" />
                           Xem Chi Tiết
                         </motion.button>
                       </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </>
-          )}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </div>
         </div>
       </section>
     </div>

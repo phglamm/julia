@@ -16,8 +16,11 @@ export const route = {
   adminProducts: "/admin/products",
   adminOrders: "/admin/orders",
   adminCategories: "/admin/categories",
+  adminBrands: "/admin/brands",
+  adminRentalRules: "/admin/rental-rules",
   adminUsers: "/admin/users",
   adminSettings: "/admin/settings",
   cart: "/cart",
   profile: "/profile",
+  myOrders: "/my-orders",
 };

@@ -13,6 +13,7 @@ import axios from "axios";
 import productService from "../../services/productService";
 import { useCartStore } from "../../stores/cartStore";
 import toast from "react-hot-toast";
+import rentalDiscountRuleService from "../../services/rentalDiscountRuleService";
 
 export default function ProductDetailScreen() {
   const { productId } = useParams();
@@ -20,6 +21,13 @@ export default function ProductDetailScreen() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Rental Calculation State
+  const [rentalDays, setRentalDays] = useState(3);
+  const [calculatedRentFee, setCalculatedRentFee] = useState(null);
+  const [discountInfo, setDiscountInfo] = useState(null);
+  const [isCalculating, setIsCalculating] = useState(false);
+
   const addItem = useCartStore((state) => state.addItem);
   const items = useCartStore((state) => state.items);
   console.log("Cart Items:", items);
@@ -30,6 +38,7 @@ export default function ProductDetailScreen() {
     const fetchProduct = async () => {
       try {
         const response = await productService.getProducts(productId);
+        console.log("Product details:", response.data);
         if (mounted) {
           setProduct(response.data);
           setError(null);
@@ -49,11 +58,46 @@ export default function ProductDetailScreen() {
     };
   }, [productId]);
 
+  // Calculate rental discount when days or product change
+  useEffect(() => {
+    let mounted = true;
+
+    const calculateDiscount = async () => {
+      if (!product || !product.rentalPrice) return;
+
+      setIsCalculating(true);
+      try {
+        const response = await rentalDiscountRuleService.calculateDiscount({
+          days: rentalDays,
+          basePrice: product.rentalPrice,
+        });
+        if (mounted) {
+          setCalculatedRentFee(response.data.finalPrice);
+          setDiscountInfo(response.data);
+        }
+      } catch (err) {
+        console.error("Error calculating discount:", err);
+        if (mounted) {
+          // Fallback to basic calculation if API fails
+          setCalculatedRentFee(product.rentalPrice * rentalDays);
+          setDiscountInfo(null);
+        }
+      } finally {
+        if (mounted) setIsCalculating(false);
+      }
+    };
+
+    calculateDiscount();
+    return () => {
+      mounted = false;
+    };
+  }, [product, rentalDays]);
+
   const formatPrice = (price) =>
     new Intl.NumberFormat("vi-VN", {
       style: "currency",
       currency: "VND",
-    }).format(price);
+    }).format(price || 0);
 
   const imgSrc = (link) => {
     if (!link) return "/images/placeholder.png";
@@ -207,7 +251,7 @@ export default function ProductDetailScreen() {
               <div className="bg-white rounded-none shadow-sm border border-[#EAD2D8]/50 overflow-hidden sticky top-6">
                 <div className="bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] w-full h-[700px] flex items-center justify-center">
                   <img
-                    src={imgSrc(product.imageLink)}
+                    src={imgSrc(product.images?.[0])}
                     alt={product.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -235,12 +279,65 @@ export default function ProductDetailScreen() {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-4xl font-bold text-[#C599A6] mb-6"
+                  className="flex flex-col gap-4 mb-6"
                 >
-                  {formatPrice(product.price)}{" "}
-                  <span className="text-lg font-normal text-[#874D5F]">
-                    / 3 ngày
-                  </span>
+                  <div>
+                    <div className="text-xl font-bold text-[#874D5F] mb-1">
+                      Giá trị sản phẩm (để thu cọc):
+                    </div>
+                    <div className="text-4xl font-bold text-[#C599A6]">
+                      {formatPrice(product.depositAmount)}
+                    </div>
+                  </div>
+
+                  <div className="border-t border-[#EAD2D8]/50 pt-4">
+                    <div className="text-lg font-bold text-[#682535] mb-3">
+                      Chọn thời gian thuê:
+                    </div>
+                    <div className="flex items-center gap-4 mb-4">
+                      <select
+                        value={rentalDays}
+                        onChange={(e) => setRentalDays(Number(e.target.value))}
+                        className="px-4 py-2 border-2 border-[#C599A6] rounded-none bg-[#FFFFFF] text-[#682535] font-bold focus:outline-none"
+                      >
+                        {[1, 2, 3, 5].map((days) => (
+                          <option key={days} value={days}>
+                            {days} ngày
+                          </option>
+                        ))}
+                      </select>
+                      <span className="text-[#874D5F]">
+                        ({formatPrice(product.rentalPrice)} / ngày)
+                      </span>
+                    </div>
+
+                    <div className="bg-[#F6F3E6] p-4 rounded-none border border-[#EAD2D8]">
+                      {isCalculating ? (
+                        <div className="text-[#874D5F] animate-pulse font-bold">
+                          Đang tính phí thuê...
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="text-lg text-[#874D5F]">
+                            Tổng phí thuê ({rentalDays} ngày):
+                          </div>
+                          <div className="text-3xl font-bold text-[#682535]">
+                            {formatPrice(
+                              calculatedRentFee ||
+                                product.rentalPrice * rentalDays,
+                            )}
+                          </div>
+                          {discountInfo && discountInfo.discountAmount > 0 && (
+                            <div className="text-sm font-bold text-emerald-600 mt-1">
+                              ✓ Tiết kiệm{" "}
+                              {formatPrice(discountInfo.discountAmount)} (
+                              {discountInfo.discountRuleName})
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
 
                 {/* Action Button */}
@@ -251,13 +348,17 @@ export default function ProductDetailScreen() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    addItem(product);
-                    toast.success("Đã thêm vào giỏ hàng");
+                    addItem(
+                      product,
+                      rentalDays,
+                      calculatedRentFee || product.rentalPrice * rentalDays,
+                    );
+                    toast.success(`Đã thêm vào giỏ hàng (${rentalDays} ngày)`);
                   }}
                   className="w-full py-5 rounded-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white text-xl font-bold flex items-center justify-center gap-2 shadow-xl"
                 >
                   <ShoppingCart className="w-6 h-6" />
-                  Chọn Thuê
+                  Chọn Thuê Ngay
                 </motion.button>
               </div>
 
@@ -278,7 +379,7 @@ export default function ProductDetailScreen() {
               </motion.div>
 
               {/* Product Details */}
-              {product.details && (
+              {product && (
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -295,126 +396,74 @@ export default function ProductDetailScreen() {
                     <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3 flex items-center gap-2">
                         <Package className="w-5 h-5 text-[#C599A6]" />
-                        Thông Tin Cơ Bản
+                        Đặc điểm
                       </h4>
                       <p className="text-[#874D5F] leading-relaxed">
-                        {product.details.basicInfo}
+                        Tình trạng:{" "}
+                        {product.condition === "new"
+                          ? "Mới"
+                          : product.condition === "like_new"
+                            ? "Như mới"
+                            : product.condition === "good"
+                              ? "Tốt"
+                              : "Khá"}{" "}
+                        <br />
+                        Giới tính:{" "}
+                        {product.gender === "male"
+                          ? "Nam"
+                          : product.gender === "female"
+                            ? "Nữ"
+                            : "Unisex"}
                       </p>
                     </div>
 
                     {/* Sizes */}
                     <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
-                        Size
+                        Kích Cỡ
                       </h4>
                       <p className="text-[#874D5F] text-2xl font-bold">
-                        {product.details.sizes}
+                        {product.size}
                       </p>
                     </div>
 
                     {/* Material */}
                     <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
-                        Chất Liệu
+                        Chất Liệu & Màu
                       </h4>
                       <p className="text-[#874D5F] leading-relaxed">
-                        {product.details.material}
+                        Chất liệu: {product.material || "Chưa cập nhật"} <br />
+                        Màu sắc: {product.color || "Chưa cập nhật"}
                       </p>
                     </div>
 
-                    {/* Care Instructions */}
+                    {/* Brand */}
                     <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none">
                       <h4 className="text-xl font-bold text-[#682535] mb-3">
-                        Hướng Dẫn Bảo Quản
+                        Thương Hiệu
                       </h4>
                       <p className="text-[#874D5F] leading-relaxed">
-                        {product.details.careInstructions}
+                        {typeof product.brand === "object"
+                          ? product.brand?.name
+                          : product.brand || "Chưa cập nhật"}
                       </p>
                     </div>
 
-                    {/* Measurements */}
-                    {product.details.measurements && (
+                    {/* Description */}
+                    {product.description && (
                       <div className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] p-6 rounded-none md:col-span-2">
                         <h4 className="text-xl font-bold text-[#682535] mb-4">
-                          Số Đo Chi Tiết
+                          Mô tả chi tiết
                         </h4>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                          {Object.entries(product.details.measurements).map(
-                            ([key, value]) => (
-                              <div
-                                key={key}
-                                className="bg-white/50 p-3 rounded-none"
-                              >
-                                <p className="text-sm text-[#874D5F] mb-1 capitalize">
-                                  {key === "length"
-                                    ? "Dài"
-                                    : key === "waist"
-                                    ? "Eo"
-                                    : key === "hip"
-                                    ? "Hông"
-                                    : key === "bust"
-                                    ? "Ngực"
-                                    : key === "shoulder"
-                                    ? "Vai"
-                                    : key === "sleeveLength"
-                                    ? "Dài tay"
-                                    : key === "width"
-                                    ? "Rộng"
-                                    : key === "height"
-                                    ? "Cao"
-                                    : key === "depth"
-                                    ? "Sâu"
-                                    : key === "inseam"
-                                    ? "Dài trong"
-                                    : key}
-                                </p>
-                                <p className="text-lg font-bold text-[#682535]">
-                                  {value}
-                                </p>
-                              </div>
-                            )
-                          )}
-                        </div>
+                        <p className="text-[#874D5F] leading-relaxed whitespace-pre-wrap">
+                          {product.description}
+                        </p>
                       </div>
                     )}
                   </div>
                 </motion.div>
               )}
-
-              {/* Rental Terms */}
-              {/* <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="bg-linear-to-br from-[#682535] to-[#874D5F] rounded-3xl shadow-xl p-8 text-[#FFFFFF]"
-              >
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Calendar className="w-6 h-6 text-[#C599A6]" />
-                  Điều Khoản Thuê
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#C599A6] font-bold mt-1">•</span>
-                    <span>Thời gian thuê: 3 ngày</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#C599A6] font-bold mt-1">•</span>
-                    <span>Cọc trước: 30% giá trị đơn hàng</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#C599A6] font-bold mt-1">•</span>
-                    <span>Hoàn trả sản phẩm trong tình trạng ban đầu</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#C599A6] font-bold mt-1">•</span>
-                    <span>Miễn phí vận chuyển trong nội thành</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#C599A6] font-bold mt-1">•</span>
-                    <span>Hỗ trợ đổi size miễn phí trước ngày thuê</span>
-                  </li>
-                </ul>
-              </motion.div> */}
             </motion.div>
           </div>
         </motion.div>

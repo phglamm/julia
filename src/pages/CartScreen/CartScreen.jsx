@@ -23,8 +23,9 @@ const CartScreen = () => {
   const navigate = useNavigate();
   const cartItems = useCartStore((state) => state.items);
   const removeItem = useCartStore((state) => state.removeItem);
-  const incrementQuantity = useCartStore((state) => state.incrementQuantity);
-  const decrementQuantity = useCartStore((state) => state.decrementQuantity);
+  const subtotal = useCartStore((state) => state.getSubtotal()); // Total Rent Fee
+  const upfrontTotal = useCartStore((state) => state.getTotalUpfront()); // Total Deposit (Retail Price)
+
   console.log("Cart Items in CartScreen:", cartItems);
   const formatPrice = (price) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -33,13 +34,9 @@ const CartScreen = () => {
     }).format(price);
   };
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
   const discount = 0;
   const shipping = subtotal > 500000 ? 0 : 30000;
-  const total = subtotal - discount + shipping;
+  const total = upfrontTotal - discount + shipping;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -114,93 +111,82 @@ const CartScreen = () => {
               variants={containerVariants}
               className="lg:col-span-2 space-y-4"
             >
-              {cartItems.map((item) => (
+              {cartItems.map((item, index) => (
                 <motion.div
-                  key={item._id}
+                  key={`${item._id}-${index}`}
                   variants={itemVariants}
                   layout
-                  className="bg-white rounded-none shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                  className="relative bg-white rounded-none shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="flex flex-col sm:flex-row gap-6 p-6">
+                  <div className="flex flex-col sm:flex-row gap-6 p-5">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-40 h-40 flex-shrink-0 rounded-none overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
+                    <div className="relative w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] shadow-inner">
                       <img
-                        src={item.imageLink}
+                        src={item.images?.[0] || item.imageLink}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
                       {item.brand && (
-                        <div className="absolute top-2 right-2 bg-[#682535]/80 backdrop-blur-sm text-[#FFFFFF] px-2 py-1 rounded-none text-xs font-semibold">
-                          {item.brand}
+                        <div className="absolute top-2 left-2 bg-[#FFFFFF]/90 backdrop-blur-sm text-[#874D5F] px-2 py-1 rounded-md text-[10px] font-bold shadow-sm uppercase">
+                          {typeof item.brand === "object"
+                            ? item.brand?.name
+                            : item.brand}
                         </div>
                       )}
                     </div>
 
                     {/* Product Info */}
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#682535] mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-[#874D5F] mb-3 line-clamp-2">
-                          {item.shortDescription}
+                    <div className="flex-1 flex flex-col justify-center pr-8">
+                      <h3 className="text-xl font-bold text-[#682535] mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-[#874D5F] mb-3 line-clamp-1 opacity-80">
+                        {item.shortDescription}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#874D5F] mb-3">
+                        <span className="flex items-center gap-1.5 bg-[#F6F3E6] px-3 py-1.5 rounded-lg border border-[#EAD2D8]/50">
+                          <Package className="w-4 h-4 text-[#C599A6]" />
+                          Size: {item.size}
+                        </span>
+                        <span className="flex items-center gap-1.5 bg-[#F6F3E6] px-3 py-1.5 rounded-lg border border-[#EAD2D8]/50">
+                          <Calendar className="w-4 h-4 text-[#C599A6]" />
+                          {item.rentalDays} ngày
+                        </span>
+                      </div>
+
+                      <div className="mt-auto">
+                        <p className="text-sm font-semibold text-[#874D5F]">
+                          Giá trị cọc:{" "}
+                          <span className="font-bold text-[#C599A6]">
+                            {formatPrice(item.depositAmount)}
+                          </span>
                         </p>
-                        <div className="flex gap-4 text-sm text-[#874D5F] mb-4">
-                          <span className="flex items-center gap-1">
-                            <Package className="w-4 h-4" />
-                            Size: {item.size}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
-                            {item.rentalDays} ngày
-                          </span>
-                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right side (Price & Actions) */}
+                    <div className="flex flex-row items-center justify-between sm:justify-end sm:pl-6 sm:border-l border-[#EAD2D8]/40 gap-6 shrink-0 pt-4 sm:pt-0 border-t sm:border-t-0 mt-2 sm:mt-0">
+                      <div className="text-left sm:text-right">
+                        <p className="text-2xl font-bold text-[#682535] whitespace-nowrap mb-1">
+                          {formatPrice(
+                            item.rentFee || item.rentalPrice * item.rentalDays,
+                          )}
+                        </p>
+                        <p className="text-xs font-semibold text-[#C599A6] uppercase tracking-wider bg-[#F6F3E6] inline-block px-3 py-1 rounded-full">
+                          Tổng phí thuê
+                        </p>
                       </div>
 
-                      <div className="flex items-center justify-between flex-wrap gap-4">
-                        {/* Quantity Controls */}
-                        <div className="flex items-center gap-3">
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => decrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-none bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
-                          >
-                            <Minus className="w-4 h-4" />
-                          </motion.button>
-                          <span className="text-lg font-bold text-[#682535] min-w-[2rem] text-center">
-                            {item.quantity}
-                          </span>
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => incrementQuantity(item._id)}
-                            className="w-8 h-8 rounded-none bg-[#FFFFFF] border-2 border-[#C599A6] text-[#682535] flex items-center justify-center hover:bg-[#C599A6] hover:text-white transition-colors"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </motion.button>
-                        </div>
-
-                        {/* Price and Remove */}
-                        <div className="flex items-center gap-4">
-                          <div className="text-right">
-                            <div className="text-2xl font-bold text-[#C599A6]">
-                              {formatPrice(item.price * item.quantity)}
-                            </div>
-                            <div className="text-xs text-[#874D5F]">
-                              {formatPrice(item.price)} / {item.rentalDays} ngày
-                            </div>
-                          </div>
-                          <motion.button
-                            whileHover={{ scale: 1.1, rotate: 15 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => removeItem(item._id)}
-                            className="w-10 h-10 rounded-none bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-100 transition-colors"
-                          >
-                            <Trash2 className="w-5 h-5" />
-                          </motion.button>
-                        </div>
-                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => removeItem(item._id)}
+                        className="w-10 h-10 rounded-full bg-red-50 text-red-400 hover:text-white hover:bg-red-500 flex items-center justify-center transition-all shadow-sm shrink-0"
+                        title="Xóa sản phẩm"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </motion.button>
                     </div>
                   </div>
                 </motion.div>
@@ -223,9 +209,16 @@ const CartScreen = () => {
                 {/* Price Breakdown */}
                 <div className="space-y-4 mb-6 pb-6 border-b-2 border-[#C599A6]/20">
                   <div className="flex justify-between text-[#874D5F]">
-                    <span>Tạm tính</span>
+                    <span>Tổng phí thuê</span>
                     <span className="font-semibold">
                       {formatPrice(subtotal)}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between text-[#874D5F]">
+                    <span>Tổng giá trị sản phẩm</span>
+                    <span className="font-semibold">
+                      {formatPrice(upfrontTotal)}
                     </span>
                   </div>
 

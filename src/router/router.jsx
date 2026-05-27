@@ -15,10 +15,13 @@ import AboutUsScreen from "../pages/AboutUsScreen/AboutUsScreen";
 import AdminOrderScreen from "../pages/AdminOrderScreen/AdminOrderScreen";
 import AdminProducts from "../pages/AdminProducts/AdminProducts";
 import AdminCategories from "../pages/AdminCategories/AdminCategories";
+import AdminBrands from "../pages/AdminBrands/AdminBrands";
+import AdminRentalRules from "../pages/AdminRentalRules/AdminRentalRules";
 import LoginScreen from "../pages/LoginScreen/LoginScreen";
 import CartScreen from "../pages/CartScreen/CartScreen";
 import RegisterScreen from "../pages/RegisterScreen/RegisterScreen";
 import ProfileScreen from "../pages/ProfileScreen/ProfileScreen";
+import MyOrdersScreen from "../pages/MyOrdersScreen/MyOrdersScreen";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +80,10 @@ export const router = createBrowserRouter([
         path: route.profile,
         element: <ProfileScreen />,
       },
+      {
+        path: route.myOrders,
+        element: <MyOrdersScreen />,
+      },
     ],
   },
 
@@ -95,6 +102,14 @@ export const router = createBrowserRouter([
       {
         path: route.adminCategories,
         element: <AdminCategories />,
+      },
+      {
+        path: route.adminBrands,
+        element: <AdminBrands />,
+      },
+      {
+        path: route.adminRentalRules,
+        element: <AdminRentalRules />,
       },
     ],
   },
