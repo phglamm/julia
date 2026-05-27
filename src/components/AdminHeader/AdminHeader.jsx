@@ -23,7 +23,12 @@ export default function AdminHeader({ onToggleSidebar }) {
   const notifications = [
     { id: 1, text: "Đơn hàng mới #1234", time: "5 phút trước", unread: true },
     { id: 2, text: "Sản phẩm sắp hết hàng", time: "1 giờ trước", unread: true },
-    { id: 3, text: "Đánh giá mới từ khách hàng", time: "2 giờ trước", unread: false },
+    {
+      id: 3,
+      text: "Đánh giá mới từ khách hàng",
+      time: "2 giờ trước",
+      unread: false,
+    },
   ];
 
   return (
@@ -41,8 +46,12 @@ export default function AdminHeader({ onToggleSidebar }) {
 
           {/* Mobile logo */}
           <div className="flex items-center gap-2 lg:hidden">
-            <img src={logo} className="w-7 h-7 rounded-lg bg-black p-0.5" alt="Julia" />
-            <span className="text-sm font-bold text-gray-800 font-mono tracking-wider hidden sm:block">
+            <img
+              src={logo}
+              className="w-7 h-7 rounded-lg bg-black p-0.5"
+              alt="Julia"
+            />
+            <span className="text-sm font-bold text-gray-800  tracking-wider hidden sm:block">
               JULIA
             </span>
           </div>
@@ -79,7 +88,9 @@ export default function AdminHeader({ onToggleSidebar }) {
                 />
                 <div className="absolute right-0 top-11 w-72 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
                   <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-900 text-sm">Thông báo</h3>
+                    <h3 className="font-semibold text-gray-900 text-sm">
+                      Thông báo
+                    </h3>
                     <span className="px-1.5 py-0.5 text-[10px] font-bold bg-red-50 text-red-600 rounded">
                       2 Mới
                     </span>
@@ -97,10 +108,14 @@ export default function AdminHeader({ onToggleSidebar }) {
                             <span className="w-1.5 h-1.5 bg-indigo-600 rounded-full mt-1.5 shrink-0" />
                           )}
                           <div className={n.unread ? "" : "ml-3.5"}>
-                            <p className={`text-xs text-gray-700 ${n.unread ? "font-medium" : ""}`}>
+                            <p
+                              className={`text-xs text-gray-700 ${n.unread ? "font-medium" : ""}`}
+                            >
                               {n.text}
                             </p>
-                            <p className="text-[10px] text-gray-400 mt-0.5">{n.time}</p>
+                            <p className="text-[10px] text-gray-400 mt-0.5">
+                              {n.time}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -139,8 +154,12 @@ export default function AdminHeader({ onToggleSidebar }) {
                 />
                 <div className="absolute right-0 top-11 w-52 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
                   <div className="px-4 py-3 border-b border-gray-100">
-                    <p className="text-xs font-semibold text-gray-800">Julia Owner</p>
-                    <p className="text-[10px] text-gray-400 truncate">admin@julia.com</p>
+                    <p className="text-xs font-semibold text-gray-800">
+                      Julia Owner
+                    </p>
+                    <p className="text-[10px] text-gray-400 truncate">
+                      admin@julia.com
+                    </p>
                   </div>
                   <div className="py-1 px-1.5">
                     <button className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg">
@@ -174,4 +193,3 @@ export default function AdminHeader({ onToggleSidebar }) {
     </header>
   );
 }
-

@@ -160,9 +160,9 @@ export default function BstScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6]">
+    <div className="min-h-screen bg-gradient-to-br from-white to-background-alt">
       {/* Hero Section */}
-      <section className="relative w-full h-[100vh] text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full h-[100vh] text-center text-white overflow-hidden">
         <img
           src={banner3}
           alt="Banner"
@@ -178,7 +178,7 @@ export default function BstScreen() {
           >
             <motion.h1
               variants={itemVariants}
-              className="font-serif text-5xl lg:text-7xl font-bold mb-6"
+              className=" text-5xl lg:text-7xl font-bold mb-6"
             >
               Sản Phẩm Của Chúng Tôi
             </motion.h1>
@@ -193,17 +193,17 @@ export default function BstScreen() {
       </section>
 
       {/* Products Section */}
-      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12">
         <div className=" flex flex-col lg:flex-row gap-12">
           {/* LEFT SIDEBAR (FILTERS) */}
           <div className="w-full lg:w-1/4 shrink-0">
-            <div className="bg-white rounded-none border border-[#F6F0E6]/50 shadow-sm p-8 sticky top-24">
+            <div className="bg-white rounded-none border border-background-alt/50 shadow-sm p-8 sticky top-24">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold text-[#C8B39A]">Bộ Lọc</h3>
+                <h3 className="text-2xl font-bold text-text-primary">Bộ Lọc</h3>
                 {hasActiveFilters && (
                   <button
                     onClick={clearFilters}
-                    className="text-[#EFE3CE] hover:text-[#C8B39A] font-semibold flex items-center gap-2 text-sm"
+                    className="text-text-secondary hover:text-text-primary font-semibold flex items-center gap-2 text-sm"
                   >
                     <X className="w-4 h-4" />
                     Xóa
@@ -214,11 +214,11 @@ export default function BstScreen() {
               <div className="space-y-6">
                 {/* Search */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-2 block">
+                  <label className="text-sm font-bold text-text-primary mb-2 block">
                     Tìm kiếm
                   </label>
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#EFE3CE]" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input
                       type="text"
                       placeholder="Tên, mô tả..."
@@ -226,14 +226,14 @@ export default function BstScreen() {
                       onChange={(e) =>
                         handleFilterChange("searchTerm", e.target.value)
                       }
-                      className="w-full pl-9 pr-3 py-3 border border-[#F6F0E6]/50 rounded-none bg-[#FFFFFF] text-[#C8B39A] focus:outline-none focus:border-[#EFE3CE] transition-colors"
+                      className="w-full pl-9 pr-3 py-3 border border-background-alt/50 rounded-none bg-white text-text-primary focus:outline-none focus:border-secondary transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Category */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-2 block">
+                  <label className="text-sm font-bold text-text-primary mb-2 block">
                     Danh mục
                   </label>
                   <select
@@ -241,7 +241,7 @@ export default function BstScreen() {
                     onChange={(e) =>
                       handleFilterChange("category", e.target.value)
                     }
-                    className="w-full px-3 py-3 border border-[#F6F0E6]/50 rounded-none bg-[#FFFFFF] text-[#C8B39A] focus:outline-none focus:border-[#EFE3CE] transition-colors"
+                    className="w-full px-3 py-3 border border-background-alt/50 rounded-none bg-white text-text-primary focus:outline-none focus:border-secondary transition-colors"
                   >
                     <option value="">Tất cả</option>
                     {categories.map((c) => (
@@ -254,7 +254,7 @@ export default function BstScreen() {
 
                 {/* Brand */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-2 block">
+                  <label className="text-sm font-bold text-text-primary mb-2 block">
                     Thương hiệu
                   </label>
                   <select
@@ -262,7 +262,7 @@ export default function BstScreen() {
                     onChange={(e) =>
                       handleFilterChange("brand", e.target.value)
                     }
-                    className="w-full px-3 py-3 border border-[#F6F0E6]/50 rounded-none bg-[#FFFFFF] text-[#C8B39A] focus:outline-none focus:border-[#EFE3CE] transition-colors"
+                    className="w-full px-3 py-3 border border-background-alt/50 rounded-none bg-white text-text-primary focus:outline-none focus:border-secondary transition-colors"
                   >
                     <option value="">Tất cả</option>
                     {brands.map((b) => (
@@ -275,7 +275,7 @@ export default function BstScreen() {
 
                 {/* Size */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-3 block">
+                  <label className="text-sm font-bold text-text-primary mb-3 block">
                     Kích cỡ
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -290,8 +290,8 @@ export default function BstScreen() {
                         }
                         className={`px-3 py-2 rounded-full font-semibold transition-all text-sm ${
                           filters.size === size
-                            ? "bg-[#EFE3CE] text-[#C8B39A]"
-                            : "bg-[#FFFFFF] text-[#C8B39A] hover:bg-[#F6F0E6] border border-[#F6F0E6]"
+                            ? "bg-secondary text-text-primary"
+                            : "bg-white text-text-primary hover:bg-background-alt border border-background-alt"
                         }`}
                       >
                         {size}
@@ -302,7 +302,7 @@ export default function BstScreen() {
 
                 {/* Gender */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-2 block">
+                  <label className="text-sm font-bold text-text-primary mb-2 block">
                     Giới tính
                   </label>
                   <select
@@ -310,7 +310,7 @@ export default function BstScreen() {
                     onChange={(e) =>
                       handleFilterChange("gender", e.target.value)
                     }
-                    className="w-full px-3 py-3 border border-[#F6F0E6]/50 rounded-none bg-[#FFFFFF] text-[#C8B39A] focus:outline-none focus:border-[#EFE3CE] transition-colors"
+                    className="w-full px-3 py-3 border border-background-alt/50 rounded-none bg-white text-text-primary focus:outline-none focus:border-secondary transition-colors"
                   >
                     <option value="">Tất cả</option>
                     {GENDER_OPTIONS.map((o) => (
@@ -323,7 +323,7 @@ export default function BstScreen() {
 
                 {/* Condition */}
                 <div>
-                  <label className="text-sm font-bold text-[#C8B39A] mb-2 block">
+                  <label className="text-sm font-bold text-text-primary mb-2 block">
                     Tình trạng
                   </label>
                   <select
@@ -331,7 +331,7 @@ export default function BstScreen() {
                     onChange={(e) =>
                       handleFilterChange("condition", e.target.value)
                     }
-                    className="w-full px-3 py-3 border border-[#F6F0E6]/50 rounded-none bg-[#FFFFFF] text-[#C8B39A] focus:outline-none focus:border-[#EFE3CE] transition-colors"
+                    className="w-full px-3 py-3 border border-background-alt/50 rounded-none bg-white text-text-primary focus:outline-none focus:border-secondary transition-colors"
                   >
                     <option value="">Tất cả</option>
                     {CONDITION_OPTIONS.map((o) => (
@@ -348,7 +348,7 @@ export default function BstScreen() {
           {/* RIGHT CONTENT (PRODUCTS) */}
           <div className="w-full lg:w-3/4">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-[#C8B39A]">
+              <h2 className="text-2xl font-bold text-text-primary">
                 {products.length} sản phẩm
               </h2>
             </div>
@@ -357,9 +357,9 @@ export default function BstScreen() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-center py-20 text-2xl text-[#C8B39A] font-semibold"
+                className="text-center py-20 text-2xl text-text-primary font-semibold"
               >
-                <Package className="w-16 h-16 mx-auto mb-4 text-[#EFE3CE] animate-pulse" />
+                <Package className="w-16 h-16 mx-auto mb-4 text-text-secondary animate-pulse" />
                 Đang tải sản phẩm...
               </motion.div>
             )}
@@ -383,18 +383,18 @@ export default function BstScreen() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-20"
               >
-                <div className="bg-[#FAF7F2] border-2 border-[#F6F0E6] rounded-3xl p-8 max-w-md mx-auto">
-                  <Package className="w-16 h-16 mx-auto mb-4 text-[#EFE3CE]" />
-                  <p className="text-2xl font-bold text-[#C8B39A] mb-2">
+                <div className="bg-surface border-2 border-background-alt rounded-3xl p-8 max-w-md mx-auto">
+                  <Package className="w-16 h-16 mx-auto mb-4 text-text-secondary" />
+                  <p className="text-2xl font-bold text-text-primary mb-2">
                     Không tìm thấy sản phẩm
                   </p>
-                  <p className="text-[#C8B39A]">
+                  <p className="text-text-primary">
                     Hãy thử thay đổi bộ lọc để xem nhiều kết quả hơn
                   </p>
                   {hasActiveFilters && (
                     <button
                       onClick={clearFilters}
-                      className="mt-6 px-6 py-2 bg-[#EFE3CE] text-[#FFFFFF] rounded-full font-bold hover:bg-[#C8B39A] transition-colors"
+                      className="mt-6 px-6 py-2 bg-secondary text-white rounded-full font-bold hover:bg-primary transition-colors"
                     >
                       Xóa bộ lọc
                     </button>
@@ -414,9 +414,9 @@ export default function BstScreen() {
                   <motion.div
                     key={product._id}
                     onClick={() => navigate(`/product/${product._id}`)}
-                    className="bg-white rounded-none border border-[#F6F0E6]/50 shadow-sm overflow-hidden cursor-pointer group flex flex-col"
+                    className="bg-white rounded-none border border-background-alt/50 shadow-sm overflow-hidden cursor-pointer group flex flex-col"
                   >
-                    <div className="h-80 bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6] flex items-center justify-center overflow-hidden relative">
+                    <div className="h-80 bg-gradient-to-br from-white to-background-alt flex items-center justify-center overflow-hidden relative">
                       <img
                         src={imgSrc(product.images?.[0] || product.imageLink)}
                         alt={product.title}
@@ -425,17 +425,17 @@ export default function BstScreen() {
                           e.currentTarget.src = "/images/placeholder.png";
                         }}
                       />
-                      <div className="absolute inset-0 bg-[#C8B39A]/0 group-hover:bg-[#C8B39A]/20 transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300"></div>
 
                       {/* Tags */}
                       <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
                         {product.condition === "new" && (
-                          <span className="px-2 py-1 bg-[#C8B39A] text-[#FFFFFF] text-[10px] font-bold uppercase rounded-none shadow-sm">
+                          <span className="px-2 py-1 bg-primary text-white text-[10px] font-bold uppercase rounded-none shadow-sm">
                             Mới
                           </span>
                         )}
                         {product.brand && (
-                          <span className="px-2 py-1 bg-[#FFFFFF]/90 text-[#C8B39A] text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-[#F6F0E6]/50">
+                          <span className="px-2 py-1 bg-white/90 text-text-primary text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-background-alt/50">
                             {typeof product.brand === "object"
                               ? product.brand.name
                               : product.brand}
@@ -445,12 +445,12 @@ export default function BstScreen() {
                     </div>
 
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold text-[#C8B39A] mb-2 group-hover:text-[#EFE3CE] transition-colors line-clamp-1">
+                      <h3 className="text-xl font-bold text-text-primary mb-2 group-hover:text-text-secondary transition-colors line-clamp-1">
                         {product.title}
                       </h3>
 
-                      <div className="flex items-center gap-2 text-xs text-[#C8B39A] mb-4">
-                        <span className="px-2 py-1 bg-[#FAF7F2] rounded-none">
+                      <div className="flex items-center gap-2 text-xs text-text-primary mb-4">
+                        <span className="px-2 py-1 bg-surface rounded-none">
                           {product.size}
                         </span>
                         <span>•</span>
@@ -463,17 +463,17 @@ export default function BstScreen() {
                         </span>
                       </div>
 
-                      <div className="mt-auto pt-4 border-t border-[#F6F0E6]/30">
+                      <div className="mt-auto pt-4 border-t border-background-alt/30">
                         <div className="flex flex-col gap-1 mb-4">
-                          <p className="text-sm font-bold text-[#C8B39A]">
+                          <p className="text-sm font-bold text-text-primary">
                             Giá trị:{" "}
                             {formatPrice(
                               product.depositAmount || product.price,
                             )}
                           </p>
-                          <p className="text-xs text-[#C8B39A]">
+                          <p className="text-xs text-text-primary">
                             Phí thuê:{" "}
-                            <span className="font-bold text-[#EFE3CE] text-base">
+                            <span className="font-bold text-text-secondary text-base">
                               {formatPrice(
                                 product.rentalPrice || product.price,
                               )}
@@ -485,7 +485,7 @@ export default function BstScreen() {
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-full py-3 rounded-full bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] text-[#FFFFFF] font-bold shadow-lg flex items-center justify-center gap-2"
+                          className="w-full py-3 rounded-full bg-gradient-to-r from-secondary to-primary text-white font-bold shadow-lg flex items-center justify-center gap-2"
                         >
                           <Calendar className="w-5 h-5" />
                           Xem Chi Tiết
@@ -502,5 +502,3 @@ export default function BstScreen() {
     </div>
   );
 }
-
-

@@ -2,32 +2,19 @@
 
 /* Global typography: vintage, polished serif look */
 @theme {
-  --font-serif: "Merriweather", serif;
-  --font-sans: "Inter", sans-serif;
+  /* Brand Colors (Backgrounds, Borders, etc) */
+  --color-primary: #c8b39a; /* Sandy Beige */
+  --color-secondary: #efe3ce; /* Vanilla Cream */
+  --color-background-alt: #f6f0e6; /* Soft Linen */
+  --color-surface: #faf7f2; /* Ivory Whisper */
+
+  /* Decoupled Text Colors */
+  --color-text-primary: #000000;
+  --color-text-secondary: #efe3ce;
+  --color-text-background-alt: #f6f0e6;
+  --color-text-surface: #faf7f2;
 }
 
 :root {
-  --brand-serif: var(--font-serif);
-  --brand-sans: var(--font-sans);
-  
-  /* Text Colors */
-  --text-primary: #3D2E28;      /* Main body text on light backgrounds */
-  --text-secondary: #5C4A3D;    /* Secondary text, less emphasis */
-  --text-tertiary: #8B7355;     /* Subtle text, labels, placeholders */
-  --text-light: #FFFFFF;        /* Text on dark backgrounds */
-  --text-light-alt: #FAF7F2;    /* Alternative light text */
-  
-  /* Brand Colors */
-  --color-vanilla: #EFE3CE;     /* Vanilla Cream */
-  --color-linen: #F6F0E6;       /* Soft Linen */
-  --color-beige: #C8B39A;       /* Sandy Beige */
-  --color-ivory: #FAF7F2;       /* Ivory Whisper */
-}
-
-body {
-  font-family: var(--brand-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--text-primary);
-  background-color: #C8B39A;
+  font-family: "Strichpunkt Sans", sans-serif !important;
 }

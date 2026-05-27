@@ -4,11 +4,31 @@ import logo from "../../assets/logo.png";
 
 const nav = [
   { name: "Sản phẩm", to: "/admin", icon: <Box className="w-5 h-5" /> },
-  { name: "Danh mục", to: "/admin/categories", icon: <Tag className="w-5 h-5" /> },
-  { name: "Thương hiệu", to: "/admin/brands", icon: <Tag className="w-5 h-5" /> },
-  { name: "Đơn hàng", to: "/admin/orders", icon: <FileText className="w-5 h-5" /> },
-  { name: "Giảm giá thuê", to: "/admin/rental-rules", icon: <Tag className="w-5 h-5" /> },
-  { name: "Cài đặt", to: "/admin/settings", icon: <Settings className="w-5 h-5" /> },
+  {
+    name: "Danh mục",
+    to: "/admin/categories",
+    icon: <Tag className="w-5 h-5" />,
+  },
+  {
+    name: "Thương hiệu",
+    to: "/admin/brands",
+    icon: <Tag className="w-5 h-5" />,
+  },
+  {
+    name: "Đơn hàng",
+    to: "/admin/orders",
+    icon: <FileText className="w-5 h-5" />,
+  },
+  {
+    name: "Giảm giá thuê",
+    to: "/admin/rental-rules",
+    icon: <Tag className="w-5 h-5" />,
+  },
+  {
+    name: "Cài đặt",
+    to: "/admin/settings",
+    icon: <Settings className="w-5 h-5" />,
+  },
 ];
 
 export default function AdminSidebar({ open, onClose }) {
@@ -35,7 +55,7 @@ export default function AdminSidebar({ open, onClose }) {
             alt="Julia"
           />
           <div>
-            <span className="font-bold text-white tracking-wider text-sm font-mono">
+            <span className="font-bold text-white tracking-wider text-sm ">
               JULIA
             </span>
             <span className="block text-[10px] font-semibold uppercase tracking-wider text-indigo-400">
@@ -99,4 +119,3 @@ export default function AdminSidebar({ open, onClose }) {
     </>
   );
 }
-

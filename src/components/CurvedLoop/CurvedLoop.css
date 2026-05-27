@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #C8B39A; /* Sandy Beige */
-
+  background-color: var(--color-primary); /* Sandy Beige */
 }
 
 .curved-loop-svg {

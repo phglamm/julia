@@ -77,13 +77,13 @@ export default function LoginScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] via-white to-[#FFFFFF] flex items-center justify-center px-6 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white via-white to-white flex items-center justify-center px-6 py-12 relative overflow-hidden">
       {/* Decorative background pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #C8B39A 1px, transparent 1px)",
+            "radial-gradient(circle, var(--color-primary) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -99,7 +99,7 @@ export default function LoginScreen() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-20 left-20 text-[#EFE3CE] opacity-20"
+        className="absolute top-20 left-20 text-text-secondary opacity-20"
       >
         <Sparkles className="w-16 h-16" />
       </motion.div>
@@ -114,7 +114,7 @@ export default function LoginScreen() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-20 right-20 text-[#EFE3CE] opacity-20"
+        className="absolute bottom-20 right-20 text-text-secondary opacity-20"
       >
         <Sparkles className="w-20 h-20" />
       </motion.div>
@@ -128,23 +128,23 @@ export default function LoginScreen() {
         {/* Logo/Brand Section */}
         <motion.div variants={itemVariants} className="text-center mb-8">
           <motion.h1
-            className="text-5xl font-bold text-[#C8B39A] mb-2"
+            className="text-5xl font-bold text-text-primary mb-2"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
             Julia
           </motion.h1>
-          <p className="text-lg text-[#C8B39A]">Chào mừng trở lại</p>
+          <p className="text-lg text-text-primary">Chào mừng trở lại</p>
         </motion.div>
 
         {/* Login Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-white rounded-none shadow-md border border-[#F6F0E6]/50 overflow-hidden border border-[#F6F0E6]/30"
+          className="bg-white rounded-none shadow-md border border-background-alt/50 overflow-hidden border border-background-alt/30"
         >
-          <div className="bg-gradient-to-r from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] p-8 text-center">
-            <h2 className="text-2xl font-bold text-[#FFFFFF]">Đăng Nhập</h2>
-            <p className="text-[#FFFFFF]/80 mt-2">
+          <div className="bg-gradient-to-r from-primary via-primary to-primary p-8 text-center">
+            <h2 className="text-2xl font-bold text-white">Đăng Nhập</h2>
+            <p className="text-white/80 mt-2">
               Truy cập vào tài khoản của bạn
             </p>
           </div>
@@ -163,41 +163,41 @@ export default function LoginScreen() {
 
             {/* Username Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#C8B39A] font-semibold mb-2">
+              <label className="block text-text-primary font-semibold mb-2">
                 Tên đăng nhập
               </label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#C8B39A] w-5 h-5" />
+                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-primary w-5 h-5" />
                 <input
                   type="text"
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
                   placeholder="Nhập tên đăng nhập"
-                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#F6F0E6]/20 border-2 border-[#F6F0E6]/40 rounded-none focus:outline-none focus:border-[#EFE3CE] transition-all text-[#C8B39A] placeholder-[#C8B39A]/50"
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-br from-white/30 to-background-alt/20 border-2 border-background-alt/40 rounded-none focus:outline-none focus:border-secondary transition-all text-text-primary placeholder-primary/50"
                 />
               </div>
             </motion.div>
 
             {/* Password Field */}
             <motion.div variants={itemVariants} className="mb-6">
-              <label className="block text-[#C8B39A] font-semibold mb-2">
+              <label className="block text-text-primary font-semibold mb-2">
                 Mật khẩu
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#C8B39A] w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-text-primary w-5 h-5" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Nhập mật khẩu"
-                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-[#FFFFFF]/30 to-[#F6F0E6]/20 border-2 border-[#F6F0E6]/40 rounded-none focus:outline-none focus:border-[#EFE3CE] transition-all text-[#C8B39A] placeholder-[#C8B39A]/50"
+                  className="w-full pl-12 pr-12 py-4 bg-gradient-to-br from-white/30 to-background-alt/20 border-2 border-background-alt/40 rounded-none focus:outline-none focus:border-secondary transition-all text-text-primary placeholder-primary/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#C8B39A] hover:text-[#EFE3CE] transition-colors"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-text-primary hover:text-text-secondary transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -216,15 +216,15 @@ export default function LoginScreen() {
               <label className="flex items-center cursor-pointer group">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 text-[#EFE3CE] border-[#F6F0E6] rounded focus:ring-[#EFE3CE] cursor-pointer"
+                  className="w-4 h-4 text-text-secondary border-background-alt rounded focus:ring-secondary cursor-pointer"
                 />
-                <span className="ml-2 text-sm text-[#C8B39A] group-hover:text-[#C8B39A] transition-colors">
+                <span className="ml-2 text-sm text-text-primary group-hover:text-text-primary transition-colors">
                   Ghi nhớ đăng nhập
                 </span>
               </label>
               <a
                 href="#"
-                className="text-sm text-[#EFE3CE] hover:text-[#C8B39A] font-semibold transition-colors"
+                className="text-sm text-text-secondary hover:text-text-primary font-semibold transition-colors"
               >
                 Quên mật khẩu?
               </a>
@@ -241,7 +241,7 @@ export default function LoginScreen() {
               className={`w-full py-4 rounded-none font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-lg ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] text-white hover:shadow-xl"
+                  : "bg-gradient-to-r from-secondary to-primary text-white hover:shadow-xl"
               }`}
             >
               {loading ? (
@@ -269,20 +269,20 @@ export default function LoginScreen() {
             {/* Divider */}
             <motion.div variants={itemVariants} className="relative my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#F6F0E6]/40"></div>
+                <div className="w-full border-t border-background-alt/40"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-[#C8B39A]">hoặc</span>
+                <span className="px-4 bg-white text-text-primary">hoặc</span>
               </div>
             </motion.div>
 
             {/* Sign Up Link */}
             <motion.div variants={itemVariants} className="text-center">
-              <p className="text-[#C8B39A]">
+              <p className="text-text-primary">
                 Chưa có tài khoản?{" "}
                 <a
                   href={route.register}
-                  className="text-[#EFE3CE] hover:text-[#C8B39A] font-bold transition-colors"
+                  className="text-text-secondary hover:text-text-primary font-bold transition-colors"
                 >
                   Đăng ký ngay
                 </a>
@@ -294,14 +294,14 @@ export default function LoginScreen() {
         {/* Footer Text */}
         <motion.p
           variants={itemVariants}
-          className="text-center mt-8 text-sm text-[#C8B39A]"
+          className="text-center mt-8 text-sm text-text-primary"
         >
           Bằng việc đăng nhập, bạn đồng ý với{" "}
-          <a href="#" className="text-[#EFE3CE] hover:underline">
+          <a href="#" className="text-text-secondary hover:underline">
             Điều khoản dịch vụ
           </a>{" "}
           và{" "}
-          <a href="#" className="text-[#EFE3CE] hover:underline">
+          <a href="#" className="text-text-secondary hover:underline">
             Chính sách bảo mật
           </a>
         </motion.p>

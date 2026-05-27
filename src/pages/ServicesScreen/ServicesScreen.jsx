@@ -87,7 +87,7 @@ export default function ServicesScreen() {
       name: "Premium",
       price: "999.000đ",
       period: "/ năm",
-      color: "from-[#EFE3CE] to-[#C8B39A]",
+      color: "from-secondary to-primary",
       features: [
         "Giảm 20% mọi đơn hàng",
         "Miễn phí ship không giới hạn",
@@ -157,9 +157,9 @@ export default function ServicesScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6]">
+    <div className="min-h-screen bg-linear-to-br from-white to-background-alt">
       {/* Hero Section */}
-      <section className="relative w-full bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] py-24 lg:py-32 text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full bg-linear-to-br from-primary via-primary to-primary py-24 lg:py-32 text-center text-white overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -175,7 +175,7 @@ export default function ServicesScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-[#EFE3CE] opacity-60" />
+          <Sparkles className="w-8 h-8 text-text-secondary opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -187,7 +187,7 @@ export default function ServicesScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Crown className="w-6 h-6 text-[#EFE3CE] opacity-40" />
+          <Crown className="w-6 h-6 text-text-secondary opacity-40" />
         </motion.div>
 
         <motion.div
@@ -198,7 +198,7 @@ export default function ServicesScreen() {
         >
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-5xl lg:text-7xl font-bold mb-6 "
+            className=" text-5xl lg:text-7xl font-bold mb-6 "
           >
             Dịch Vụ Của Chúng Tôi
           </motion.h1>
@@ -211,14 +211,14 @@ export default function ServicesScreen() {
         </motion.div>
       </section>
 
-      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#C8B39A] font-bold"
+            className=" text-4xl lg:text-5xl text-center mb-16 text-text-primary font-bold"
           >
             Dịch Vụ Nổi Bật
           </motion.h2>
@@ -250,246 +250,29 @@ export default function ServicesScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-linear-to-br from-white to-[#FAF7F2] p-10 rounded-none text-center shadow-xl cursor-pointer group"
+                className="bg-linear-to-br from-white to-surface p-10 rounded-none text-center shadow-xl cursor-pointer group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="text-[#EFE3CE] mb-4 flex justify-center"
+                  className="text-text-secondary mb-4 flex justify-center"
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-2xl mb-3 text-[#C8B39A] font-bold group-hover:text-[#EFE3CE] transition-colors">
+                <h3 className="text-2xl mb-3 text-text-primary font-bold group-hover:text-text-secondary transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-[#C8B39A] leading-relaxed">{feature.desc}</p>
+                <p className="text-text-primary leading-relaxed">
+                  {feature.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
-
-      {/* Membership Plans Section */}
-      <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12 text-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl lg:text-5xl  text-[#C8B39A] text-center mb-6 font-bold"
-          >
-            Gói Membership
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-[#C8B39A] text-lg mb-16 max-w-3xl mx-auto"
-          >
-            Chọn gói phù hợp và tận hưởng đặc quyền cao cấp
-          </motion.p>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-          >
-            {membershipPlans.map((plan, idx) => (
-              <motion.div
-                key={idx}
-                variants={scaleVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className={`bg-white rounded-none overflow-hidden shadow-2xl flex flex-col ${
-                  plan.popular ? "ring-4 ring-[#EFE3CE]" : ""
-                }`}
-              >
-                {plan.popular && (
-                  <div className="bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white text-center py-2 font-bold">
-                    <Star className="w-4 h-4 inline mr-1" />
-                    PHỔ BIẾN NHẤT
-                  </div>
-                )}
-                <div
-                  className={`bg-linear-to-br ${plan.color} p-8 text-white text-center`}
-                >
-                  <Crown className="w-12 h-12 mx-auto mb-4" />
-                  <h3 className="text-3xl font-bold mb-2">{plan.name}</h3>
-                  <div className="text-4xl font-bold mb-2">{plan.price}</div>
-                  <div className="text-sm opacity-90">{plan.period}</div>
-                </div>
-                <div className="p-8 flex flex-col grow">
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                        <span className="text-[#C8B39A]">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-auto">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full py-4 rounded-none font-bold bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white"
-                    >
-                      Đăng Ký Ngay
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-          <section className="w-full bg-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
-            <div className="max-w-7xl mx-auto">
-              <motion.h2
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#C8B39A] font-bold"
-              >
-                Đặc Quyền Thành Viên
-              </motion.h2>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={containerVariants}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {membershipBenefits.map((benefit, idx) => (
-                  <motion.div
-                    key={idx}
-                    variants={scaleVariants}
-                    whileHover={{ scale: 1.05, y: -10 }}
-                    className="bg-white rounded-none p-8 text-center shadow-xl group"
-                  >
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                      className={` text-[#EFE3CE] w-20 h-20 rounded-none flex items-center justify-center mb-6 mx-auto`}
-                    >
-                      {benefit.icon}
-                    </motion.div>
-                    <h3 className="text-2xl font-bold text-[#C8B39A] mb-4 group-hover:text-[#EFE3CE] transition-colors">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-[#C8B39A] leading-relaxed">
-                      {benefit.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-          {/* Membership Registration Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-white rounded-none p-10 max-w-2xl mx-auto"
-          >
-            <h3 className="text-3xl font-bold text-[#C8B39A] mb-6 text-center">
-              Đăng Ký Thành Viên
-            </h3>
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[#C8B39A] font-semibold mb-2">
-                  Họ và Tên *
-                </label>
-                <input
-                  type="text"
-                  value={membershipForm.name}
-                  onChange={(e) =>
-                    setMembershipForm({
-                      ...membershipForm,
-                      name: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 rounded-none border-2 border-[#F6F0E6] focus:border-[#EFE3CE] outline-none transition-colors text-gray-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[#C8B39A] font-semibold mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  value={membershipForm.email}
-                  onChange={(e) =>
-                    setMembershipForm({
-                      ...membershipForm,
-                      email: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 rounded-none border-2 border-[#F6F0E6] focus:border-[#EFE3CE] outline-none transition-colors text-gray-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[#C8B39A] font-semibold mb-2">
-                  Số Điện Thoại *
-                </label>
-                <input
-                  type="tel"
-                  value={membershipForm.phone}
-                  onChange={(e) =>
-                    setMembershipForm({
-                      ...membershipForm,
-                      phone: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 rounded-none border-2 border-[#F6F0E6] focus:border-[#EFE3CE] outline-none transition-colors text-gray-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[#C8B39A] font-semibold mb-2">
-                  Chọn Gói Thành Viên *
-                </label>
-                <select
-                  value={membershipForm.plan}
-                  onChange={(e) =>
-                    setMembershipForm({
-                      ...membershipForm,
-                      plan: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-3 rounded-none border-2 border-[#F6F0E6] focus:border-[#EFE3CE] outline-none transition-colors text-gray-900"
-                >
-                  <option value="basic">Basic - 499.000đ/năm</option>
-                  <option value="premium">Premium - 999.000đ/năm</option>
-                  <option value="vip">VIP - 1.999.000đ/năm</option>
-                </select>
-              </div>
-
-              <motion.button
-                type="button"
-                onClick={handleMembershipSubmit}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 10px 40px rgba(212, 175, 55, 0.4)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 shadow-xl"
-              >
-                <Crown className="w-5 h-5" />
-                Đăng Ký Ngay
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefits of Membership */}
 
       {/* CTA Section */}
-      <section className="w-full bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
+      <section className="w-full bg-linear-to-br from-primary via-primary to-primary py-20 lg:py-28 px-6 lg:px-12 text-center text-white">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -505,19 +288,19 @@ export default function ServicesScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-[#EFE3CE]" />
+              <Sparkles className="w-16 h-16 text-text-secondary" />
             </motion.div>
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
-            className="font-serif text-4xl lg:text-5xl mb-6 font-bold"
+            className=" text-4xl lg:text-5xl mb-6 font-bold"
           >
             Bắt Đầu Trải Nghiệm Ngay Hôm Nay
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl mb-10 text-[#FFFFFF] leading-relaxed"
+            className="text-xl mb-10 text-white leading-relaxed"
           >
             Liên hệ với chúng tôi để được tư vấn chi tiết về các dịch vụ
           </motion.p>
@@ -532,7 +315,7 @@ export default function ServicesScreen() {
                 boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#EFE3CE] text-[#C8B39A] px-8 py-4 rounded-none text-lg font-bold shadow-xl flex items-center gap-2"
+              className="bg-secondary text-text-primary px-8 py-4 rounded-none text-lg font-bold shadow-xl flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Hotline: +84 xxx xxx xxx
@@ -541,10 +324,10 @@ export default function ServicesScreen() {
               whileHover={{
                 scale: 1.05,
                 backgroundColor: "#FFFFFF",
-                color: "#C8B39A",
+                color: "var(--color-primary)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-[#FFFFFF] px-8 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all flex items-center gap-2"
+              className="bg-transparent text-white px-8 py-4 rounded-none text-lg font-bold border-2 border-white transition-all flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Email: hello@thejulia.vn
@@ -555,5 +338,3 @@ export default function ServicesScreen() {
     </div>
   );
 }
-
-

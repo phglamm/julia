@@ -92,7 +92,7 @@ export default function OrderFailedScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-br from-white to-background-alt flex items-center justify-center p-6">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -160,7 +160,7 @@ export default function OrderFailedScreen() {
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] p-8 text-center relative overflow-hidden">
+          <div className="bg-linear-to-br from-primary via-primary to-primary p-8 text-center relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -171,13 +171,13 @@ export default function OrderFailedScreen() {
             ></div>
             <motion.h1
               variants={itemVariants}
-              className="text-4xl lg:text-5xl font-bold text-[#FFFFFF] mb-3 relative z-10"
+              className="text-4xl lg:text-5xl font-bold text-white mb-3 relative z-10"
             >
               Thanh Toán Thất Bại
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-lg text-[#FFFFFF] opacity-90 relative z-10"
+              className="text-lg text-white opacity-90 relative z-10"
             >
               Đơn hàng của bạn chưa được hoàn tất
             </motion.p>
@@ -210,15 +210,15 @@ export default function OrderFailedScreen() {
             {errorDetails && (
               <motion.div
                 variants={itemVariants}
-                className="bg-linear-to-br from-[#FFFFFF] to-[#FAF7F2] rounded-2xl p-6"
+                className="bg-linear-to-br from-white to-surface rounded-2xl p-6"
               >
-                <h3 className="text-xl font-bold text-[#C8B39A] mb-4 flex items-center gap-2">
-                  <AlertTriangle className="w-6 h-6 text-[#EFE3CE]" />
+                <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                  <AlertTriangle className="w-6 h-6 text-text-secondary" />
                   Chi Tiết Lỗi
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#C8B39A] font-semibold">
+                    <span className="text-text-primary font-semibold">
                       Mã lỗi:
                     </span>
                     <span className="text-[#ef4444] font-bold">
@@ -227,19 +227,19 @@ export default function OrderFailedScreen() {
                   </div>
                   {errorDetails.orderId && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[#C8B39A] font-semibold">
+                      <span className="text-text-primary font-semibold">
                         Mã tham chiếu:
                       </span>
-                      <span className="text-[#C8B39A] font-medium">
+                      <span className="text-text-primary font-medium">
                         {errorDetails.orderId}
                       </span>
                     </div>
                   )}
                   <div className="flex justify-between items-center">
-                    <span className="text-[#C8B39A] font-semibold">
+                    <span className="text-text-primary font-semibold">
                       Thời gian:
                     </span>
-                    <span className="text-[#C8B39A] font-medium">
+                    <span className="text-text-primary font-medium">
                       {new Date().toLocaleString("vi-VN")}
                     </span>
                   </div>
@@ -249,24 +249,24 @@ export default function OrderFailedScreen() {
 
             {/* Common Reasons */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-[#C8B39A] mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-[#EFE3CE]" />
+              <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-6 h-6 text-text-secondary" />
                 Nguyên Nhân Thường Gặp
               </h3>
               <div className="space-y-3">
                 {commonReasons.map((reason, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 bg-[#FAF7F2] rounded-xl p-4"
+                    className="flex items-start gap-4 bg-surface rounded-xl p-4"
                   >
                     <div className="bg-[#fca5a5] rounded-full p-2 shrink-0">
                       <reason.icon className="w-5 h-5 text-[#991b1b]" />
                     </div>
                     <div>
-                      <p className="font-semibold text-[#C8B39A] mb-1">
+                      <p className="font-semibold text-text-primary mb-1">
                         {reason.title}
                       </p>
-                      <p className="text-[#C8B39A] text-sm">
+                      <p className="text-text-primary text-sm">
                         {reason.description}
                       </p>
                     </div>
@@ -307,10 +307,10 @@ export default function OrderFailedScreen() {
             {/* Contact Support */}
             <motion.div
               variants={itemVariants}
-              className="bg-linear-to-br from-[#C8B39A] to-[#C8B39A] rounded-2xl p-6 text-[#FFFFFF]"
+              className="bg-linear-to-br from-primary to-primary rounded-2xl p-6 text-white"
             >
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Phone className="w-5 h-5 text-[#EFE3CE]" />
+                <Phone className="w-5 h-5 text-text-secondary" />
                 Cần Hỗ Trợ?
               </h3>
               <p className="text-sm mb-4 opacity-90">
@@ -318,11 +318,11 @@ export default function OrderFailedScreen() {
               </p>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#EFE3CE]" />
+                  <Mail className="w-5 h-5 text-text-secondary" />
                   <span>support@julia.vn</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#EFE3CE]" />
+                  <Phone className="w-5 h-5 text-text-secondary" />
                   <span>0123 456 789</span>
                 </div>
               </div>
@@ -337,7 +337,7 @@ export default function OrderFailedScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate(-1)}
-                className="flex-1 py-4 rounded-full bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-linear-to-r from-secondary to-primary text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-5 h-5" />
                 Thử Lại
@@ -346,7 +346,7 @@ export default function OrderFailedScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/bst")}
-                className="flex-1 py-4 rounded-full bg-white border-2 border-[#C8B39A] text-[#C8B39A] text-lg font-bold shadow-lg flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-white border-2 border-primary text-text-primary text-lg font-bold shadow-lg flex items-center justify-center gap-2"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Quay Lại Cửa Hàng
@@ -358,7 +358,7 @@ export default function OrderFailedScreen() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate("/")}
-              className="w-full py-3 rounded-full bg-[#FAF7F2] text-[#C8B39A] font-semibold flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-full bg-surface text-text-primary font-semibold flex items-center justify-center gap-2"
             >
               <Home className="w-5 h-5" />
               Về Trang Chủ
@@ -369,7 +369,7 @@ export default function OrderFailedScreen() {
         {/* Footer Note */}
         <motion.p
           variants={itemVariants}
-          className="text-center text-[#C8B39A] mt-6 text-sm"
+          className="text-center text-text-primary mt-6 text-sm"
         >
           Không có khoản tiền nào bị trừ từ tài khoản của bạn
         </motion.p>
