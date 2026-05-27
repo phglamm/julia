@@ -211,10 +211,10 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8]">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6]">
       <div className="h-[calc(100vh-5rem)] flex flex-col w-full">
         {/* Hero Section */}
-        <section className="relative w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] flex-grow text-center text-[#FFFFFF] overflow-hidden flex items-center justify-center">
+        <section className="relative w-full bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] flex-grow text-center text-[#FFFFFF] overflow-hidden flex items-center justify-center">
           {/* Background video (show on sm+). Keep full-bleed and cover the hero */}
           <video
             className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
@@ -270,7 +270,7 @@ const HomeScreen = () => {
                 }}
                 onClick={() => navigate(route.bst)}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#C599A6] text-[#682535] px-12 py-4 rounded-none text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
+                className="bg-[#EFE3CE] text-[#C8B39A] px-12 py-4 rounded-none text-lg font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:cursor-pointer"
               >
                 <span>Xem Bộ Sưu Tập</span>
                 <ChevronRight className="w-5 h-5" />
@@ -279,7 +279,7 @@ const HomeScreen = () => {
                 whileHover={{
                   scale: 1.1,
                   backgroundColor: "#FFFFFF",
-                  color: "#682535",
+                  color: "#C8B39A",
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-transparent text-[#FFFFFF] px-12 py-4 rounded-none text-lg font-bold border-2 border-[#FFFFFF] transition-all duration-300"
@@ -298,14 +298,14 @@ const HomeScreen = () => {
       </div>
 
       {/* Features Section */}
-      <section className="w-full bg-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#F6F0E6] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl text-center mb-16 text-[#C8B39A] font-bold"
           >
             Tại Sao Chọn Julia?
           </motion.h2>
@@ -337,19 +337,19 @@ const HomeScreen = () => {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-linear-to-br from-white to-[#F6F3E6] p-10 rounded-none text-center shadow-sm border border-[#EAD2D8]/50 cursor-pointer group"
+                className="bg-linear-to-br from-white to-[#FAF7F2] p-10 rounded-none text-center shadow-sm border border-[#F6F0E6]/50 cursor-pointer group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="text-[#C599A6] mb-4 flex justify-center"
+                  className="text-[#EFE3CE] mb-4 flex justify-center"
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-2xl mb-3 text-[#682535] font-bold group-hover:text-[#C599A6] transition-colors">
+                <h3 className="text-2xl mb-3 text-[#C8B39A] font-bold group-hover:text-[#EFE3CE] transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-[#874D5F] leading-relaxed">{feature.desc}</p>
+                <p className="text-[#C8B39A] leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -357,13 +357,13 @@ const HomeScreen = () => {
       </section>
 
       {/* Sản phẩm mới về - New Arrivals */}
-      <section className="w-full bg-[#F6F3E6] py-20 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
+      <section className="w-full bg-[#FAF7F2] py-20 lg:py-28 px-6 lg:px-12 relative overflow-hidden">
         {/* Decorative pattern overlay */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #682535 1px, transparent 1px)",
+              "radial-gradient(circle, #C8B39A 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         ></div>
@@ -376,10 +376,10 @@ const HomeScreen = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-serif text-4xl lg:text-5xl text-[#682535] font-bold mb-4">
+            <h2 className="font-serif text-4xl lg:text-5xl text-[#C8B39A] font-bold mb-4">
               Sản Phẩm Mới Về
             </h2>
-            <p className="text-lg text-[#874D5F] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-[#C8B39A] max-w-2xl mx-auto leading-relaxed">
               Khám phá những thiết kế độc đáo và sang trọng nhất trong bộ sưu
               tập của chúng tôi
             </p>
@@ -396,9 +396,9 @@ const HomeScreen = () => {
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 className="inline-block"
               >
-                <Sparkles className="w-12 h-12 text-[#C599A6]" />
+                <Sparkles className="w-12 h-12 text-[#EFE3CE]" />
               </motion.div>
-              <p className="text-2xl text-[#874D5F] font-semibold mt-4">
+              <p className="text-2xl text-[#C8B39A] font-semibold mt-4">
                 Đang tải sản phẩm mới...
               </p>
             </motion.div>
@@ -447,7 +447,7 @@ const HomeScreen = () => {
                       className="bg-white rounded-none shadow-2xs overflow-hidden cursor-pointer h-[80%] relative"
                     >
                       {/* Image Container */}
-                      <div className="h-80 bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center overflow-hidden relative">
+                      <div className="h-80 bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6] flex items-center justify-center overflow-hidden relative">
                         <motion.img
                           whileHover={{ scale: 1.15 }}
                           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -461,12 +461,12 @@ const HomeScreen = () => {
                         {/* Tags */}
                         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
                           {p.condition === "new" && (
-                            <span className="px-2 py-1 bg-[#682535] text-[#FFFFFF] text-[10px] font-bold uppercase rounded-none shadow-sm">
+                            <span className="px-2 py-1 bg-[#C8B39A] text-[#FFFFFF] text-[10px] font-bold uppercase rounded-none shadow-sm">
                               Mới
                             </span>
                           )}
                           {p.brand && (
-                            <span className="px-2 py-1 bg-[#FFFFFF]/90 text-[#874D5F] text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-[#EAD2D8]/50">
+                            <span className="px-2 py-1 bg-[#FFFFFF]/90 text-[#C8B39A] text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-[#F6F0E6]/50">
                               {typeof p.brand === "object"
                                 ? p.brand.name
                                 : p.brand}
@@ -479,7 +479,7 @@ const HomeScreen = () => {
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute inset-0 bg-linear-to-t from-[#682535]/60 via-transparent to-transparent"
+                          className="absolute inset-0 bg-linear-to-t from-[#C8B39A]/60 via-transparent to-transparent"
                         >
                           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                             <motion.div
@@ -504,19 +504,19 @@ const HomeScreen = () => {
                       </div>
 
                       {/* Product Info */}
-                      <div className="p-6 bg-linear-to-br from-white to-[#F6F3E6]">
-                        <h3 className="text-xl font-bold text-[#682535] line-clamp-2 min-h-14 group-hover:text-[#C599A6] transition-colors duration-300">
+                      <div className="p-6 bg-linear-to-br from-white to-[#FAF7F2]">
+                        <h3 className="text-xl font-bold text-[#C8B39A] line-clamp-2 min-h-14 group-hover:text-[#EFE3CE] transition-colors duration-300">
                           {p.title}
                         </h3>
 
                         {p.shortDescription && (
-                          <p className="text-sm text-[#874D5F] mb-4 line-clamp-2 leading-relaxed">
+                          <p className="text-sm text-[#C8B39A] mb-4 line-clamp-2 leading-relaxed">
                             {p.shortDescription}
                           </p>
                         )}
 
-                        <div className="flex items-center gap-2 text-xs text-[#874D5F] mb-4">
-                          <span className="px-2 py-1 bg-[#F6F3E6] rounded-none">
+                        <div className="flex items-center gap-2 text-xs text-[#C8B39A] mb-4">
+                          <span className="px-2 py-1 bg-[#FAF7F2] rounded-none">
                             {p.size}
                           </span>
                           <span>•</span>
@@ -529,17 +529,17 @@ const HomeScreen = () => {
                           </span>
                         </div>
 
-                        <div className="mt-auto pt-4 border-t border-[#EAD2D8]/30">
+                        <div className="mt-auto pt-4 border-t border-[#F6F0E6]/30">
                           <div className="flex flex-col gap-1 mb-4">
-                            <p className="text-sm font-bold text-[#682535]">
+                            <p className="text-sm font-bold text-[#C8B39A]">
                               Giá trị:{" "}
                               {formatPrice(
                                 p.depositAmount || p.price,
                               )}
                             </p>
-                            <p className="text-xs text-[#874D5F]">
+                            <p className="text-xs text-[#C8B39A]">
                               Phí thuê:{" "}
-                              <span className="font-bold text-[#C599A6] text-base">
+                              <span className="font-bold text-[#EFE3CE] text-base">
                                 {formatPrice(
                                   p.rentalPrice || p.price,
                                 )}
@@ -554,7 +554,7 @@ const HomeScreen = () => {
                               e.stopPropagation();
                               navigate(`/product/${p._id}`);
                             }}
-                            className="w-full py-3 bg-[#682535] text-[#FFFFFF] rounded-none font-bold shadow-sm hover:bg-[#874D5F] transition-colors flex items-center justify-center gap-2"
+                            className="w-full py-3 bg-[#C8B39A] text-[#FFFFFF] rounded-none font-bold shadow-sm hover:bg-[#C8B39A] transition-colors flex items-center justify-center gap-2"
                           >
                             Xem chi tiết
                             <ChevronRight className="w-4 h-4" />
@@ -584,7 +584,7 @@ const HomeScreen = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate(route.bst)}
-                className="bg-linear-to-r from-[#682535] to-[#874D5F] text-[#FFFFFF] px-10 py-4 rounded-none text-lg font-bold shadow-sm border border-[#EAD2D8]/50 transition-all duration-300 inline-flex items-center gap-3 group"
+                className="bg-linear-to-r from-[#C8B39A] to-[#C8B39A] text-[#FFFFFF] px-10 py-4 rounded-none text-lg font-bold shadow-sm border border-[#F6F0E6]/50 transition-all duration-300 inline-flex items-center gap-3 group"
               >
                 <span>Xem Tất Cả Sản Phẩm</span>
                 <motion.div
@@ -600,14 +600,14 @@ const HomeScreen = () => {
       </section>
 
       {/* How It Works */}
-      <section className="w-full bg-[#EAD2D8] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-[#F6F0E6] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-serif text-4xl lg:text-5xl mb-16 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-16 text-[#C8B39A] font-bold"
           >
             Quy Trình Thuê Đơn Giản
           </motion.h2>
@@ -652,21 +652,21 @@ const HomeScreen = () => {
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="bg-linear-to-br from-[#682535] to-[#874D5F] text-[#FFFFFF] w-20 h-20 rounded-none flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#EAD2D8]/50"
+                  className="bg-linear-to-br from-[#C8B39A] to-[#C8B39A] text-[#FFFFFF] w-20 h-20 rounded-none flex items-center justify-center mx-auto mb-6 shadow-sm border border-[#F6F0E6]/50"
                 >
                   {item.icon}
                 </motion.div>
                 {/* <motion.div
                   initial={{ opacity: 0.2 }}
                   whileHover={{ opacity: 0.4, scale: 1.1 }}
-                  className="absolute top-2 right-[20%] text-6xl font-bold text-[#C599A6] opacity-20"
+                  className="absolute top-2 right-[20%] text-6xl font-bold text-[#EFE3CE] opacity-20"
                 >
                   {item.step}
                 </motion.div> */}
-                <h3 className="text-2xl mb-3 text-[#682535] font-bold group-hover:text-[#C599A6] transition-colors duration-300">
+                <h3 className="text-2xl mb-3 text-[#C8B39A] font-bold group-hover:text-[#EFE3CE] transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-[#874D5F] leading-relaxed">{item.desc}</p>
+                <p className="text-[#C8B39A] leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -674,7 +674,7 @@ const HomeScreen = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="w-full bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] text-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] text-[#FFFFFF] py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -696,7 +696,7 @@ const HomeScreen = () => {
               <motion.div
                 key={testimonial.id}
                 variants={scaleVariants}
-                whileHover={{ scale: 1.05, borderColor: "#C599A6" }}
+                whileHover={{ scale: 1.05, borderColor: "#EFE3CE" }}
                 className="bg-white/10 backdrop-blur-lg p-8 rounded-none border border-white/20 cursor-pointer"
               >
                 <div className="flex gap-1 mb-4 justify-center">
@@ -708,14 +708,14 @@ const HomeScreen = () => {
                       transition={{ delay: i * 0.1, duration: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      <Star className="w-5 h-5 text-[#C599A6] fill-[#C599A6]" />
+                      <Star className="w-5 h-5 text-[#EFE3CE] fill-[#EFE3CE]" />
                     </motion.div>
                   ))}
                 </div>
                 <p className="text-lg mb-4 italic leading-relaxed">
                   "{testimonial.text}"
                 </p>
-                <p className="font-bold text-[#C599A6]">— {testimonial.name}</p>
+                <p className="font-bold text-[#EFE3CE]">— {testimonial.name}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -723,7 +723,7 @@ const HomeScreen = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-[#F6F3E6] py-20 lg:py-28 px-6 lg:px-12 text-center">
+      <section className="w-full bg-[#FAF7F2] py-20 lg:py-28 px-6 lg:px-12 text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -733,13 +733,13 @@ const HomeScreen = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-serif text-4xl lg:text-5xl mb-6 text-[#682535] font-bold"
+            className="font-serif text-4xl lg:text-5xl mb-6 text-[#C8B39A] font-bold"
           >
             Sẵn Sàng Nâng Tầm Phong Cách?
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl mb-10 text-[#874D5F] leading-relaxed"
+            className="text-xl mb-10 text-[#C8B39A] leading-relaxed"
           >
             Tham gia cùng hàng trăm người yêu thời trang chọn sự xa xỉ bền vững
           </motion.p>
@@ -750,7 +750,7 @@ const HomeScreen = () => {
               boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-[#682535] px-12 py-5 rounded-none text-xl font-bold shadow-sm border border-[#EAD2D8]/50 transition-all duration-300"
+            className="bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-[#C8B39A] px-12 py-5 rounded-none text-xl font-bold shadow-sm border border-[#F6F0E6]/50 transition-all duration-300"
           >
             Khám Phá Bộ Sưu Tập
           </motion.button>
@@ -778,7 +778,7 @@ const HomeScreen = () => {
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute top-4 right-4 bg-[#682535] text-[#FFFFFF] rounded-none w-12 h-12 flex items-center justify-center z-10 hover:bg-[#874D5F] transition-colors"
+                className="absolute top-4 right-4 bg-[#C8B39A] text-[#FFFFFF] rounded-none w-12 h-12 flex items-center justify-center z-10 hover:bg-[#C8B39A] transition-colors"
                 onClick={() => setSelectedProduct(null)}
               >
                 <X className="w-6 h-6" />
@@ -787,7 +787,7 @@ const HomeScreen = () => {
                 initial={{ scale: 1.2 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] h-96 flex items-center justify-center text-[12rem] rounded-t-3xl overflow-hidden"
+                className="bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6] h-96 flex items-center justify-center text-[12rem] rounded-t-3xl overflow-hidden"
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
@@ -805,7 +805,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-4xl mb-4 text-[#682535] font-bold"
+                  className="text-4xl mb-4 text-[#C8B39A] font-bold"
                 >
                   {selectedProduct.name}
                 </motion.h2>
@@ -824,17 +824,17 @@ const HomeScreen = () => {
                         transition={{ delay: 0.4 + i * 0.1 }}
                       >
                         <Star
-                          className="w-5 h-5 text-[#C599A6]"
+                          className="w-5 h-5 text-[#EFE3CE]"
                           fill={
                             i < Math.floor(selectedProduct.rating)
-                              ? "#C599A6"
+                              ? "#EFE3CE"
                               : "none"
                           }
                         />
                       </motion.div>
                     ))}
                   </div>
-                  <span className="text-[#874D5F]">
+                  <span className="text-[#C8B39A]">
                     {selectedProduct.rating} ({selectedProduct.reviews} đánh
                     giá)
                   </span>
@@ -843,7 +843,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-4xl font-bold text-[#682535] mb-2"
+                  className="text-4xl font-bold text-[#C8B39A] mb-2"
                 >
                   {formatPrice(selectedProduct.price)}{" "}
                   <span className="text-lg font-normal">/ 3 ngày</span>
@@ -852,7 +852,7 @@ const HomeScreen = () => {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-[#874D5F] mb-8 leading-relaxed text-lg"
+                  className="text-[#C8B39A] mb-8 leading-relaxed text-lg"
                 >
                   Bộ trang phục thanh lịch hoàn hảo cho mọi dịp đặc biệt. Được
                   tuyển chọn cẩn thận và vệ sinh chuyên nghiệp sau mỗi lần thuê.
@@ -871,7 +871,7 @@ const HomeScreen = () => {
                   whileTap={{ scale: selectedProduct.available ? 0.95 : 1 }}
                   className={`w-full py-5 rounded-none text-xl font-bold flex items-center justify-center gap-2 transition-all ${
                     selectedProduct.available
-                      ? "bg-linear-to-r from-[#C599A6] to-[#A47784] text-white"
+                      ? "bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white"
                       : "bg-gray-400 text-gray-700 cursor-not-allowed"
                   }`}
                   disabled={!selectedProduct.available}
@@ -891,3 +891,5 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+

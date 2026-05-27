@@ -62,7 +62,7 @@ const CartScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -71,10 +71,10 @@ const CartScreen = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-[#682535] mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-[#C8B39A] mb-4">
             Giỏ Hàng Của Bạn
           </h1>
-          <p className="text-lg text-[#874D5F]">
+          <p className="text-lg text-[#C8B39A]">
             {cartItems.length} sản phẩm đang chờ bạn
           </p>
         </motion.div>
@@ -84,19 +84,19 @@ const CartScreen = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-none shadow-md border border-[#EAD2D8]/50 p-12 text-center"
+            className="bg-white rounded-none shadow-md border border-[#F6F0E6]/50 p-12 text-center"
           >
-            <ShoppingBag className="w-24 h-24 text-[#C599A6] mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-[#682535] mb-4">
+            <ShoppingBag className="w-24 h-24 text-[#EFE3CE] mx-auto mb-6" />
+            <h2 className="text-3xl font-bold text-[#C8B39A] mb-4">
               Giỏ Hàng Trống
             </h2>
-            <p className="text-[#874D5F] mb-8">
+            <p className="text-[#C8B39A] mb-8">
               Hãy khám phá bộ sưu tập của chúng tôi và thêm sản phẩm yêu thích!
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white px-8 py-4 rounded-none font-bold text-lg shadow-lg inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] text-white px-8 py-4 rounded-none font-bold text-lg shadow-lg inline-flex items-center gap-2"
             >
               Khám Phá Ngay
               <ArrowRight className="w-5 h-5" />
@@ -120,14 +120,14 @@ const CartScreen = () => {
                 >
                   <div className="flex flex-col sm:flex-row gap-6 p-5">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8] shadow-inner">
+                    <div className="relative w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6] shadow-inner">
                       <img
                         src={item.images?.[0] || item.imageLink}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
                       {item.brand && (
-                        <div className="absolute top-2 left-2 bg-[#FFFFFF]/90 backdrop-blur-sm text-[#874D5F] px-2 py-1 rounded-md text-[10px] font-bold shadow-sm uppercase">
+                        <div className="absolute top-2 left-2 bg-[#FFFFFF]/90 backdrop-blur-sm text-[#C8B39A] px-2 py-1 rounded-md text-[10px] font-bold shadow-sm uppercase">
                           {typeof item.brand === "object"
                             ? item.brand?.name
                             : item.brand}
@@ -137,28 +137,28 @@ const CartScreen = () => {
 
                     {/* Product Info */}
                     <div className="flex-1 flex flex-col justify-center pr-8">
-                      <h3 className="text-xl font-bold text-[#682535] mb-1">
+                      <h3 className="text-xl font-bold text-[#C8B39A] mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-[#874D5F] mb-3 line-clamp-1 opacity-80">
+                      <p className="text-sm text-[#C8B39A] mb-3 line-clamp-1 opacity-80">
                         {item.shortDescription}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#874D5F] mb-3">
-                        <span className="flex items-center gap-1.5 bg-[#F6F3E6] px-3 py-1.5 rounded-lg border border-[#EAD2D8]/50">
-                          <Package className="w-4 h-4 text-[#C599A6]" />
+                      <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#C8B39A] mb-3">
+                        <span className="flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-lg border border-[#F6F0E6]/50">
+                          <Package className="w-4 h-4 text-[#EFE3CE]" />
                           Size: {item.size}
                         </span>
-                        <span className="flex items-center gap-1.5 bg-[#F6F3E6] px-3 py-1.5 rounded-lg border border-[#EAD2D8]/50">
-                          <Calendar className="w-4 h-4 text-[#C599A6]" />
+                        <span className="flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-lg border border-[#F6F0E6]/50">
+                          <Calendar className="w-4 h-4 text-[#EFE3CE]" />
                           {item.rentalDays} ngày
                         </span>
                       </div>
 
                       <div className="mt-auto">
-                        <p className="text-sm font-semibold text-[#874D5F]">
+                        <p className="text-sm font-semibold text-[#C8B39A]">
                           Giá trị cọc:{" "}
-                          <span className="font-bold text-[#C599A6]">
+                          <span className="font-bold text-[#EFE3CE]">
                             {formatPrice(item.depositAmount)}
                           </span>
                         </p>
@@ -166,14 +166,14 @@ const CartScreen = () => {
                     </div>
 
                     {/* Right side (Price & Actions) */}
-                    <div className="flex flex-row items-center justify-between sm:justify-end sm:pl-6 sm:border-l border-[#EAD2D8]/40 gap-6 shrink-0 pt-4 sm:pt-0 border-t sm:border-t-0 mt-2 sm:mt-0">
+                    <div className="flex flex-row items-center justify-between sm:justify-end sm:pl-6 sm:border-l border-[#F6F0E6]/40 gap-6 shrink-0 pt-4 sm:pt-0 border-t sm:border-t-0 mt-2 sm:mt-0">
                       <div className="text-left sm:text-right">
-                        <p className="text-2xl font-bold text-[#682535] whitespace-nowrap mb-1">
+                        <p className="text-2xl font-bold text-[#C8B39A] whitespace-nowrap mb-1">
                           {formatPrice(
                             item.rentFee || item.rentalPrice * item.rentalDays,
                           )}
                         </p>
-                        <p className="text-xs font-semibold text-[#C599A6] uppercase tracking-wider bg-[#F6F3E6] inline-block px-3 py-1 rounded-full">
+                        <p className="text-xs font-semibold text-[#C8B39A] uppercase tracking-wider bg-[#FAF7F2] inline-block px-3 py-1 rounded-full">
                           Tổng phí thuê
                         </p>
                       </div>
@@ -201,35 +201,35 @@ const CartScreen = () => {
               className="lg:col-span-1"
             >
               <div className="bg-white rounded-none shadow-lg p-6 sticky top-24">
-                <h2 className="text-2xl font-bold text-[#682535] mb-6 flex items-center gap-2">
-                  <CreditCard className="w-6 h-6 text-[#C599A6]" />
+                <h2 className="text-2xl font-bold text-[#C8B39A] mb-6 flex items-center gap-2">
+                  <CreditCard className="w-6 h-6 text-[#EFE3CE]" />
                   Tổng Đơn Hàng
                 </h2>
 
                 {/* Price Breakdown */}
-                <div className="space-y-4 mb-6 pb-6 border-b-2 border-[#C599A6]/20">
-                  <div className="flex justify-between text-[#874D5F]">
+                <div className="space-y-4 mb-6 pb-6 border-b-2 border-[#EFE3CE]/20">
+                  <div className="flex justify-between text-[#C8B39A]">
                     <span>Tổng phí thuê</span>
                     <span className="font-semibold">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-[#874D5F]">
+                  <div className="flex justify-between text-[#C8B39A]">
                     <span>Tổng giá trị sản phẩm</span>
                     <span className="font-semibold">
                       {formatPrice(upfrontTotal)}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-[#874D5F]">
+                  <div className="flex justify-between text-[#C8B39A]">
                     <span>Phí vận chuyển</span>
                     <span className="font-semibold">
                       {shipping === 0 ? "Miễn phí" : formatPrice(shipping)}
                     </span>
                   </div>
                   {shipping > 0 && (
-                    <p className="text-xs text-[#874D5F] italic">
+                    <p className="text-xs text-[#C8B39A] italic">
                       Miễn phí vận chuyển cho đơn hàng trên 500.000đ
                     </p>
                   )}
@@ -237,10 +237,10 @@ const CartScreen = () => {
 
                 {/* Total */}
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-xl font-bold text-[#682535]">
+                  <span className="text-xl font-bold text-[#C8B39A]">
                     Tổng Cộng
                   </span>
-                  <span className="text-3xl font-bold text-[#C599A6]">
+                  <span className="text-3xl font-bold text-[#EFE3CE]">
                     {formatPrice(total)}
                   </span>
                 </div>
@@ -253,14 +253,14 @@ const CartScreen = () => {
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => navigate(route.payment)}
-                  className="w-full bg-gradient-to-r from-[#C599A6] to-[#A47784] text-white py-4 rounded-none font-bold text-lg shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] text-white py-4 rounded-none font-bold text-lg shadow-lg flex items-center justify-center gap-2"
                 >
                   Thanh Toán Ngay
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
 
                 {/* Security Badge */}
-                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#874D5F]">
+                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#C8B39A]">
                   <div className="w-6 h-6 bg-green-100 rounded-none flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-green-600"
@@ -286,3 +286,5 @@ const CartScreen = () => {
 };
 
 export default CartScreen;
+
+

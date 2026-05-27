@@ -174,9 +174,9 @@ export default function PaymentScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6]">
       {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-br from-[#682535] via-[#874D5F] to-[#682535] py-20 lg:py-28 text-center text-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full bg-gradient-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] py-20 lg:py-28 text-center text-[#FFFFFF] overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -192,7 +192,7 @@ export default function PaymentScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-[#C599A6] opacity-60" />
+          <Sparkles className="w-8 h-8 text-[#EFE3CE] opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -204,7 +204,7 @@ export default function PaymentScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-[#C599A6] opacity-40" />
+          <Sparkles className="w-6 h-6 text-[#EFE3CE] opacity-40" />
         </motion.div>
 
         <motion.div
@@ -218,7 +218,7 @@ export default function PaymentScreen() {
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/cart")}
-            className="mb-6 inline-flex items-center gap-2 text-[#FFFFFF] hover:text-[#C599A6] transition-colors"
+            className="mb-6 inline-flex items-center gap-2 text-[#FFFFFF] hover:text-[#EFE3CE] transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             <span className="text-lg font-semibold">Quay lại giỏ hàng</span>
@@ -250,11 +250,11 @@ export default function PaymentScreen() {
           <form onSubmit={handleSubmit}>
             {/* Terms (Full width at top) */}
             <motion.div variants={itemVariants} className="mb-8">
-              <div className="bg-gradient-to-br from-[#FFFFFF] to-[#F6F3E6] rounded-2xl p-6 border border-[#EAD2D8] shadow-md">
+              <div className="bg-gradient-to-br from-[#FFFFFF] to-[#FAF7F2] rounded-2xl p-6 border border-[#F6F0E6] shadow-md">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#C599A6] shrink-0 mt-1" />
-                  <div className="text-[#874D5F] text-sm leading-relaxed">
-                    <p className="font-semibold mb-2 text-base text-[#682535]">Điều khoản thuê sản phẩm:</p>
+                  <CheckCircle className="w-6 h-6 text-[#EFE3CE] shrink-0 mt-1" />
+                  <div className="text-[#C8B39A] text-sm leading-relaxed">
+                    <p className="font-semibold mb-2 text-base text-[#C8B39A]">Điều khoản thuê sản phẩm:</p>
                     <ul className="list-disc list-inside space-y-1">
                       <li>Thời gian thuê phụ thuộc vào từng sản phẩm</li>
                       <li>Bạn cần thanh toán 100% giá trị sản phẩm như một khoản cọc</li>
@@ -270,9 +270,9 @@ export default function PaymentScreen() {
               {/* Payment Form (Left) */}
               <motion.div variants={itemVariants}>
                 <div className="bg-white rounded-3xl shadow-xl overflow-hidden sticky top-6">
-                  <div className="bg-gradient-to-br from-[#682535] to-[#874D5F] p-6">
+                  <div className="bg-gradient-to-br from-[#C8B39A] to-[#C8B39A] p-6">
                     <h2 className="text-2xl font-bold text-[#FFFFFF] flex items-center gap-2">
-                      <User className="w-6 h-6 text-[#C599A6]" />
+                      <User className="w-6 h-6 text-[#EFE3CE]" />
                       Thông Tin Khách Hàng
                     </h2>
                   </div>
@@ -280,7 +280,7 @@ export default function PaymentScreen() {
                   <div className="p-6 space-y-6">
                     {/* Full Name */}
                     <div>
-                      <label className="flex items-center gap-2 text-[#682535] font-semibold mb-2">
+                      <label className="flex items-center gap-2 text-[#C8B39A] font-semibold mb-2">
                         Họ và Tên <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -292,8 +292,8 @@ export default function PaymentScreen() {
                         className={`w-full px-4 py-3 rounded-xl border-2 ${
                           formErrors.fullName
                             ? "border-red-300 bg-red-50"
-                            : "border-[#EAD2D8] bg-[#F6F3E6]"
-                        } focus:outline-none focus:border-[#C599A6] transition-colors text-[#682535]`}
+                            : "border-[#F6F0E6] bg-[#FAF7F2]"
+                        } focus:outline-none focus:border-[#EFE3CE] transition-colors text-[#C8B39A]`}
                       />
                       {formErrors.fullName && (
                         <p className="text-red-500 text-sm mt-1">{formErrors.fullName}</p>
@@ -302,7 +302,7 @@ export default function PaymentScreen() {
 
                     {/* Phone Number */}
                     <div>
-                      <label className="flex items-center gap-2 text-[#682535] font-semibold mb-2">
+                      <label className="flex items-center gap-2 text-[#C8B39A] font-semibold mb-2">
                         Số Điện Thoại <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -314,8 +314,8 @@ export default function PaymentScreen() {
                         className={`w-full px-4 py-3 rounded-xl border-2 ${
                           formErrors.phoneNumber
                             ? "border-red-300 bg-red-50"
-                            : "border-[#EAD2D8] bg-[#F6F3E6]"
-                        } focus:outline-none focus:border-[#C599A6] transition-colors text-[#682535]`}
+                            : "border-[#F6F0E6] bg-[#FAF7F2]"
+                        } focus:outline-none focus:border-[#EFE3CE] transition-colors text-[#C8B39A]`}
                       />
                       {formErrors.phoneNumber && (
                         <p className="text-red-500 text-sm mt-1">{formErrors.phoneNumber}</p>
@@ -324,7 +324,7 @@ export default function PaymentScreen() {
 
                     {/* Address */}
                     <div>
-                      <label className="flex items-center gap-2 text-[#682535] font-semibold mb-2">
+                      <label className="flex items-center gap-2 text-[#C8B39A] font-semibold mb-2">
                         Địa Chỉ <span className="text-red-500">*</span>
                       </label>
                       <textarea
@@ -336,8 +336,8 @@ export default function PaymentScreen() {
                         className={`w-full px-4 py-3 rounded-xl border-2 ${
                           formErrors.address
                             ? "border-red-300 bg-red-50"
-                            : "border-[#EAD2D8] bg-[#F6F3E6]"
-                        } focus:outline-none focus:border-[#C599A6] transition-colors text-[#682535] resize-none`}
+                            : "border-[#F6F0E6] bg-[#FAF7F2]"
+                        } focus:outline-none focus:border-[#EFE3CE] transition-colors text-[#C8B39A] resize-none`}
                       />
                       {formErrors.address && (
                         <p className="text-red-500 text-sm mt-1">{formErrors.address}</p>
@@ -350,9 +350,9 @@ export default function PaymentScreen() {
               {/* Order Summary (Right) */}
               <motion.div variants={itemVariants}>
                 <div className="bg-white rounded-3xl shadow-xl overflow-hidden sticky top-6">
-                  <div className="bg-gradient-to-br from-[#682535] to-[#874D5F] p-6">
+                  <div className="bg-gradient-to-br from-[#C8B39A] to-[#C8B39A] p-6">
                     <h2 className="text-2xl font-bold text-[#FFFFFF] flex items-center gap-2">
-                      <ShoppingBag className="w-6 h-6 text-[#C599A6]" />
+                      <ShoppingBag className="w-6 h-6 text-[#EFE3CE]" />
                       Đơn Hàng Của Bạn
                       <span className="ml-auto text-lg">
                         ({cartItems.length} sản phẩm)
@@ -366,10 +366,10 @@ export default function PaymentScreen() {
                       {cartItems.map((item) => (
                         <div
                           key={item._id}
-                          className="flex gap-4 p-4 bg-gradient-to-br from-[#FFFFFF] to-[#F6F3E6] rounded-2xl border border-[#EAD2D8]/50"
+                          className="flex gap-4 p-4 bg-gradient-to-br from-[#FFFFFF] to-[#FAF7F2] rounded-2xl border border-[#F6F0E6]/50"
                         >
                           {/* Product Image */}
-                          <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#EAD2D8]">
+                          <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#F6F0E6]">
                             <img
                               src={imgSrc(item.images?.[0] || item.imageLink)}
                               alt={item.title}
@@ -379,17 +379,17 @@ export default function PaymentScreen() {
 
                           {/* Product Info */}
                           <div className="flex-1 min-w-0 flex flex-col justify-center">
-                            <h3 className="text-md font-bold text-[#682535] mb-1 line-clamp-1">
+                            <h3 className="text-md font-bold text-[#C8B39A] mb-1 line-clamp-1">
                               {item.title}
                             </h3>
-                            <p className="text-xs text-[#874D5F] mb-1">
+                            <p className="text-xs text-[#C8B39A] mb-1">
                               Size: {item.size || "N/A"} • {item.rentalDays} ngày
                             </p>
                             <div className="flex items-center justify-between mt-auto">
-                              <span className="text-sm font-bold text-[#C599A6]">
+                              <span className="text-sm font-bold text-[#EFE3CE]">
                                 Cọc: {formatPrice(item.depositAmount || 0)}
                               </span>
-                              <span className="text-sm font-bold text-[#682535]">
+                              <span className="text-sm font-bold text-[#C8B39A]">
                                 Thuê: {formatPrice(item.rentFee || (item.rentalPrice || item.price || 0) * item.rentalDays)}
                               </span>
                             </div>
@@ -400,39 +400,39 @@ export default function PaymentScreen() {
                   </div>
 
                   {/* Price Breakdown */}
-                  <div className="p-6 border-t-2 border-[#EAD2D8] bg-[#F9F7F0]">
+                  <div className="p-6 border-t-2 border-[#F6F0E6] bg-[#F9F7F0]">
                     <div className="space-y-3 mb-6">
-                      <div className="flex justify-between items-center text-[#874D5F]">
+                      <div className="flex justify-between items-center text-[#C8B39A]">
                         <span className="font-semibold text-sm">Tổng phí thuê</span>
-                        <span className="font-bold text-[#682535]">
+                        <span className="font-bold text-[#C8B39A]">
                           {formatPrice(rentFee)}
                         </span>
                       </div>
-                      <div className="flex justify-between items-center text-[#874D5F]">
+                      <div className="flex justify-between items-center text-[#C8B39A]">
                         <span className="font-semibold text-sm">Tổng giá trị sản phẩm (để thu cọc)</span>
-                        <span className="font-bold text-[#682535]">
+                        <span className="font-bold text-[#C8B39A]">
                           {formatPrice(upfrontTotal)}
                         </span>
                       </div>
-                      <div className="flex justify-between items-center text-[#874D5F]">
+                      <div className="flex justify-between items-center text-[#C8B39A]">
                         <span className="font-semibold text-sm">Phí vận chuyển</span>
                         <span className="font-bold">
                           {shipping === 0 ? (
                             <span className="text-green-600">Miễn phí</span>
                           ) : (
-                            <span className="text-[#682535]">{formatPrice(shipping)}</span>
+                            <span className="text-[#C8B39A]">{formatPrice(shipping)}</span>
                           )}
                         </span>
                       </div>
                     </div>
 
-                    <div className="border-t-2 border-[#EAD2D8]/50 pt-4 mb-6">
+                    <div className="border-t-2 border-[#F6F0E6]/50 pt-4 mb-6">
                       <div className="flex justify-between items-end">
-                        <span className="text-xl font-bold text-[#682535]">
+                        <span className="text-xl font-bold text-[#C8B39A]">
                           Tổng thanh toán
                         </span>
                         <div className="text-right">
-                          <span className="text-3xl font-black text-[#C599A6] leading-none">
+                          <span className="text-3xl font-black text-[#EFE3CE] leading-none">
                             {formatPrice(total)}
                           </span>
                         </div>
@@ -448,7 +448,7 @@ export default function PaymentScreen() {
                       className={`w-full py-4 rounded-full ${
                         submitting
                           ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-gradient-to-r from-[#C599A6] to-[#A47784] shadow-lg"
+                          : "bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] shadow-lg"
                       } text-white text-xl font-bold flex items-center justify-center gap-2`}
                     >
                       {submitting ? (
@@ -464,7 +464,7 @@ export default function PaymentScreen() {
                       )}
                     </motion.button>
                     
-                    <p className="text-center text-[#874D5F] text-xs mt-4">
+                    <p className="text-center text-[#C8B39A] text-xs mt-4">
                       Bạn sẽ được chuyển đến trang thanh toán an toàn PayOS
                     </p>
                   </div>
@@ -477,3 +477,5 @@ export default function PaymentScreen() {
     </div>
   );
 }
+
+

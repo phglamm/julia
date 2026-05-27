@@ -2,7 +2,7 @@
    pink/maroon body colors from leaking into admin pages. */
 
 .admin-root {
-  background-color: #f8fafc; /* slate-50 */
-  color: #1e293b;            /* slate-800 */
+  background-color: #FAF7F2;   /* Ivory Whisper */
+  color: #3D2E28;              /* Primary dark brown text - optimal contrast */
   min-height: 100vh;
 }

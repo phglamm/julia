@@ -40,17 +40,17 @@ const genderLabel = (g) => {
 
 /* ─── shared styles ──────────────────────────────── */
 const inputCls =
-  "w-full px-4 py-3 border-2 border-[#ead2d8]/60 bg-white text-sm text-[#682535] outline-none focus:border-[#c599a6] focus:ring-2 focus:ring-[#c599a6]/15 transition-all placeholder:text-[#874d5f]/40 font-[inherit]";
+  "w-full px-4 py-3 border-2 border-[#F6F0E6]/60 bg-white text-sm text-[#C8B39A] outline-none focus:border-[#EFE3CE] focus:ring-2 focus:ring-[#EFE3CE]/15 transition-all placeholder:text-[#C8B39A]/40 font-[inherit]";
 
 /* ─── Display field (view mode) ──────────────────── */
 function DisplayField({ icon: Icon, label, value }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-[#874d5f]">
-        <Icon size={11} className="text-[#c599a6]" />
+      <span className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-[#C8B39A]">
+        <Icon size={11} className="text-[#EFE3CE]" />
         {label}
       </span>
-      <div className="px-4 py-3 bg-gradient-to-br from-[#fdfaf7] to-[#f6f3e6] border border-[#ead2d8]/40 text-sm font-medium text-[#682535] min-h-[46px] flex items-center">
+      <div className="px-4 py-3 bg-gradient-to-br from-[#fdfaf7] to-[#FAF7F2] border border-[#F6F0E6]/40 text-sm font-medium text-[#C8B39A] min-h-[46px] flex items-center">
         {value ? (
           value
         ) : (
@@ -65,8 +65,8 @@ function DisplayField({ icon: Icon, label, value }) {
 function EditField({ icon: Icon, label, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-[#874d5f]">
-        <Icon size={11} className="text-[#c599a6]" />
+      <label className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-[#C8B39A]">
+        <Icon size={11} className="text-[#EFE3CE]" />
         {label}
       </label>
       {children}
@@ -77,8 +77,8 @@ function EditField({ icon: Icon, label, children }) {
 /* ─── Section divider ────────────────────────────── */
 function SectionDivider({ icon: Icon, children }) {
   return (
-    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#874d5f] col-span-full mt-1 mb-1 pb-2 border-b border-dashed border-[#ead2d8]">
-      <Icon size={12} className="text-[#c599a6]" />
+    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#C8B39A] col-span-full mt-1 mb-1 pb-2 border-b border-dashed border-[#F6F0E6]">
+      <Icon size={12} className="text-[#EFE3CE]" />
       {children}
     </div>
   );
@@ -196,11 +196,11 @@ export default function ProfileScreen() {
   /* ── Skeleton ── */
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#f6f3e6] to-[#ead2d8] px-4 sm:px-6 py-14">
+      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#FAF7F2] to-[#F6F0E6] px-4 sm:px-6 py-14">
         <div className="max-w-3xl mx-auto space-y-4 animate-pulse">
-          <div className="h-7 w-48 mx-auto bg-[#ead2d8] rounded" />
-          <div className="h-36 bg-[#ead2d8]" />
-          <div className="h-72 bg-[#ead2d8]" />
+          <div className="h-7 w-48 mx-auto bg-[#F6F0E6] rounded" />
+          <div className="h-36 bg-[#F6F0E6]" />
+          <div className="h-72 bg-[#F6F0E6]" />
         </div>
       </div>
     );
@@ -209,7 +209,7 @@ export default function ProfileScreen() {
   /* ── Fetch error ── */
   if (fetchError) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#f6f3e6] to-[#ead2d8] px-4 sm:px-6 py-14">
+      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#FAF7F2] to-[#F6F0E6] px-4 sm:px-6 py-14">
         <div className="max-w-3xl mx-auto flex items-center gap-3 p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
           <AlertCircle size={18} />
           {fetchError}
@@ -221,13 +221,13 @@ export default function ProfileScreen() {
   const addr = profile?.address ?? {};
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#f6f3e6] to-[#ead2d8] px-4 sm:px-6 py-14 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-[#FAF7F2] to-[#F6F0E6] px-4 sm:px-6 py-14 relative overflow-hidden">
       {/* dot grid bg */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle,#682535 1px,transparent 1px)",
+            "radial-gradient(circle,#C8B39A 1px,transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -239,10 +239,10 @@ export default function ProfileScreen() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#682535] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#C8B39A] tracking-tight">
           Tài Khoản Của Tôi
         </h1>
-        <p className="text-[#874d5f] mt-1 text-sm">
+        <p className="text-[#C8B39A] mt-1 text-sm">
           Thông tin cá nhân và địa chỉ của bạn
         </p>
       </motion.div>
@@ -266,13 +266,13 @@ export default function ProfileScreen() {
 
       {/* ── Card ── */}
       <motion.div
-        className="max-w-3xl mx-auto bg-white border border-[#ead2d8]/50 shadow-[0_8px_40px_rgba(104,37,53,0.08)] overflow-hidden relative z-10"
+        className="max-w-3xl mx-auto bg-white border border-[#F6F0E6]/50 shadow-[0_8px_40px_rgba(104,37,53,0.08)] overflow-hidden relative z-10"
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {/* ── Hero strip ── */}
-        <div className="bg-gradient-to-r from-[#682535] via-[#874d5f] to-[#682535] px-6 py-7 flex items-center justify-between gap-5">
+        <div className="bg-gradient-to-r from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] px-6 py-7 flex items-center justify-between gap-5">
           <div className="flex items-center gap-5 min-w-0">
             <motion.div
               className="relative shrink-0"
@@ -281,7 +281,7 @@ export default function ProfileScreen() {
               <div className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/60 flex items-center justify-center text-white">
                 <User size={36} />
               </div>
-              <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#c599a6] border-2 border-white flex items-center justify-center text-white">
+              <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#EFE3CE] border-2 border-white flex items-center justify-center text-white">
                 <Star size={11} fill="currentColor" />
               </div>
             </motion.div>
@@ -296,7 +296,7 @@ export default function ProfileScreen() {
                 {profile?.email}
               </div>
               <div className="flex flex-wrap gap-2 mt-2.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#c599a6] to-[#a47784] text-white text-[11px] font-bold shadow">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#EFE3CE] to-[#C8B39A] text-white text-[11px] font-bold shadow">
                   <Sparkles size={11} />
                   {profile?.points ?? 0} điểm
                 </span>
@@ -401,7 +401,7 @@ export default function ProfileScreen() {
                 </div>
 
                 {/* footer */}
-                <p className="mt-6 text-[11px] text-[#874d5f]/50 text-right">
+                <p className="mt-6 text-[11px] text-[#C8B39A]/50 text-right">
                   Cập nhật lần cuối:{" "}
                   {profile?.updatedAt
                     ? new Date(profile.updatedAt).toLocaleDateString("vi-VN")
@@ -447,7 +447,7 @@ export default function ProfileScreen() {
                       type="text"
                       value={profile?.email ?? ""}
                       disabled
-                      className={`${inputCls} bg-[#fdf6f8] text-[#874d5f] cursor-not-allowed`}
+                      className={`${inputCls} bg-[#fdf6f8] text-[#C8B39A] cursor-not-allowed`}
                     />
                   </EditField>
 
@@ -491,7 +491,7 @@ export default function ProfileScreen() {
                       type="text"
                       value={profile?.username ?? ""}
                       disabled
-                      className={`${inputCls} bg-[#fdf6f8] text-[#874d5f] cursor-not-allowed`}
+                      className={`${inputCls} bg-[#fdf6f8] text-[#C8B39A] cursor-not-allowed`}
                     />
                   </EditField>
                 </div>
@@ -556,13 +556,13 @@ export default function ProfileScreen() {
                 </div>
 
                 {/* action bar */}
-                <div className="flex justify-end gap-3 mt-8 pt-5 border-t border-[#ead2d8]">
+                <div className="flex justify-end gap-3 mt-8 pt-5 border-t border-[#F6F0E6]">
                   <motion.button
                     id="btn-cancel-edit"
                     onClick={handleCancel}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[#ead2d8] text-[#874d5f] text-sm font-semibold hover:border-[#c599a6] hover:text-[#682535] transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-[#F6F0E6] text-[#C8B39A] text-sm font-semibold hover:border-[#EFE3CE] hover:text-[#C8B39A] transition-all cursor-pointer"
                   >
                     <X size={14} />
                     Hủy
@@ -574,7 +574,7 @@ export default function ProfileScreen() {
                     disabled={saving}
                     whileHover={!saving ? { scale: 1.03 } : {}}
                     whileTap={!saving ? { scale: 0.97 } : {}}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#682535] to-[#874d5f] text-white text-sm font-bold shadow hover:shadow-lg transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#C8B39A] to-[#C8B39A] text-white text-sm font-bold shadow hover:shadow-lg transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {saving ? (
                       <>
@@ -606,3 +606,5 @@ export default function ProfileScreen() {
     </div>
   );
 }
+
+

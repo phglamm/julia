@@ -10,3 +10,4 @@ const rentalDiscountRuleService = {
 };
 
 export default rentalDiscountRuleService;
+

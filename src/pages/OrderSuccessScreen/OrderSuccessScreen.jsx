@@ -74,7 +74,7 @@ export default function OrderSuccessScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#EAD2D8] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-br from-[#FFFFFF] to-[#F6F0E6] flex items-center justify-center p-6">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -118,7 +118,7 @@ export default function OrderSuccessScreen() {
           }}
           className="absolute top-20 left-[15%]"
         >
-          <Sparkles className="w-8 h-8 text-[#C599A6] opacity-60" />
+          <Sparkles className="w-8 h-8 text-[#EFE3CE] opacity-60" />
         </motion.div>
         <motion.div
           animate={{
@@ -133,7 +133,7 @@ export default function OrderSuccessScreen() {
           }}
           className="absolute top-32 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-[#C599A6] opacity-40" />
+          <Sparkles className="w-6 h-6 text-[#EFE3CE] opacity-40" />
         </motion.div>
 
         {/* Main Card */}
@@ -142,7 +142,7 @@ export default function OrderSuccessScreen() {
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="bg-linear-to-br from-[#682535] via-[#874D5F] to-[#682535] p-8 text-center relative overflow-hidden">
+          <div className="bg-linear-to-br from-[#C8B39A] via-[#C8B39A] to-[#C8B39A] p-8 text-center relative overflow-hidden">
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -192,27 +192,27 @@ export default function OrderSuccessScreen() {
             {orderDetails && (
               <motion.div
                 variants={itemVariants}
-                className="bg-linear-to-br from-[#FFFFFF] to-[#F6F3E6] rounded-2xl p-6"
+                className="bg-linear-to-br from-[#FFFFFF] to-[#FAF7F2] rounded-2xl p-6"
               >
-                <h3 className="text-xl font-bold text-[#682535] mb-4 flex items-center gap-2">
-                  <Package className="w-6 h-6 text-[#C599A6]" />
+                <h3 className="text-xl font-bold text-[#C8B39A] mb-4 flex items-center gap-2">
+                  <Package className="w-6 h-6 text-[#EFE3CE]" />
                   Thông Tin Đơn Hàng
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#874D5F] font-semibold">
+                    <span className="text-[#C8B39A] font-semibold">
                       Mã đơn hàng:
                     </span>
-                    <span className="text-[#682535] font-bold text-lg">
+                    <span className="text-[#C8B39A] font-bold text-lg">
                       {orderDetails.orderCode}
                     </span>
                   </div>
                   {orderDetails.amount && orderDetails.amount !== "N/A" && (
                     <div className="flex justify-between items-center">
-                      <span className="text-[#874D5F] font-semibold">
+                      <span className="text-[#C8B39A] font-semibold">
                         Số tiền:
                       </span>
-                      <span className="text-[#C599A6] font-bold text-xl">
+                      <span className="text-[#EFE3CE] font-bold text-xl">
                         {new Intl.NumberFormat("vi-VN", {
                           style: "currency",
                           currency: "VND",
@@ -221,10 +221,10 @@ export default function OrderSuccessScreen() {
                     </div>
                   )}
                   <div className="flex justify-between items-center">
-                    <span className="text-[#874D5F] font-semibold">
+                    <span className="text-[#C8B39A] font-semibold">
                       Thời gian:
                     </span>
-                    <span className="text-[#682535] font-medium">
+                    <span className="text-[#C8B39A] font-medium">
                       {new Date().toLocaleString("vi-VN")}
                     </span>
                   </div>
@@ -234,46 +234,46 @@ export default function OrderSuccessScreen() {
 
             {/* Next Steps */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-[#682535] mb-4 flex items-center gap-2">
-                <Calendar className="w-6 h-6 text-[#C599A6]" />
+              <h3 className="text-xl font-bold text-[#C8B39A] mb-4 flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-[#EFE3CE]" />
                 Các Bước Tiếp Theo
               </h3>
               <div className="space-y-4">
-                <div className="flex items-start gap-4 bg-[#F6F3E6] rounded-xl p-4">
-                  <div className="bg-[#C599A6] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-start gap-4 bg-[#FAF7F2] rounded-xl p-4">
+                  <div className="bg-[#EFE3CE] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     1
                   </div>
                   <div>
-                    <p className="font-semibold text-[#682535] mb-1">
+                    <p className="font-semibold text-[#C8B39A] mb-1">
                       Xác nhận đơn hàng
                     </p>
-                    <p className="text-[#874D5F] text-sm">
+                    <p className="text-[#C8B39A] text-sm">
                       Chúng tôi sẽ gọi điện xác nhận trong vòng 24h
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 bg-[#F6F3E6] rounded-xl p-4">
-                  <div className="bg-[#C599A6] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-start gap-4 bg-[#FAF7F2] rounded-xl p-4">
+                  <div className="bg-[#EFE3CE] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     2
                   </div>
                   <div>
-                    <p className="font-semibold text-[#682535] mb-1">
+                    <p className="font-semibold text-[#C8B39A] mb-1">
                       Chuẩn bị sản phẩm
                     </p>
-                    <p className="text-[#874D5F] text-sm">
+                    <p className="text-[#C8B39A] text-sm">
                       Sản phẩm sẽ được kiểm tra và đóng gói cẩn thận
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 bg-[#F6F3E6] rounded-xl p-4">
-                  <div className="bg-[#C599A6] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-start gap-4 bg-[#FAF7F2] rounded-xl p-4">
+                  <div className="bg-[#EFE3CE] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     3
                   </div>
                   <div>
-                    <p className="font-semibold text-[#682535] mb-1">
+                    <p className="font-semibold text-[#C8B39A] mb-1">
                       Giao hàng
                     </p>
-                    <p className="text-[#874D5F] text-sm">
+                    <p className="text-[#C8B39A] text-sm">
                       Sản phẩm sẽ được giao đến địa chỉ của bạn trong 2-3 ngày
                     </p>
                   </div>
@@ -284,23 +284,23 @@ export default function OrderSuccessScreen() {
             {/* Contact Info */}
             <motion.div
               variants={itemVariants}
-              className="bg-linear-to-br from-[#682535] to-[#874D5F] rounded-2xl p-6 text-[#FFFFFF]"
+              className="bg-linear-to-br from-[#C8B39A] to-[#C8B39A] rounded-2xl p-6 text-[#FFFFFF]"
             >
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Phone className="w-5 h-5 text-[#C599A6]" />
+                <Phone className="w-5 h-5 text-[#EFE3CE]" />
                 Liên Hệ Hỗ Trợ
               </h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#C599A6]" />
+                  <Mail className="w-5 h-5 text-[#EFE3CE]" />
                   <span>support@julia.vn</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#C599A6]" />
+                  <Phone className="w-5 h-5 text-[#EFE3CE]" />
                   <span>0123 456 789</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-[#C599A6]" />
+                  <MapPin className="w-5 h-5 text-[#EFE3CE]" />
                   <span>Hồ Chí Minh, Việt Nam</span>
                 </div>
               </div>
@@ -315,7 +315,7 @@ export default function OrderSuccessScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/")}
-                className="flex-1 py-4 rounded-full bg-linear-to-r from-[#C599A6] to-[#A47784] text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-linear-to-r from-[#EFE3CE] to-[#C8B39A] text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
               >
                 <Home className="w-5 h-5" />
                 Về Trang Chủ
@@ -324,7 +324,7 @@ export default function OrderSuccessScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/bst")}
-                className="flex-1 py-4 rounded-full bg-white border-2 border-[#C599A6] text-[#C599A6] text-lg font-bold shadow-lg flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-white border-2 border-[#EFE3CE] text-[#EFE3CE] text-lg font-bold shadow-lg flex items-center justify-center gap-2"
               >
                 <Package className="w-5 h-5" />
                 Xem Sản Phẩm Khác
@@ -336,7 +336,7 @@ export default function OrderSuccessScreen() {
         {/* Footer Note */}
         <motion.p
           variants={itemVariants}
-          className="text-center text-[#874D5F] mt-6 text-sm"
+          className="text-center text-[#C8B39A] mt-6 text-sm"
         >
           Email xác nhận đã được gửi đến hộp thư của bạn
         </motion.p>
@@ -344,3 +344,5 @@ export default function OrderSuccessScreen() {
     </div>
   );
 }
+
+

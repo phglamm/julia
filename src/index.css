@@ -9,12 +9,25 @@
 :root {
   --brand-serif: var(--font-serif);
   --brand-sans: var(--font-sans);
+  
+  /* Text Colors */
+  --text-primary: #3D2E28;      /* Main body text on light backgrounds */
+  --text-secondary: #5C4A3D;    /* Secondary text, less emphasis */
+  --text-tertiary: #8B7355;     /* Subtle text, labels, placeholders */
+  --text-light: #FFFFFF;        /* Text on dark backgrounds */
+  --text-light-alt: #FAF7F2;    /* Alternative light text */
+  
+  /* Brand Colors */
+  --color-vanilla: #EFE3CE;     /* Vanilla Cream */
+  --color-linen: #F6F0E6;       /* Soft Linen */
+  --color-beige: #C8B39A;       /* Sandy Beige */
+  --color-ivory: #FAF7F2;       /* Ivory Whisper */
 }
 
 body {
   font-family: var(--brand-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2A1A1E;
-  background-color: #682535;
+  color: var(--text-primary);
+  background-color: #C8B39A;
 }

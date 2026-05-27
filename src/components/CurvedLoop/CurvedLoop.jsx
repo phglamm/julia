@@ -165,3 +165,4 @@ const CurvedLoop = ({
 };
 
 export default CurvedLoop;
+

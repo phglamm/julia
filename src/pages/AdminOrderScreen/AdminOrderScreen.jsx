@@ -347,3 +347,4 @@ function InfoRow({ label, value, children, className = "" }) {
     </div>
   );
 }
+
