@@ -74,7 +74,7 @@ export default function OrderSuccessScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white to-background-alt flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-br from-surface to-background-alt flex items-center justify-center p-6">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -98,7 +98,7 @@ export default function OrderSuccessScreen() {
             className="relative"
           >
             {/* Glow effect */}
-            <div className="absolute inset-0 bg-[#4ade80] rounded-full blur-2xl opacity-30 animate-pulse"></div>
+            <div className="absolute inset-0 bg-success/50 rounded-full blur-2xl opacity-30 animate-pulse"></div>
             <div className="relative bg-linear-to-br from-[#4ade80] to-[#22c55e] rounded-full p-6 shadow-2xl">
               <CheckCircle className="w-24 h-24 text-white" strokeWidth={2.5} />
             </div>
@@ -118,7 +118,7 @@ export default function OrderSuccessScreen() {
           }}
           className="absolute top-20 left-[15%]"
         >
-          <Sparkles className="w-8 h-8 text-text-secondary opacity-60" />
+          <Sparkles className="w-8 h-8 text-muted opacity-60" />
         </motion.div>
         <motion.div
           animate={{
@@ -133,13 +133,13 @@ export default function OrderSuccessScreen() {
           }}
           className="absolute top-32 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-text-secondary opacity-40" />
+          <Sparkles className="w-6 h-6 text-muted opacity-40" />
         </motion.div>
 
         {/* Main Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+          className="bg-surface rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Header */}
           <div className="bg-linear-to-br from-primary via-primary to-primary p-8 text-center relative overflow-hidden">
@@ -170,17 +170,17 @@ export default function OrderSuccessScreen() {
             {/* Success Message */}
             <motion.div
               variants={itemVariants}
-              className="bg-linear-to-br from-[#f0fdf4] to-[#dcfce7] border-2 border-[#86efac] rounded-2xl p-6"
+              className="bg-success-bg border-2 border-success/30 rounded-2xl p-6"
             >
               <div className="flex items-start gap-4">
-                <div className="bg-[#22c55e] rounded-full p-3 shrink-0">
+                <div className="bg-success rounded-full p-3 shrink-0">
                   <CheckCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#166534] mb-2">
+                  <h3 className="text-xl font-bold text-success mb-2">
                     Thanh toán đã được xác nhận
                   </h3>
-                  <p className="text-[#15803d] leading-relaxed">
+                  <p className="text-success leading-relaxed">
                     Đơn hàng của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ với
                     bạn trong thời gian sớm nhất để xác nhận và giao hàng.
                   </p>
@@ -192,27 +192,27 @@ export default function OrderSuccessScreen() {
             {orderDetails && (
               <motion.div
                 variants={itemVariants}
-                className="bg-linear-to-br from-white to-surface rounded-2xl p-6"
+                className="bg-linear-to-br from-surface to-surface rounded-2xl p-6"
               >
-                <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                  <Package className="w-6 h-6 text-text-secondary" />
+                <h3 className="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+                  <Package className="w-6 h-6 text-muted" />
                   Thông Tin Đơn Hàng
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-text-primary font-semibold">
+                    <span className="text-heading font-semibold">
                       Mã đơn hàng:
                     </span>
-                    <span className="text-text-primary font-bold text-lg">
+                    <span className="text-body font-bold text-lg">
                       {orderDetails.orderCode}
                     </span>
                   </div>
                   {orderDetails.amount && orderDetails.amount !== "N/A" && (
                     <div className="flex justify-between items-center">
-                      <span className="text-text-primary font-semibold">
+                      <span className="text-body font-semibold">
                         Số tiền:
                       </span>
-                      <span className="text-text-secondary font-bold text-xl">
+                      <span className="text-muted font-bold text-xl">
                         {new Intl.NumberFormat("vi-VN", {
                           style: "currency",
                           currency: "VND",
@@ -221,10 +221,10 @@ export default function OrderSuccessScreen() {
                     </div>
                   )}
                   <div className="flex justify-between items-center">
-                    <span className="text-text-primary font-semibold">
+                    <span className="text-body font-semibold">
                       Thời gian:
                     </span>
-                    <span className="text-text-primary font-medium">
+                    <span className="text-body font-medium">
                       {new Date().toLocaleString("vi-VN")}
                     </span>
                   </div>
@@ -234,46 +234,46 @@ export default function OrderSuccessScreen() {
 
             {/* Next Steps */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                <Calendar className="w-6 h-6 text-text-secondary" />
+              <h3 className="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-muted" />
                 Các Bước Tiếp Theo
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4 bg-surface rounded-xl p-4">
-                  <div className="bg-secondary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                  <div className="bg-secondary text-heading rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     1
                   </div>
                   <div>
-                    <p className="font-semibold text-text-primary mb-1">
+                    <p className="font-semibold text-body mb-1">
                       Xác nhận đơn hàng
                     </p>
-                    <p className="text-text-primary text-sm">
+                    <p className="text-body text-sm">
                       Chúng tôi sẽ gọi điện xác nhận trong vòng 24h
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 bg-surface rounded-xl p-4">
-                  <div className="bg-secondary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                  <div className="bg-secondary text-body rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     2
                   </div>
                   <div>
-                    <p className="font-semibold text-text-primary mb-1">
+                    <p className="font-semibold text-body mb-1">
                       Chuẩn bị sản phẩm
                     </p>
-                    <p className="text-text-primary text-sm">
+                    <p className="text-body text-sm">
                       Sản phẩm sẽ được kiểm tra và đóng gói cẩn thận
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 bg-surface rounded-xl p-4">
-                  <div className="bg-secondary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
+                  <div className="bg-secondary text-body rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0">
                     3
                   </div>
                   <div>
-                    <p className="font-semibold text-text-primary mb-1">
+                    <p className="font-semibold text-body mb-1">
                       Giao hàng
                     </p>
-                    <p className="text-text-primary text-sm">
+                    <p className="text-body text-sm">
                       Sản phẩm sẽ được giao đến địa chỉ của bạn trong 2-3 ngày
                     </p>
                   </div>
@@ -287,20 +287,20 @@ export default function OrderSuccessScreen() {
               className="bg-linear-to-br from-primary to-primary rounded-2xl p-6 text-white"
             >
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <Phone className="w-5 h-5 text-text-secondary" />
+                <Phone className="w-5 h-5 text-muted" />
                 Liên Hệ Hỗ Trợ
               </h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-text-secondary" />
+                  <Mail className="w-5 h-5 text-muted" />
                   <span>support@julia.vn</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-text-secondary" />
+                  <Phone className="w-5 h-5 text-muted" />
                   <span>0123 456 789</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-text-secondary" />
+                  <MapPin className="w-5 h-5 text-muted" />
                   <span>Hồ Chí Minh, Việt Nam</span>
                 </div>
               </div>
@@ -315,7 +315,7 @@ export default function OrderSuccessScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/")}
-                className="flex-1 py-4 rounded-full bg-linear-to-r from-secondary to-primary text-white text-lg font-bold shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-btn-primary hover:bg-btn-hover text-heading text-lg font-bold shadow-xl flex items-center justify-center gap-2"
               >
                 <Home className="w-5 h-5" />
                 Về Trang Chủ
@@ -324,7 +324,7 @@ export default function OrderSuccessScreen() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => navigate("/bst")}
-                className="flex-1 py-4 rounded-full bg-white border-2 border-secondary text-text-secondary text-lg font-bold shadow-lg flex items-center justify-center gap-2"
+                className="flex-1 py-4 rounded-full bg-surface border-2 border-secondary text-muted text-lg font-bold shadow-lg flex items-center justify-center gap-2"
               >
                 <Package className="w-5 h-5" />
                 Xem Sản Phẩm Khác
@@ -336,7 +336,7 @@ export default function OrderSuccessScreen() {
         {/* Footer Note */}
         <motion.p
           variants={itemVariants}
-          className="text-center text-text-primary mt-6 text-sm"
+          className="text-center text-body mt-6 text-sm"
         >
           Email xác nhận đã được gửi đến hộp thư của bạn
         </motion.p>

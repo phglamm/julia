@@ -62,7 +62,7 @@ const CartScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-background-alt py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-surface to-background-alt py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -71,10 +71,10 @@ const CartScreen = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-heading mb-4">
             Giỏ Hàng Của Bạn
           </h1>
-          <p className="text-lg text-text-primary">
+          <p className="text-lg text-heading">
             {cartItems.length} sản phẩm đang chờ bạn
           </p>
         </motion.div>
@@ -84,19 +84,19 @@ const CartScreen = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-none shadow-md border border-background-alt/50 p-12 text-center"
+            className="bg-surface rounded-none shadow-md border border-background-alt/50 p-12 text-center"
           >
-            <ShoppingBag className="w-24 h-24 text-text-secondary mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-text-primary mb-4">
+            <ShoppingBag className="w-24 h-24 text-muted mx-auto mb-6" />
+            <h2 className="text-3xl font-bold text-heading mb-4">
               Giỏ Hàng Trống
             </h2>
-            <p className="text-text-primary mb-8">
+            <p className="text-heading mb-8">
               Hãy khám phá bộ sưu tập của chúng tôi và thêm sản phẩm yêu thích!
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-secondary to-primary text-white px-8 py-4 rounded-none font-bold text-lg shadow-lg inline-flex items-center gap-2"
+              className="bg-btn-primary hover:bg-btn-hover text-body px-8 py-4 rounded-none font-bold text-lg shadow-lg inline-flex items-center gap-2"
             >
               Khám Phá Ngay
               <ArrowRight className="w-5 h-5" />
@@ -116,18 +116,18 @@ const CartScreen = () => {
                   key={`${item._id}-${index}`}
                   variants={itemVariants}
                   layout
-                  className="relative bg-white rounded-none shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                  className="relative bg-surface rounded-none shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="flex flex-col sm:flex-row gap-6 p-5">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-gradient-to-br from-white to-background-alt shadow-inner">
+                    <div className="relative w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 rounded-2xl overflow-hidden bg-gradient-to-br from-surface to-background-alt shadow-inner">
                       <img
                         src={item.images?.[0] || item.imageLink}
                         alt={item.title}
                         className="w-full h-full object-cover"
                       />
                       {item.brand && (
-                        <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-text-primary px-2 py-1 rounded-md text-[10px] font-bold shadow-sm uppercase">
+                        <div className="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm text-body px-2 py-1 rounded-md text-[10px] font-bold shadow-sm uppercase">
                           {typeof item.brand === "object"
                             ? item.brand?.name
                             : item.brand}
@@ -137,28 +137,28 @@ const CartScreen = () => {
 
                     {/* Product Info */}
                     <div className="flex-1 flex flex-col justify-center pr-8">
-                      <h3 className="text-xl font-bold text-text-primary mb-1">
+                      <h3 className="text-xl font-bold text-heading mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-text-primary mb-3 line-clamp-1 opacity-80">
+                      <p className="text-sm text-heading mb-3 line-clamp-1 opacity-80">
                         {item.shortDescription}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 text-sm font-semibold text-text-primary mb-3">
+                      <div className="flex flex-wrap gap-2 text-sm font-semibold text-body mb-3">
                         <span className="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded-lg border border-background-alt/50">
-                          <Package className="w-4 h-4 text-text-secondary" />
+                          <Package className="w-4 h-4 text-muted" />
                           Size: {item.size}
                         </span>
                         <span className="flex items-center gap-1.5 bg-surface px-3 py-1.5 rounded-lg border border-background-alt/50">
-                          <Calendar className="w-4 h-4 text-text-secondary" />
+                          <Calendar className="w-4 h-4 text-muted" />
                           {item.rentalDays} ngày
                         </span>
                       </div>
 
                       <div className="mt-auto">
-                        <p className="text-sm font-semibold text-text-primary">
+                        <p className="text-sm font-semibold text-body">
                           Giá trị cọc:{" "}
-                          <span className="font-bold text-text-secondary">
+                          <span className="font-bold text-muted">
                             {formatPrice(item.depositAmount)}
                           </span>
                         </p>
@@ -168,12 +168,12 @@ const CartScreen = () => {
                     {/* Right side (Price & Actions) */}
                     <div className="flex flex-row items-center justify-between sm:justify-end sm:pl-6 sm:border-l border-background-alt/40 gap-6 shrink-0 pt-4 sm:pt-0 border-t sm:border-t-0 mt-2 sm:mt-0">
                       <div className="text-left sm:text-right">
-                        <p className="text-2xl font-bold text-text-primary whitespace-nowrap mb-1">
+                        <p className="text-2xl font-bold text-body whitespace-nowrap mb-1">
                           {formatPrice(
                             item.rentFee || item.rentalPrice * item.rentalDays,
                           )}
                         </p>
-                        <p className="text-xs font-semibold text-text-primary uppercase tracking-wider bg-surface inline-block px-3 py-1 rounded-full">
+                        <p className="text-xs font-semibold text-body uppercase tracking-wider bg-surface inline-block px-3 py-1 rounded-full">
                           Tổng phí thuê
                         </p>
                       </div>
@@ -182,7 +182,7 @@ const CartScreen = () => {
                         whileHover={{ scale: 1.1, rotate: 10 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => removeItem(item._id)}
-                        className="w-10 h-10 rounded-full bg-red-50 text-red-400 hover:text-white hover:bg-red-500 flex items-center justify-center transition-all shadow-sm shrink-0"
+                        className="w-10 h-10 rounded-full bg-error-bg text-error hover:text-white hover:bg-error flex items-center justify-center transition-all shadow-sm shrink-0"
                         title="Xóa sản phẩm"
                       >
                         <Trash2 className="w-5 h-5" />
@@ -200,36 +200,36 @@ const CartScreen = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="lg:col-span-1"
             >
-              <div className="bg-white rounded-none shadow-lg p-6 sticky top-24">
-                <h2 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-2">
-                  <CreditCard className="w-6 h-6 text-text-secondary" />
+              <div className="bg-surface rounded-none shadow-lg p-6 sticky top-24">
+                <h2 className="text-2xl font-bold text-heading mb-6 flex items-center gap-2">
+                  <CreditCard className="w-6 h-6 text-muted" />
                   Tổng Đơn Hàng
                 </h2>
 
                 {/* Price Breakdown */}
                 <div className="space-y-4 mb-6 pb-6 border-b-2 border-secondary/20">
-                  <div className="flex justify-between text-text-primary">
+                  <div className="flex justify-between text-heading">
                     <span>Tổng phí thuê</span>
                     <span className="font-semibold">
                       {formatPrice(subtotal)}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-text-primary">
+                  <div className="flex justify-between text-body">
                     <span>Tổng giá trị sản phẩm</span>
                     <span className="font-semibold">
                       {formatPrice(upfrontTotal)}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-text-primary">
+                  <div className="flex justify-between text-body">
                     <span>Phí vận chuyển</span>
                     <span className="font-semibold">
                       {shipping === 0 ? "Miễn phí" : formatPrice(shipping)}
                     </span>
                   </div>
                   {shipping > 0 && (
-                    <p className="text-xs text-text-primary italic">
+                    <p className="text-xs text-body italic">
                       Miễn phí vận chuyển cho đơn hàng trên 500.000đ
                     </p>
                   )}
@@ -237,10 +237,10 @@ const CartScreen = () => {
 
                 {/* Total */}
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-xl font-bold text-text-primary">
+                  <span className="text-xl font-bold text-body">
                     Tổng Cộng
                   </span>
-                  <span className="text-3xl font-bold text-text-secondary">
+                  <span className="text-3xl font-bold text-muted">
                     {formatPrice(total)}
                   </span>
                 </div>
@@ -249,21 +249,21 @@ const CartScreen = () => {
                 <motion.button
                   whileHover={{
                     scale: 1.02,
-                    boxShadow: "0 20px 40px rgba(212, 175, 55, 0.3)",
+                    boxShadow: "0 20px 40px var(--color-btn-glow)",
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => navigate(route.payment)}
-                  className="w-full bg-gradient-to-r from-secondary to-primary text-white py-4 rounded-none font-bold text-lg shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-btn-primary hover:bg-btn-hover text-body py-4 rounded-none font-bold text-lg shadow-lg flex items-center justify-center gap-2"
                 >
                   Thanh Toán Ngay
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
 
                 {/* Security Badge */}
-                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-text-primary">
-                  <div className="w-6 h-6 bg-green-100 rounded-none flex items-center justify-center">
+                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-body">
+                  <div className="w-6 h-6 bg-success-bg rounded-none flex items-center justify-center">
                     <svg
-                      className="w-4 h-4 text-green-600"
+                      className="w-4 h-4 text-success"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

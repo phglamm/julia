@@ -128,21 +128,21 @@ export default function AdminBrands() {
   };
 
   const inputCls =
-    "w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500";
+    "w-full px-3 py-2 border border-admin-border rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500";
 
   /* ─── Render ────────────────────────────────────────────── */
   return (
     <div className="space-y-5">
       {/* ── Header ─────────────────────────────────────────── */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-rose-600 rounded-lg">
               <LayoutGrid className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Quản lý thương hiệu</h1>
-              <p className="text-xs text-gray-500 mt-0.5">{brands.length} thương hiệu</p>
+              <h1 className="text-xl font-bold text-admin-muted">Quản lý thương hiệu</h1>
+              <p className="text-xs text-admin-muted mt-0.5">{brands.length} thương hiệu</p>
             </div>
           </div>
           <button
@@ -157,48 +157,48 @@ export default function AdminBrands() {
 
       {/* ── Loading ──────────────────────────────────────────── */}
       {loading && (
-        <div className="bg-white rounded-xl border border-gray-200 p-16 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-gray-200 border-t-rose-600"></div>
-          <p className="mt-3 text-gray-500 text-sm">Đang tải thương hiệu...</p>
+        <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border p-16 text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-admin-border border-t-rose-600"></div>
+          <p className="mt-3 text-admin-muted text-sm">Đang tải thương hiệu...</p>
         </div>
       )}
 
       {/* ── Error ────────────────────────────────────────────── */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-          <p className="text-red-700 text-sm">Lỗi: {error}</p>
+        <div className="bg-red-50 border border-error rounded-xl p-4">
+          <p className="text-red-600 text-sm">Lỗi: {error}</p>
         </div>
       )}
 
       {/* ── Table ────────────────────────────────────────────── */}
       {!loading && !error && (
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">STT</th>
-                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Tên thương hiệu</th>
-                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Mô tả</th>
-                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Trạng thái</th>
-                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Ngày tạo</th>
-                  <th className="px-5 py-3 text-right text-[11px] font-semibold text-gray-500 uppercase tracking-wider"></th>
+                <tr className="bg-admin-bg border-b border-admin-border">
+                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-admin-muted uppercase tracking-wider">STT</th>
+                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-admin-muted uppercase tracking-wider">Tên thương hiệu</th>
+                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-admin-muted uppercase tracking-wider">Mô tả</th>
+                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-admin-muted uppercase tracking-wider">Trạng thái</th>
+                  <th className="px-5 py-3 text-left text-[11px] font-semibold text-admin-muted uppercase tracking-wider">Ngày tạo</th>
+                  <th className="px-5 py-3 text-right text-[11px] font-semibold text-admin-muted uppercase tracking-wider"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {brands.map((b, idx) => (
-                  <tr key={b._id} className="hover:bg-gray-50/50">
-                    <td className="px-5 py-3 text-sm text-gray-400">{idx + 1}</td>
+                  <tr key={b._id} className="hover:bg-admin-bg/50">
+                    <td className="px-5 py-3 text-sm text-admin-muted">{idx + 1}</td>
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-md bg-rose-50 flex items-center justify-center shrink-0">
+                        <div className="w-7 h-7 rounded-md bg-admin-surface flex items-center justify-center shrink-0">
                           <LayoutGrid className="w-3.5 h-3.5 text-rose-600" />
                         </div>
-                        <span className="text-sm font-medium text-gray-900">{b.name}</span>
+                        <span className="text-sm font-medium text-admin-muted">{b.name}</span>
                       </div>
                     </td>
                     <td className="px-5 py-3">
-                      <span className="text-sm text-gray-500 line-clamp-2 max-w-xs">
+                      <span className="text-sm text-admin-muted line-clamp-2 max-w-xs">
                         {b.description || "—"}
                       </span>
                     </td>
@@ -211,21 +211,21 @@ export default function AdminBrands() {
                         {b.isActive ? (
                           <>
                             <ToggleRight className="w-5 h-5 text-emerald-500" />
-                            <span className="px-2 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded">
+                            <span className="px-2 py-0.5 text-xs font-medium bg-admin-bg text-green-600 rounded">
                               Hoạt động
                             </span>
                           </>
                         ) : (
                           <>
-                            <ToggleLeft className="w-5 h-5 text-gray-400" />
-                            <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-500 rounded">
+                            <ToggleLeft className="w-5 h-5 text-admin-muted" />
+                            <span className="px-2 py-0.5 text-xs font-medium bg-admin-bg text-admin-muted rounded">
                               Vô hiệu
                             </span>
                           </>
                         )}
                       </button>
                     </td>
-                    <td className="px-5 py-3 text-sm text-gray-500">
+                    <td className="px-5 py-3 text-sm text-admin-muted">
                       {b.createdAt
                         ? new Date(b.createdAt).toLocaleDateString("vi-VN")
                         : "—"}
@@ -234,14 +234,14 @@ export default function AdminBrands() {
                       <div className="flex gap-1 justify-end">
                         <button
                           onClick={() => openEditModal(b)}
-                          className="p-1.5 rounded-md text-gray-400 hover:text-indigo-600 hover:bg-indigo-50"
+                          className="p-1.5 rounded-md text-admin-muted hover:text-admin-primary hover:bg-admin-surface"
                           title="Chỉnh sửa"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => openDeleteModal(b)}
-                          className="p-1.5 rounded-md text-gray-400 hover:text-red-600 hover:bg-red-50"
+                          className="p-1.5 rounded-md text-admin-muted hover:text-red-600 hover:bg-red-50"
                           title="Xoá"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -257,11 +257,11 @@ export default function AdminBrands() {
           {/* Empty state */}
           {brands.length === 0 && !loading && (
             <div className="p-16 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-100 rounded-xl mb-3">
-                <LayoutGrid className="w-6 h-6 text-gray-400" />
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-admin-bg rounded-xl mb-3">
+                <LayoutGrid className="w-6 h-6 text-admin-muted" />
               </div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">Chưa có thương hiệu</h3>
-              <p className="text-gray-500 text-sm mb-5">Bắt đầu tạo thương hiệu cho cửa hàng của bạn</p>
+              <h3 className="text-base font-semibold text-admin-muted mb-1">Chưa có thương hiệu</h3>
+              <p className="text-admin-muted text-sm mb-5">Bắt đầu tạo thương hiệu cho cửa hàng của bạn</p>
               <button
                 onClick={openCreateModal}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-sm font-medium"
@@ -277,28 +277,28 @@ export default function AdminBrands() {
       {/* ═══════════════ CREATE / EDIT MODAL ═══════════════ */}
       {showFormModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/40" onClick={closeFormModal} />
-          <div className="relative bg-white rounded-xl shadow-lg w-full max-w-md overflow-hidden">
+          <div className="absolute inset-0 bg-inverse/40" onClick={closeFormModal} />
+          <div className="relative bg-admin-surface rounded-xl shadow-lg w-full max-w-md overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-200">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-admin-border">
               <div className="flex items-center gap-2.5">
                 <div className="p-1.5 bg-rose-600 rounded-md">
                   <LayoutGrid className="w-4 h-4 text-white" />
                 </div>
-                <h3 className="text-base font-bold text-gray-900">
+                <h3 className="text-base font-bold text-admin-muted">
                   {isCreating ? "Thêm thương hiệu" : "Chỉnh sửa thương hiệu"}
                 </h3>
               </div>
-              <button onClick={closeFormModal} className="p-1.5 hover:bg-gray-100 rounded-md">
-                <X className="w-5 h-5 text-gray-400" />
+              <button onClick={closeFormModal} className="p-1.5 hover:bg-admin-bg rounded-md">
+                <X className="w-5 h-5 text-admin-muted" />
               </button>
             </div>
 
             {/* Body */}
             <div className="p-5 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tên thương hiệu <span className="text-red-500">*</span>
+                <label className="block text-sm font-medium text-admin-muted mb-1">
+                  Tên thương hiệu <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -309,7 +309,7 @@ export default function AdminBrands() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Mô tả</label>
+                <label className="block text-sm font-medium text-admin-muted mb-1">Mô tả</label>
                 <textarea
                   rows={3}
                   className={`${inputCls} resize-none`}
@@ -318,10 +318,10 @@ export default function AdminBrands() {
                   onChange={(e) => setFormValues((v) => ({ ...v, description: e.target.value }))}
                 />
               </div>
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="flex items-center justify-between p-3 bg-admin-bg rounded-lg border border-admin-border">
                 <div>
-                  <p className="text-sm font-medium text-gray-700">Trạng thái hoạt động</p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-sm font-medium text-admin-muted">Trạng thái hoạt động</p>
+                  <p className="text-xs text-admin-muted mt-0.5">
                     Thương hiệu sẽ hiển thị khi ở trạng thái hoạt động
                   </p>
                 </div>
@@ -333,17 +333,17 @@ export default function AdminBrands() {
                   {formValues.isActive ? (
                     <ToggleRight className="w-7 h-7 text-emerald-500" />
                   ) : (
-                    <ToggleLeft className="w-7 h-7 text-gray-400" />
+                    <ToggleLeft className="w-7 h-7 text-admin-muted" />
                   )}
                 </button>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-end gap-2 px-5 py-3.5 border-t border-gray-200 bg-gray-50">
+            <div className="flex items-center justify-end gap-2 px-5 py-3.5 border-t border-admin-border bg-admin-bg">
               <button
                 onClick={closeFormModal}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                className="px-4 py-2 text-sm font-medium text-admin-muted bg-admin-surface border border-admin-border rounded-lg hover:bg-admin-bg"
               >
                 Huỷ
               </button>
@@ -353,7 +353,7 @@ export default function AdminBrands() {
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-rose-600 hover:bg-rose-700 rounded-lg disabled:opacity-50"
               >
                 {saving ? (
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-text-inverse/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <Save className="w-4 h-4" />
                 )}
@@ -368,27 +368,27 @@ export default function AdminBrands() {
       {showDeleteModal && selectedBrand && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-inverse/40"
             onClick={() => {
               setShowDeleteModal(false);
               setSelectedBrand(null);
             }}
           />
-          <div className="relative bg-white rounded-xl shadow-lg w-full max-w-sm overflow-hidden">
+          <div className="relative bg-admin-surface rounded-xl shadow-lg w-full max-w-sm overflow-hidden">
             <div className="p-6 text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-3">
+              <div className="mx-auto w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-3">
                 <Trash2 className="w-5 h-5 text-red-600" />
               </div>
-              <h3 className="text-base font-bold text-gray-900">Xoá thương hiệu</h3>
-              <p className="mt-2 text-sm text-gray-600">
+              <h3 className="text-base font-bold text-admin-muted">Xoá thương hiệu</h3>
+              <p className="mt-2 text-sm text-admin-muted">
                 Bạn có chắc muốn xoá thương hiệu{" "}
-                <span className="font-semibold text-gray-900">"{selectedBrand.name}"</span>?
+                <span className="font-semibold text-admin-muted">"{selectedBrand.name}"</span>?
                 Hành động này không thể hoàn tác.
               </p>
             </div>
             <div className="flex gap-2 px-6 pb-5">
               <button
-                className="flex-1 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg"
+                className="flex-1 px-3 py-2 text-sm font-medium text-admin-muted bg-admin-bg hover:bg-admin-bg rounded-lg"
                 onClick={() => {
                   setShowDeleteModal(false);
                   setSelectedBrand(null);
@@ -397,7 +397,7 @@ export default function AdminBrands() {
                 Huỷ
               </button>
               <button
-                className="flex-1 px-3 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg"
+                className="flex-1 px-3 py-2 text-sm font-medium text-white bg-error hover:bg-red-700 rounded-lg"
                 onClick={confirmDelete}
               >
                 Xác nhận xoá

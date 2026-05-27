@@ -157,7 +157,7 @@ export default function ServicesScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white to-background-alt">
+    <div className="min-h-screen bg-linear-to-br from-surface to-background-alt">
       {/* Hero Section */}
       <section className="relative w-full bg-linear-to-br from-primary via-primary to-primary py-24 lg:py-32 text-center text-white overflow-hidden">
         <div
@@ -175,7 +175,7 @@ export default function ServicesScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-text-secondary opacity-60" />
+          <Sparkles className="w-8 h-8 text-muted opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -187,7 +187,7 @@ export default function ServicesScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Crown className="w-6 h-6 text-text-secondary opacity-40" />
+          <Crown className="w-6 h-6 text-muted opacity-40" />
         </motion.div>
 
         <motion.div
@@ -211,14 +211,14 @@ export default function ServicesScreen() {
         </motion.div>
       </section>
 
-      <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className=" text-4xl lg:text-5xl text-center mb-16 text-text-primary font-bold"
+            className=" text-4xl lg:text-5xl text-center mb-16 text-heading font-bold"
           >
             Dịch Vụ Nổi Bật
           </motion.h2>
@@ -250,19 +250,19 @@ export default function ServicesScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-linear-to-br from-white to-surface p-10 rounded-none text-center shadow-xl cursor-pointer group"
+                className="bg-linear-to-br from-surface to-surface p-10 rounded-none text-center shadow-xl cursor-pointer group"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="text-text-secondary mb-4 flex justify-center"
+                  className="text-muted mb-4 flex justify-center"
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-2xl mb-3 text-text-primary font-bold group-hover:text-text-secondary transition-colors">
+                <h3 className="text-2xl mb-3 text-heading font-bold group-hover:text-muted transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-text-primary leading-relaxed">
+                <p className="text-heading leading-relaxed">
                   {feature.desc}
                 </p>
               </motion.div>
@@ -288,7 +288,7 @@ export default function ServicesScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-text-secondary" />
+              <Sparkles className="w-16 h-16 text-muted" />
             </motion.div>
           </motion.div>
 
@@ -312,10 +312,10 @@ export default function ServicesScreen() {
             <motion.button
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
+                boxShadow: "0 20px 60px var(--color-btn-glow)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-secondary text-text-primary px-8 py-4 rounded-none text-lg font-bold shadow-xl flex items-center gap-2"
+              className="bg-secondary text-heading px-8 py-4 rounded-none text-lg font-bold shadow-xl flex items-center gap-2"
             >
               <Phone className="w-5 h-5" />
               Hotline: +84 xxx xxx xxx
@@ -327,7 +327,7 @@ export default function ServicesScreen() {
                 color: "var(--color-primary)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-white px-8 py-4 rounded-none text-lg font-bold border-2 border-white transition-all flex items-center gap-2"
+              className="bg-transparent text-white px-8 py-4 rounded-none text-lg font-bold border-2 border-text-inverse transition-all flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Email: hello@thejulia.vn

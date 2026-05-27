@@ -129,14 +129,14 @@ export default function ProductDetailScreen() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-white to-background-alt flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-surface to-background-alt flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <Package className="w-16 h-16 mx-auto mb-4 text-text-secondary animate-pulse" />
-          <p className="text-2xl text-text-primary font-semibold">
+          <Package className="w-16 h-16 mx-auto mb-4 text-muted animate-pulse" />
+          <p className="text-2xl text-body font-semibold">
             Đang tải sản phẩm...
           </p>
         </motion.div>
@@ -146,22 +146,22 @@ export default function ProductDetailScreen() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-white to-background-alt flex items-center justify-center p-6">
+      <div className="min-h-screen bg-linear-to-br from-surface to-background-alt flex items-center justify-center p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <div className="bg-red-50 border-2 border-red-200 rounded-3xl p-8 max-w-md mx-auto">
-            <p className="text-xl font-bold text-red-600 mb-4">
+          <div className="bg-error-bg border-2 border-error rounded-3xl p-8 max-w-md mx-auto">
+            <p className="text-xl font-bold text-error mb-4">
               Không thể tải thông tin sản phẩm
             </p>
-            <p className="text-red-500 mb-6">{error}</p>
+            <p className="text-error mb-6">{error}</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate("/bst")}
-              className="px-6 py-3 bg-secondary text-white rounded-full font-bold"
+              className="px-6 py-3 bg-secondary text-body rounded-full font-bold"
             >
               Quay lại bộ sưu tập
             </motion.button>
@@ -172,7 +172,7 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white to-background-alt">
+    <div className="min-h-screen bg-linear-to-br from-surface to-background-alt">
       {/* Hero Section */}
       <section className="relative w-full bg-linear-to-br from-primary via-primary to-primary py-20 lg:py-28 text-center text-white overflow-hidden">
         <div
@@ -190,7 +190,7 @@ export default function ProductDetailScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Sparkles className="w-8 h-8 text-text-secondary opacity-60" />
+          <Sparkles className="w-8 h-8 text-muted opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -202,7 +202,7 @@ export default function ProductDetailScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-text-secondary opacity-40" />
+          <Sparkles className="w-6 h-6 text-muted opacity-40" />
         </motion.div>
 
         <motion.div
@@ -216,7 +216,7 @@ export default function ProductDetailScreen() {
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/bst")}
-            className="mb-6 inline-flex items-center gap-2 text-white hover:text-text-secondary transition-colors"
+            className="mb-6 inline-flex items-center gap-2 text-white hover:text-muted transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             <span className="text-lg font-semibold">Quay lại</span>
@@ -238,7 +238,7 @@ export default function ProductDetailScreen() {
       </section>
 
       {/* Product Details Section */}
-      <section className="w-full bg-white py-16 lg:py-20 px-6 lg:px-12">
+      <section className="w-full bg-surface py-16 lg:py-20 px-6 lg:px-12">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -248,8 +248,8 @@ export default function ProductDetailScreen() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Image */}
             <motion.div variants={itemVariants}>
-              <div className="bg-white rounded-none shadow-sm border border-background-alt/50 overflow-hidden sticky top-6">
-                <div className="bg-linear-to-br from-white to-background-alt w-full h-[700px] flex items-center justify-center">
+              <div className="bg-surface rounded-none shadow-sm border border-background-alt/50 overflow-hidden sticky top-6">
+                <div className="bg-linear-to-br from-surface to-background-alt w-full h-[700px] flex items-center justify-center">
                   <img
                     src={imgSrc(product.images?.[0])}
                     alt={product.title}
@@ -265,12 +265,12 @@ export default function ProductDetailScreen() {
             {/* Product Information */}
             <motion.div variants={itemVariants} className="space-y-6">
               {/* Title & Rating */}
-              <div className="bg-white rounded-none shadow-sm border border-background-alt/50 p-8">
+              <div className="bg-surface rounded-none shadow-sm border border-background-alt/50 p-8">
                 <motion.h2
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-4xl mb-4 text-text-primary font-bold"
+                  className="text-4xl mb-4 text-heading font-bold"
                 >
                   {product.title}
                 </motion.h2>
@@ -282,23 +282,23 @@ export default function ProductDetailScreen() {
                   className="flex flex-col gap-4 mb-6"
                 >
                   <div>
-                    <div className="text-xl font-bold text-text-primary mb-1">
+                    <div className="text-xl font-bold text-body mb-1">
                       Giá trị sản phẩm (để thu cọc):
                     </div>
-                    <div className="text-4xl font-bold text-text-secondary">
+                    <div className="text-4xl font-bold text-muted">
                       {formatPrice(product.depositAmount)}
                     </div>
                   </div>
 
                   <div className="border-t border-background-alt/50 pt-4">
-                    <div className="text-lg font-bold text-text-primary mb-3">
+                    <div className="text-lg font-bold text-body mb-3">
                       Chọn thời gian thuê:
                     </div>
                     <div className="flex items-center gap-4 mb-4">
                       <select
                         value={rentalDays}
                         onChange={(e) => setRentalDays(Number(e.target.value))}
-                        className="px-4 py-2 border-2 border-secondary rounded-none bg-white text-text-primary font-bold focus:outline-none"
+                        className="px-4 py-2 border-2 border-secondary rounded-none bg-surface text-body font-bold focus:outline-none"
                       >
                         {[1, 2, 3, 5].map((days) => (
                           <option key={days} value={days}>
@@ -306,29 +306,29 @@ export default function ProductDetailScreen() {
                           </option>
                         ))}
                       </select>
-                      <span className="text-text-primary">
+                      <span className="text-body">
                         ({formatPrice(product.rentalPrice)} / ngày)
                       </span>
                     </div>
 
                     <div className="bg-surface p-4 rounded-none border border-background-alt">
                       {isCalculating ? (
-                        <div className="text-text-primary animate-pulse font-bold">
+                        <div className="text-body animate-pulse font-bold">
                           Đang tính phí thuê...
                         </div>
                       ) : (
                         <div>
-                          <div className="text-lg text-text-primary">
+                          <div className="text-lg text-body">
                             Tổng phí thuê ({rentalDays} ngày):
                           </div>
-                          <div className="text-3xl font-bold text-text-primary">
+                          <div className="text-3xl font-bold text-body">
                             {formatPrice(
                               calculatedRentFee ||
                                 product.rentalPrice * rentalDays,
                             )}
                           </div>
                           {discountInfo && discountInfo.discountAmount > 0 && (
-                            <div className="text-sm font-bold text-emerald-600 mt-1">
+                            <div className="text-sm font-bold text-success mt-1">
                               ✓ Tiết kiệm{" "}
                               {formatPrice(discountInfo.discountAmount)} (
                               {discountInfo.discountRuleName})
@@ -344,7 +344,7 @@ export default function ProductDetailScreen() {
                 <motion.button
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 10px 40px rgba(212, 175, 55, 0.4)",
+                    boxShadow: "0 10px 40px var(--color-btn-glow)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
@@ -355,7 +355,7 @@ export default function ProductDetailScreen() {
                     );
                     toast.success(`Đã thêm vào giỏ hàng (${rentalDays} ngày)`);
                   }}
-                  className="w-full py-5 rounded-full bg-linear-to-r from-secondary to-primary text-white text-xl font-bold flex items-center justify-center gap-2 shadow-xl"
+                  className="w-full py-5 rounded-full bg-btn-primary hover:bg-btn-hover text-body text-xl font-bold flex items-center justify-center gap-2 shadow-xl"
                 >
                   <ShoppingCart className="w-6 h-6" />
                   Chọn Thuê Ngay
@@ -367,13 +367,13 @@ export default function ProductDetailScreen() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="bg-white rounded-none shadow-sm border border-background-alt/50 p-8"
+                className="bg-surface rounded-none shadow-sm border border-background-alt/50 p-8"
               >
-                <h3 className="text-2xl font-bold text-text-primary mb-3 flex items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-text-secondary" />
+                <h3 className="text-2xl font-bold text-heading mb-3 flex items-center gap-2">
+                  <Sparkles className="w-6 h-6 text-muted" />
                   Mô Tả
                 </h3>
-                <p className="text-text-primary leading-relaxed text-lg">
+                <p className="text-heading leading-relaxed text-lg">
                   {product.shortDescription}
                 </p>
               </motion.div>
@@ -384,21 +384,21 @@ export default function ProductDetailScreen() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="bg-white rounded-none shadow-sm border border-background-alt/50 p-8 space-y-6"
+                  className="bg-surface rounded-none shadow-sm border border-background-alt/50 p-8 space-y-6"
                 >
-                  <h3 className="text-2xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                    <Package className="w-6 h-6 text-text-secondary" />
+                  <h3 className="text-2xl font-bold text-heading mb-4 flex items-center gap-2">
+                    <Package className="w-6 h-6 text-muted" />
                     Thông Tin Chi Tiết
                   </h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Basic Info */}
-                    <div className="bg-linear-to-br from-white to-surface p-6 rounded-none">
-                      <h4 className="text-xl font-bold text-text-primary mb-3 flex items-center gap-2">
-                        <Package className="w-5 h-5 text-text-secondary" />
+                    <div className="bg-linear-to-br from-surface to-surface p-6 rounded-none">
+                      <h4 className="text-xl font-bold text-heading mb-3 flex items-center gap-2">
+                        <Package className="w-5 h-5 text-muted" />
                         Đặc điểm
                       </h4>
-                      <p className="text-text-primary leading-relaxed">
+                      <p className="text-heading leading-relaxed">
                         Tình trạng:{" "}
                         {product.condition === "new"
                           ? "Mới"
@@ -418,32 +418,32 @@ export default function ProductDetailScreen() {
                     </div>
 
                     {/* Sizes */}
-                    <div className="bg-linear-to-br from-white to-surface p-6 rounded-none">
-                      <h4 className="text-xl font-bold text-text-primary mb-3">
+                    <div className="bg-linear-to-br from-surface to-surface p-6 rounded-none">
+                      <h4 className="text-xl font-bold text-heading mb-3">
                         Kích Cỡ
                       </h4>
-                      <p className="text-text-primary text-2xl font-bold">
+                      <p className="text-heading text-2xl font-bold">
                         {product.size}
                       </p>
                     </div>
 
                     {/* Material */}
-                    <div className="bg-linear-to-br from-white to-surface p-6 rounded-none">
-                      <h4 className="text-xl font-bold text-text-primary mb-3">
+                    <div className="bg-linear-to-br from-surface to-surface p-6 rounded-none">
+                      <h4 className="text-xl font-bold text-heading mb-3">
                         Chất Liệu & Màu
                       </h4>
-                      <p className="text-text-primary leading-relaxed">
+                      <p className="text-heading leading-relaxed">
                         Chất liệu: {product.material || "Chưa cập nhật"} <br />
                         Màu sắc: {product.color || "Chưa cập nhật"}
                       </p>
                     </div>
 
                     {/* Brand */}
-                    <div className="bg-linear-to-br from-white to-surface p-6 rounded-none">
-                      <h4 className="text-xl font-bold text-text-primary mb-3">
+                    <div className="bg-linear-to-br from-surface to-surface p-6 rounded-none">
+                      <h4 className="text-xl font-bold text-heading mb-3">
                         Thương Hiệu
                       </h4>
-                      <p className="text-text-primary leading-relaxed">
+                      <p className="text-heading leading-relaxed">
                         {typeof product.brand === "object"
                           ? product.brand?.name
                           : product.brand || "Chưa cập nhật"}
@@ -452,11 +452,11 @@ export default function ProductDetailScreen() {
 
                     {/* Description */}
                     {product.description && (
-                      <div className="bg-linear-to-br from-white to-surface p-6 rounded-none md:col-span-2">
-                        <h4 className="text-xl font-bold text-text-primary mb-4">
+                      <div className="bg-linear-to-br from-surface to-surface p-6 rounded-none md:col-span-2">
+                        <h4 className="text-xl font-bold text-heading mb-4">
                           Mô tả chi tiết
                         </h4>
-                        <p className="text-text-primary leading-relaxed whitespace-pre-wrap">
+                        <p className="text-heading leading-relaxed whitespace-pre-wrap">
                           {product.description}
                         </p>
                       </div>

@@ -160,8 +160,8 @@ export default function PolicyScreen() {
     {
       icon: <AlertTriangle className="w-8 h-8" />,
       title: "Hư Hỏng Nhẹ",
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-50",
+      color: "text-warning",
+      bgColor: "bg-warning-bg",
       examples: "Vết bẩn nhỏ, sờn vải, mất nút nhỏ",
       penalty: "Giữ lại 10-30% tiền cọc để sửa chữa",
       coverage: "Bảo hiểm cơ bản có thể bù một phần",
@@ -169,24 +169,24 @@ export default function PolicyScreen() {
     {
       icon: <XCircle className="w-8 h-8" />,
       title: "Hư Hỏng Nặng",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50",
+      color: "text-warning",
+      bgColor: "bg-warning-bg",
       examples: "Rách lớn, vết bẩn không tẩy được, hỏng cấu trúc",
       penalty: "Giữ lại 50-100% tiền cọc",
     },
     {
       icon: <Package className="w-8 h-8" />,
       title: "Mất Mát Sản Phẩm",
-      color: "text-red-600",
-      bgColor: "bg-red-50",
+      color: "text-error",
+      bgColor: "bg-error-bg",
       examples: "Mất toàn bộ hoặc một phần sản phẩm/phụ kiện",
       penalty: "Bồi thường 70-100% giá trị sản phẩm",
     },
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Trả Trễ Hạn",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
+      color: "text-body",
+      bgColor: "bg-background-alt",
       examples: "Trả muộn hơn ngày đã đặt",
       penalty: "Phạt 30% giá thuê/ngày + giữ cọc nếu quá 7 ngày",
     },
@@ -290,7 +290,7 @@ export default function PolicyScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-white to-background-alt">
+    <div className="min-h-screen bg-linear-to-br from-surface to-background-alt">
       {/* Hero Section */}
       <section className="relative w-full bg-linear-to-br from-primary via-primary to-primary py-24 lg:py-32 text-center text-white overflow-hidden">
         <div
@@ -308,7 +308,7 @@ export default function PolicyScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <ShieldCheck className="w-8 h-8 text-text-secondary opacity-60" />
+          <ShieldCheck className="w-8 h-8 text-muted opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -320,7 +320,7 @@ export default function PolicyScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Lock className="w-6 h-6 text-text-secondary opacity-40" />
+          <Lock className="w-6 h-6 text-muted opacity-40" />
         </motion.div>
 
         <motion.div
@@ -345,7 +345,7 @@ export default function PolicyScreen() {
       </section>
 
       {/* Quick Navigation */}
-      <section className="w-full bg-white py-8 shadow-md">
+      <section className="w-full bg-surface py-8 shadow-md">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap gap-4 justify-center">
             {[
@@ -367,8 +367,8 @@ export default function PolicyScreen() {
                 }}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${
                   activeSection === item.id
-                    ? "bg-secondary text-white shadow-lg"
-                    : "bg-white text-text-primary hover:bg-secondary hover:text-white"
+                    ? "bg-secondary text-body shadow-lg"
+                    : "bg-surface text-body hover:bg-secondary hover:text-body"
                 }`}
               >
                 <item.icon className="w-4 h-4" />
@@ -382,7 +382,7 @@ export default function PolicyScreen() {
       {/* Rental Process Section */}
       <section
         id="process"
-        className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12"
+        className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -390,7 +390,7 @@ export default function PolicyScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Quy Trình Cho Thuê Đơn Giản
           </motion.h2>
@@ -398,7 +398,7 @@ export default function PolicyScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             4 bước đơn giản để trải nghiệm thời trang cao cấp
           </motion.p>
@@ -415,20 +415,20 @@ export default function PolicyScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white rounded-3xl p-8 shadow-xl cursor-pointer group relative overflow-hidden"
+                className="bg-surface rounded-3xl p-8 shadow-xl cursor-pointer group relative overflow-hidden"
               >
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="relative z-10 bg-linear-to-br from-primary to-primary text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
+                  className="relative z-10 bg-linear-to-br from-primary to-primary text-body w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl"
                 >
                   {step.icon}
                 </motion.div>
 
-                <h3 className="text-2xl mb-3 text-text-primary font-bold text-center group-hover:text-text-secondary transition-colors">
+                <h3 className="text-2xl mb-3 text-heading font-bold text-center group-hover:text-muted transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-text-primary mb-4 text-center leading-relaxed">
+                <p className="text-heading mb-4 text-center leading-relaxed">
                   {step.description}
                 </p>
 
@@ -440,9 +440,9 @@ export default function PolicyScreen() {
                       whileInView={{ x: 0, opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-2 text-sm text-text-primary"
+                      className="flex items-start gap-2 text-sm text-body"
                     >
-                      <CheckCircle className="w-4 h-4 text-text-secondary shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-muted shrink-0 mt-0.5" />
                       <span>{detail}</span>
                     </motion.li>
                   ))}
@@ -456,7 +456,7 @@ export default function PolicyScreen() {
       {/* Pricing Policy Section */}
       <section
         id="pricing"
-        className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12"
+        className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -464,7 +464,7 @@ export default function PolicyScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Chính Sách Giá & Đặt Cọc
           </motion.h2>
@@ -472,7 +472,7 @@ export default function PolicyScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             Giá cả minh bạch, nhiều lựa chọn phù hợp với nhu cầu của bạn
           </motion.p>
@@ -491,8 +491,8 @@ export default function PolicyScreen() {
                 whileHover={{ scale: 1.05, y: -10 }}
                 className={`rounded-3xl p-8 shadow-2xl relative overflow-hidden ${
                   policy.highlight
-                    ? "bg-linear-to-br from-secondary to-primary text-white"
-                    : "bg-white"
+                    ? "bg-linear-to-br from-secondary to-primary text-body"
+                    : "bg-surface"
                 }`}
               >
                 {policy.highlight && (
@@ -503,7 +503,7 @@ export default function PolicyScreen() {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"
+                    className="absolute -top-10 -right-10 w-40 h-40 bg-surface/10 rounded-full"
                   ></motion.div>
                 )}
 
@@ -513,8 +513,8 @@ export default function PolicyScreen() {
                     transition={{ duration: 0.6 }}
                     className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
                       policy.highlight
-                        ? "bg-white text-text-secondary"
-                        : "bg-secondary text-white"
+                        ? "bg-surface text-muted"
+                        : "bg-secondary text-body"
                     }`}
                   >
                     {policy.icon}
@@ -522,14 +522,14 @@ export default function PolicyScreen() {
 
                   <h3
                     className={`text-2xl mb-3 font-bold text-center ${
-                      policy.highlight ? "text-white" : "text-text-primary"
+                      policy.highlight ? "text-white" : "text-body"
                     }`}
                   >
                     {policy.title}
                   </h3>
                   <p
                     className={`text-center mb-6 ${
-                      policy.highlight ? "text-white/90" : "text-text-primary"
+                      policy.highlight ? "text-white/90" : "text-body"
                     }`}
                   >
                     {policy.description}
@@ -547,12 +547,12 @@ export default function PolicyScreen() {
                       >
                         <CheckCircle
                           className={`w-5 h-5 shrink-0 mt-0.5 ${
-                            policy.highlight ? "text-white" : "text-text-secondary"
+                            policy.highlight ? "text-white" : "text-muted"
                           }`}
                         />
                         <span
                           className={
-                            policy.highlight ? "text-white" : "text-text-primary"
+                            policy.highlight ? "text-white" : "text-body"
                           }
                         >
                           {detail}
@@ -578,7 +578,7 @@ export default function PolicyScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Chính Sách Hư Hỏng & Phạt
           </motion.h2>
@@ -586,7 +586,7 @@ export default function PolicyScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             Quy định rõ ràng về trách nhiệm và mức phạt để bảo vệ cả hai bên
           </motion.p>
@@ -609,23 +609,23 @@ export default function PolicyScreen() {
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.5 }}
-                    className={`p-4 rounded-2xl bg-white shadow-lg`}
+                    className={`p-4 rounded-2xl bg-surface shadow-lg`}
                   >
                     {policy.icon}
                   </motion.div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-2">{policy.title}</h3>
-                    <p className="text-gray-700 italic">{policy.examples}</p>
+                    <p className="text-muted italic">{policy.examples}</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-white/70 rounded-xl p-4">
+                  <div className="bg-surface/70 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <AlertTriangle className="w-5 h-5" />
-                      <span className="font-bold text-gray-800">Mức phạt:</span>
+                      <span className="font-bold text-muted">Mức phạt:</span>
                     </div>
-                    <p className="text-gray-800 font-semibold">
+                    <p className="text-muted font-semibold">
                       {policy.penalty}
                     </p>
                   </div>
@@ -639,7 +639,7 @@ export default function PolicyScreen() {
       {/* Delivery & Cleaning Section */}
       <section
         id="delivery"
-        className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12"
+        className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -647,7 +647,7 @@ export default function PolicyScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Giao Nhận & Vệ Sinh Chuyên Nghiệp
           </motion.h2>
@@ -655,7 +655,7 @@ export default function PolicyScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             Quy trình giao hàng nhanh chóng và vệ sinh đạt chuẩn 5 sao
           </motion.p>
@@ -672,20 +672,20 @@ export default function PolicyScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white rounded-3xl p-8 shadow-xl group"
+                className="bg-surface rounded-3xl p-8 shadow-xl group"
               >
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="bg-linear-to-br from-secondary to-primary text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl"
+                  className="bg-linear-to-br from-secondary to-primary text-body w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl"
                 >
                   {process.icon}
                 </motion.div>
 
-                <h3 className="text-2xl mb-3 text-text-primary font-bold text-center group-hover:text-text-secondary transition-colors">
+                <h3 className="text-2xl mb-3 text-heading font-bold text-center group-hover:text-muted transition-colors">
                   {process.title}
                 </h3>
-                <p className="text-text-primary mb-6 text-center">
+                <p className="text-heading mb-6 text-center">
                   {process.description}
                 </p>
 
@@ -697,9 +697,9 @@ export default function PolicyScreen() {
                       whileInView={{ x: 0, opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-2 text-text-primary"
+                      className="flex items-start gap-2 text-body"
                     >
-                      <CheckCircle className="w-5 h-5 text-text-secondary shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-muted shrink-0 mt-0.5" />
                       <span>{point}</span>
                     </motion.li>
                   ))}
@@ -713,7 +713,7 @@ export default function PolicyScreen() {
       {/* Security & Privacy Section */}
       <section
         id="security"
-        className="w-full bg-linear-to-br from-primary via-primary to-primary text-white py-20 lg:py-28 px-6 lg:px-12"
+        className="w-full bg-linear-to-br from-primary via-primary to-primary text-body py-20 lg:py-28 px-6 lg:px-12"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -747,17 +747,17 @@ export default function PolicyScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, borderColor: "var(--color-secondary)" }}
-                className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl"
+                className="bg-surface/10 backdrop-blur-lg rounded-3xl p-8 border border-text-inverse/20 shadow-2xl"
               >
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="bg-secondary text-text-primary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                  className="bg-secondary text-heading w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
                 >
                   {feature.icon}
                 </motion.div>
 
-                <h3 className="text-2xl mb-3 font-bold text-center text-text-secondary">
+                <h3 className="text-2xl mb-3 font-bold text-center text-muted">
                   {feature.title}
                 </h3>
                 <p className="text-center mb-6 text-white/90">
@@ -774,7 +774,7 @@ export default function PolicyScreen() {
                       transition={{ delay: i * 0.1 }}
                       className="flex items-start gap-2"
                     >
-                      <ShieldCheck className="w-5 h-5 text-text-secondary shrink-0 mt-0.5" />
+                      <ShieldCheck className="w-5 h-5 text-muted shrink-0 mt-0.5" />
                       <span className="text-white/90">{item}</span>
                     </motion.li>
                   ))}
@@ -795,9 +795,9 @@ export default function PolicyScreen() {
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.1 }}
-                  className="bg-white/20 backdrop-blur px-6 py-3 rounded-full border border-secondary flex items-center gap-2"
+                  className="bg-surface/20 backdrop-blur px-6 py-3 rounded-full border border-secondary flex items-center gap-2"
                 >
-                  <ShieldCheck className="w-5 h-5 text-text-secondary" />
+                  <ShieldCheck className="w-5 h-5 text-muted" />
                   <span className="font-bold">{badge}</span>
                 </motion.div>
               )
@@ -807,14 +807,14 @@ export default function PolicyScreen() {
       </section>
 
       {/* FAQs Section */}
-      <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className="text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Câu Hỏi Thường Gặp
           </motion.h2>
@@ -822,7 +822,7 @@ export default function PolicyScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16"
+            className="text-center text-body text-lg mb-16"
           >
             Giải đáp những thắc mắc phổ biến nhất
           </motion.p>
@@ -838,7 +838,7 @@ export default function PolicyScreen() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                className="bg-surface rounded-2xl shadow-lg overflow-hidden"
               >
                 <motion.button
                   onClick={() =>
@@ -847,14 +847,14 @@ export default function PolicyScreen() {
                   whileHover={{ backgroundColor: "var(--color-surface)" }}
                   className="w-full px-8 py-6 flex items-center justify-between text-left transition-colors"
                 >
-                  <span className="text-lg font-bold text-text-primary pr-4">
+                  <span className="text-lg font-bold text-body pr-4">
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: expandedFAQ === idx ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-text-secondary shrink-0" />
+                    <ChevronDown className="w-6 h-6 text-muted shrink-0" />
                   </motion.div>
                 </motion.button>
 
@@ -867,7 +867,7 @@ export default function PolicyScreen() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-8 pb-6 text-text-primary leading-relaxed border-t border-background-alt pt-4">
+                      <div className="px-8 pb-6 text-body leading-relaxed border-t border-background-alt pt-4">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -896,7 +896,7 @@ export default function PolicyScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-text-secondary" />
+              <Sparkles className="w-16 h-16 text-muted" />
             </motion.div>
           </motion.div>
 
@@ -920,10 +920,10 @@ export default function PolicyScreen() {
             <motion.button
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 60px rgba(212, 175, 55, 0.4)",
+                boxShadow: "0 20px 60px var(--color-btn-glow)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-secondary text-text-primary px-8 py-4 rounded-full text-lg font-bold shadow-xl"
+              className="bg-secondary text-heading px-8 py-4 rounded-full text-lg font-bold shadow-xl"
             >
               Liên Hệ Hỗ Trợ
             </motion.button>
@@ -934,7 +934,7 @@ export default function PolicyScreen() {
                 color: "var(--color-primary)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white transition-all"
+              className="bg-transparent text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-text-inverse transition-all"
             >
               Xem Bộ Sưu Tập
             </motion.button>

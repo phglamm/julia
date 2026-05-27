@@ -40,21 +40,21 @@ const genderLabel = (g) => {
 
 /* ─── shared styles ──────────────────────────────── */
 const inputCls =
-  "w-full px-4 py-3 border-2 border-background-alt/60 bg-white text-sm text-text-primary outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all placeholder:text-text-primary/40 font-[inherit]";
+  "w-full px-4 py-3 border-2 border-background-alt/60 bg-surface text-sm text-body outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all placeholder:text-body/40 font-[inherit]";
 
 /* ─── Display field (view mode) ──────────────────── */
 function DisplayField({ icon: Icon, label, value }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-text-primary">
-        <Icon size={11} className="text-text-secondary" />
+      <span className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-body">
+        <Icon size={11} className="text-muted" />
         {label}
       </span>
-      <div className="px-4 py-3 bg-gradient-to-br from-[#fdfaf7] to-surface border border-background-alt/40 text-sm font-medium text-text-primary min-h-[46px] flex items-center">
+      <div className="px-4 py-3 bg-gradient-to-br from-surface to-surface border border-background-alt/40 text-sm font-medium text-body min-h-[46px] flex items-center">
         {value ? (
           value
         ) : (
-          <span className="text-[#c5a9b1] italic text-xs">Chưa cập nhật</span>
+          <span className="text-muted italic text-xs">Chưa cập nhật</span>
         )}
       </div>
     </div>
@@ -65,8 +65,8 @@ function DisplayField({ icon: Icon, label, value }) {
 function EditField({ icon: Icon, label, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-text-primary">
-        <Icon size={11} className="text-text-secondary" />
+      <label className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase text-body">
+        <Icon size={11} className="text-muted" />
         {label}
       </label>
       {children}
@@ -77,8 +77,8 @@ function EditField({ icon: Icon, label, children }) {
 /* ─── Section divider ────────────────────────────── */
 function SectionDivider({ icon: Icon, children }) {
   return (
-    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-text-primary col-span-full mt-1 mb-1 pb-2 border-b border-dashed border-background-alt">
-      <Icon size={12} className="text-text-secondary" />
+    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-body col-span-full mt-1 mb-1 pb-2 border-b border-dashed border-background-alt">
+      <Icon size={12} className="text-muted" />
       {children}
     </div>
   );
@@ -196,7 +196,7 @@ export default function ProfileScreen() {
   /* ── Skeleton ── */
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-surface to-background-alt px-4 sm:px-6 py-14">
+      <div className="min-h-screen bg-gradient-to-br from-surface via-surface to-background-alt px-4 sm:px-6 py-14">
         <div className="max-w-3xl mx-auto space-y-4 animate-pulse">
           <div className="h-7 w-48 mx-auto bg-background-alt rounded" />
           <div className="h-36 bg-background-alt" />
@@ -209,8 +209,8 @@ export default function ProfileScreen() {
   /* ── Fetch error ── */
   if (fetchError) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-surface to-background-alt px-4 sm:px-6 py-14">
-        <div className="max-w-3xl mx-auto flex items-center gap-3 p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+      <div className="min-h-screen bg-gradient-to-br from-surface via-surface to-background-alt px-4 sm:px-6 py-14">
+        <div className="max-w-3xl mx-auto flex items-center gap-3 p-4 bg-error-bg border border-error text-error text-sm font-medium">
           <AlertCircle size={18} />
           {fetchError}
         </div>
@@ -221,7 +221,7 @@ export default function ProfileScreen() {
   const addr = profile?.address ?? {};
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdfaf7] via-surface to-background-alt px-4 sm:px-6 py-14 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-surface via-surface to-background-alt px-4 sm:px-6 py-14 relative overflow-hidden">
       {/* dot grid bg */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -239,10 +239,10 @@ export default function ProfileScreen() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-heading tracking-tight">
           Tài Khoản Của Tôi
         </h1>
-        <p className="text-text-primary mt-1 text-sm">
+        <p className="text-heading mt-1 text-sm">
           Thông tin cá nhân và địa chỉ của bạn
         </p>
       </motion.div>
@@ -252,7 +252,7 @@ export default function ProfileScreen() {
         <AnimatePresence>
           {saveSuccess && (
             <motion.div
-              className="mb-4 flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 text-green-700 text-sm font-medium"
+              className="mb-4 flex items-center gap-2 px-4 py-3 bg-success-bg border border-success text-success text-sm font-medium"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -266,7 +266,7 @@ export default function ProfileScreen() {
 
       {/* ── Card ── */}
       <motion.div
-        className="max-w-3xl mx-auto bg-white border border-background-alt/50 shadow-[0_8px_40px_rgba(104,37,53,0.08)] overflow-hidden relative z-10"
+        className="max-w-3xl mx-auto bg-surface border border-background-alt/50 shadow-[0_8px_40px_rgba(104,37,53,0.08)] overflow-hidden relative z-10"
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -278,10 +278,10 @@ export default function ProfileScreen() {
               className="relative shrink-0"
               whileHover={{ scale: 1.07 }}
             >
-              <div className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/60 flex items-center justify-center text-white">
+              <div className="w-20 h-20 rounded-full bg-surface/20 border-2 border-text-inverse/60 flex items-center justify-center text-white">
                 <User size={36} />
               </div>
-              <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-secondary border-2 border-white flex items-center justify-center text-white">
+              <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-secondary border-2 border-text-inverse flex items-center justify-center text-body">
                 <Star size={11} fill="currentColor" />
               </div>
             </motion.div>
@@ -296,7 +296,7 @@ export default function ProfileScreen() {
                 {profile?.email}
               </div>
               <div className="flex flex-wrap gap-2 mt-2.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-secondary to-primary text-white text-[11px] font-bold shadow">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-btn-primary hover:bg-btn-hover text-body text-[11px] font-bold shadow">
                   <Sparkles size={11} />
                   {profile?.points ?? 0} điểm
                 </span>
@@ -313,7 +313,7 @@ export default function ProfileScreen() {
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-white/15 border border-white/40 text-white text-sm font-semibold hover:bg-white/25 transition-all cursor-pointer"
+              className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-surface/15 border border-text-inverse/40 text-white text-sm font-semibold hover:bg-surface/25 transition-all cursor-pointer"
             >
               <Edit3 size={14} />
               Chỉnh sửa
@@ -401,7 +401,7 @@ export default function ProfileScreen() {
                 </div>
 
                 {/* footer */}
-                <p className="mt-6 text-[11px] text-text-primary/50 text-right">
+                <p className="mt-6 text-[11px] text-body/50 text-right">
                   Cập nhật lần cuối:{" "}
                   {profile?.updatedAt
                     ? new Date(profile.updatedAt).toLocaleDateString("vi-VN")
@@ -420,7 +420,7 @@ export default function ProfileScreen() {
                 transition={{ duration: 0.25 }}
               >
                 {saveError && (
-                  <div className="flex items-center gap-2 px-4 py-3 mb-5 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                  <div className="flex items-center gap-2 px-4 py-3 mb-5 bg-error-bg border border-error text-error text-sm font-medium">
                     <AlertCircle size={16} />
                     {saveError}
                   </div>
@@ -447,7 +447,7 @@ export default function ProfileScreen() {
                       type="text"
                       value={profile?.email ?? ""}
                       disabled
-                      className={`${inputCls} bg-[#fdf6f8] text-text-primary cursor-not-allowed`}
+                      className={`${inputCls} bg-background-alt text-body cursor-not-allowed`}
                     />
                   </EditField>
 
@@ -491,7 +491,7 @@ export default function ProfileScreen() {
                       type="text"
                       value={profile?.username ?? ""}
                       disabled
-                      className={`${inputCls} bg-[#fdf6f8] text-text-primary cursor-not-allowed`}
+                      className={`${inputCls} bg-background-alt text-body cursor-not-allowed`}
                     />
                   </EditField>
                 </div>
@@ -562,7 +562,7 @@ export default function ProfileScreen() {
                     onClick={handleCancel}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-background-alt text-text-primary text-sm font-semibold hover:border-secondary hover:text-text-primary transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-background-alt text-body text-sm font-semibold hover:border-secondary hover:text-body transition-all cursor-pointer"
                   >
                     <X size={14} />
                     Hủy
@@ -574,7 +574,7 @@ export default function ProfileScreen() {
                     disabled={saving}
                     whileHover={!saving ? { scale: 1.03 } : {}}
                     whileTap={!saving ? { scale: 0.97 } : {}}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-white text-sm font-bold shadow hover:shadow-lg transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-body text-sm font-bold shadow hover:shadow-lg transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {saving ? (
                       <>

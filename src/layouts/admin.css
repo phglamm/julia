@@ -2,7 +2,7 @@
    pink/maroon body colors from leaking into admin pages. */
 
 .admin-root {
-  background-color: var(--color-text-surface);   /* Ivory Whisper */
-  color: #3D2E28;              /* Primary dark brown text - optimal contrast */
+  background-color: var(--color-admin-bg);
+  color: var(--color-admin-body);
   min-height: 100vh;
 }

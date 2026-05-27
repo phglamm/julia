@@ -2,19 +2,63 @@
 
 /* Global typography: vintage, polished serif look */
 @theme {
-  /* Brand Colors (Backgrounds, Borders, etc) */
-  --color-primary: #c8b39a; /* Sandy Beige */
-  --color-secondary: #efe3ce; /* Vanilla Cream */
-  --color-background-alt: #f6f0e6; /* Soft Linen */
-  --color-surface: #faf7f2; /* Ivory Whisper */
+  /* ====================================================
+     1. MÀU NỀN & KHỐI (Dùng cho Nền, Nút bấm, Card...)
+     Cách dùng: bg-primary, bg-secondary, bg-surface...
+  ======================================================= */
+  --color-primary: #f4b6c7; /* Màu chủ đạo (Nút bấm, điểm nhấn) */
+  --color-secondary: #fce6ec; /* Màu phụ (Hiệu ứng hover, nền phụ) */
+  --color-background-alt: #fef3f6; /* Màu nền của toàn bộ trang web */
+  --color-surface: #ffffff; /* Màu nền của các khối hộp (Card) */
+  --color-inverse: #875161; /* Màu tương phản mạnh */
 
-  /* Decoupled Text Colors */
-  --color-text-primary: #000000;
-  --color-text-secondary: #efe3ce;
-  --color-text-background-alt: #f6f0e6;
-  --color-text-surface: #faf7f2;
+  /* ====================================================
+     2. MÀU CHỮ (Typography)
+     Cách dùng: text-heading, text-body, text-muted...
+  ======================================================= */
+  --color-heading: #754252; /* Chữ tiêu đề lớn (h1, h2, h3...) */
+  --color-body: #8a5a68; /* Chữ văn bản bình thường (đoạn văn) */
+  --color-muted: #a87e8a; /* Chữ phụ, mờ hơn (ghi chú, phụ đề) */
+  --color-accent: #c47b90; /* Chữ nhấn mạnh, màu nổi bật */
+
+  /* ====================================================
+     4. MÀU NÚT BẤM VÀ HIỆU ỨNG (Buttons & Effects)
+     Cách dùng: bg-btn-primary, hover:bg-btn-hover
+  ======================================================= */
+  --color-btn-primary: #f4b6c7; /* Nền nút chính */
+  --color-btn-hover: #e8a3b6; /* Nền nút khi hover */
+  --color-btn-glow: rgba(
+    244,
+    182,
+    199,
+    0.5
+  ); /* Bóng phát sáng khi hover (glow) */
+
+  /* ====================================================
+     5. MÀU TRẠNG THÁI (Lỗi, Thành công, Cảnh báo)
+     Cách dùng: bg-error, text-success...
+  ======================================================= */
+  --color-error: #ef4444;
+  --color-error-bg: #fef2f2;
+  --color-success: #10b981;
+  --color-success-bg: #ecfdf5;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fffbeb;
+
+  /* ====================================================
+     6. MÀU GIAO DIỆN ADMIN (Admin UI)
+     Cách dùng: bg-admin-bg, text-admin-heading...
+  ======================================================= */
+  --color-admin-bg: #f8fafc; /* Nền tổng thể Admin */
+  --color-admin-surface: #ffffff; /* Nền của các khối thẻ (Cards) */
+  --color-admin-primary: #4f46e5; /* Màu nhấn chính (Nút, Icon) */
+  --color-admin-primary-hover: #4338ca; /* Màu nhấn khi hover */
+  --color-admin-heading: #1e293b; /* Màu chữ tiêu đề */
+  --color-admin-body: #334155; /* Màu chữ văn bản bình thường */
+  --color-admin-muted: #64748b; /* Màu chữ mờ/phụ */
+  --color-admin-border: #e2e8f0; /* Màu viền */
 }
 
 :root {
-  font-family: "Strichpunkt Sans", sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
 }

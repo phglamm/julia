@@ -120,12 +120,12 @@ export default function AdminProducts() {
 
   const conditionColor = (v) => {
     const map = {
-      new: "bg-emerald-50 text-emerald-700",
+      new: "bg-admin-bg text-green-600",
       like_new: "bg-blue-50 text-blue-700",
       good: "bg-amber-50 text-amber-700",
-      fair: "bg-gray-100 text-gray-600",
+      fair: "bg-admin-bg text-admin-muted",
     };
-    return map[v] || "bg-gray-100 text-gray-600";
+    return map[v] || "bg-admin-bg text-admin-muted";
   };
 
   /* ─── Modal openers ────────────────────────────────────── */
@@ -268,27 +268,27 @@ export default function AdminProducts() {
 
   /* ─── Shared classes ───────────────────────────────────── */
   const inputCls =
-    "w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500";
-  const selectCls = `${inputCls} bg-white`;
+    "w-full px-3 py-2 border border-admin-border rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500";
+  const selectCls = `${inputCls} bg-admin-surface`;
 
   /* ═══════════════════════════════════════════════════════ */
   return (
     <div className="space-y-5">
       {/* ── Header ─────────────────────────────────────────── */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-indigo-600 rounded-lg">
+            <div className="p-2.5 bg-admin-primary rounded-lg">
               <Package className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Quản lý sản phẩm</h1>
-              <p className="text-xs text-gray-500 mt-0.5">{products.length} sản phẩm</p>
+              <h1 className="text-xl font-bold text-admin-muted">Quản lý sản phẩm</h1>
+              <p className="text-xs text-admin-muted mt-0.5">{products.length} sản phẩm</p>
             </div>
           </div>
           <button
             onClick={openCreateModal}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-admin-primary hover:bg-admin-primary-hover text-white rounded-lg text-sm font-medium"
           >
             <Plus className="w-4 h-4" />
             Thêm sản phẩm
@@ -297,43 +297,43 @@ export default function AdminProducts() {
 
         {/* Search */}
         <div className="mt-4 relative max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-admin-muted" />
           <input
             type="text"
             placeholder="Tìm sản phẩm..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            className="w-full pl-9 pr-3 py-2 border border-admin-border rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           />
         </div>
       </div>
 
       {/* ── Loading ──────────────────────────────────────────── */}
       {loading && (
-        <div className="bg-white rounded-xl border border-gray-200 p-16 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-gray-200 border-t-indigo-600"></div>
-          <p className="mt-3 text-gray-500 text-sm">Đang tải sản phẩm...</p>
+        <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border p-16 text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-2 border-admin-border border-t-indigo-600"></div>
+          <p className="mt-3 text-admin-muted text-sm">Đang tải sản phẩm...</p>
         </div>
       )}
 
       {/* ── Error ────────────────────────────────────────────── */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-          <p className="text-red-700 text-sm">Lỗi: {error}</p>
+        <div className="bg-red-50 border border-error rounded-xl p-4">
+          <p className="text-red-600 text-sm">Lỗi: {error}</p>
         </div>
       )}
 
       {/* ── Products Table ───────────────────────────────────── */}
       {!loading && !error && (
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div className="bg-admin-surface rounded-2xl shadow-sm border border-admin-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
+                <tr className="bg-admin-bg border-b border-admin-border">
                   {["STT","Ảnh","Tên sản phẩm","Danh mục","Kích cỡ","Giá thuê","Tình trạng","Kho",""].map((h, i) => (
                     <th
                       key={i}
-                      className={`px-4 py-3 text-[11px] font-semibold text-gray-500 uppercase tracking-wider ${
+                      className={`px-4 py-3 text-[11px] font-semibold text-admin-muted uppercase tracking-wider ${
                         i === 8 ? "text-right" : "text-left"
                       }`}
                     >
@@ -344,8 +344,8 @@ export default function AdminProducts() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {products.map((p, idx) => (
-                  <tr key={p._id} className="hover:bg-gray-50/50">
-                    <td className="px-4 py-3 text-sm text-gray-400">{idx + 1}</td>
+                  <tr key={p._id} className="hover:bg-admin-bg/50">
+                    <td className="px-4 py-3 text-sm text-admin-muted">{idx + 1}</td>
                     <td className="px-4 py-3">
                       {p.images?.length > 0 ? (
                         <img
@@ -354,26 +354,26 @@ export default function AdminProducts() {
                           className="w-12 h-12 object-cover rounded-lg border border-gray-100"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
-                          <Package className="w-4 h-4 text-gray-400" />
+                        <div className="w-12 h-12 rounded-lg bg-admin-bg flex items-center justify-center">
+                          <Package className="w-4 h-4 text-admin-muted" />
                         </div>
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      <p className="text-sm font-medium text-gray-900 line-clamp-1">{p.title}</p>
-                      {p.brand && <p className="text-xs text-gray-400 mt-0.5">{typeof p.brand === 'object' ? p.brand.name : p.brand}</p>}
+                      <p className="text-sm font-medium text-admin-muted line-clamp-1">{p.title}</p>
+                      {p.brand && <p className="text-xs text-admin-muted mt-0.5">{typeof p.brand === 'object' ? p.brand.name : p.brand}</p>}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-admin-muted">
                       {typeof p.category === "object" ? p.category?.name || "—" : "—"}
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-flex px-2 py-0.5 text-xs font-medium bg-indigo-50 text-indigo-700 rounded">
+                      <span className="inline-flex px-2 py-0.5 text-xs font-medium bg-admin-surface text-admin-primary-hover rounded">
                         {p.size}
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="text-sm font-medium text-gray-900">{fmt(p.rentalPrice)}</span>
-                      <span className="text-xs text-gray-400 block">
+                      <span className="text-sm font-medium text-admin-muted">{fmt(p.rentalPrice)}</span>
+                      <span className="text-xs text-admin-muted block">
                         / ngày
                       </span>
                     </td>
@@ -384,9 +384,9 @@ export default function AdminProducts() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-sm text-gray-700">{p.stock}</span>
+                        <span className="text-sm text-admin-muted">{p.stock}</span>
                         <span
-                          className={`w-1.5 h-1.5 rounded-full ${p.isAvailable ? "bg-emerald-500" : "bg-red-400"}`}
+                          className={`w-1.5 h-1.5 rounded-full ${p.isAvailable ? "bg-green-500" : "bg-error"}`}
                           title={p.isAvailable ? "Còn hàng" : "Hết hàng"}
                         />
                       </div>
@@ -394,14 +394,14 @@ export default function AdminProducts() {
                     <td className="px-4 py-3">
                       <div className="flex gap-1 justify-end">
                         <button
-                          className="p-1.5 rounded-md text-gray-400 hover:text-indigo-600 hover:bg-indigo-50"
+                          className="p-1.5 rounded-md text-admin-muted hover:text-admin-primary hover:bg-admin-surface"
                           onClick={() => openEditModal(p)}
                           title="Chỉnh sửa"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
-                          className="p-1.5 rounded-md text-gray-400 hover:text-red-600 hover:bg-red-50"
+                          className="p-1.5 rounded-md text-admin-muted hover:text-red-600 hover:bg-red-50"
                           onClick={() => openDeleteModal(p)}
                           title="Xoá"
                         >
@@ -418,14 +418,14 @@ export default function AdminProducts() {
           {/* Empty state */}
           {products.length === 0 && !loading && (
             <div className="p-16 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-100 rounded-xl mb-3">
-                <Package className="w-6 h-6 text-gray-400" />
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-admin-bg rounded-xl mb-3">
+                <Package className="w-6 h-6 text-admin-muted" />
               </div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">Chưa có sản phẩm</h3>
-              <p className="text-gray-500 text-sm mb-5">Bắt đầu thêm sản phẩm vào cửa hàng của bạn</p>
+              <h3 className="text-base font-semibold text-admin-muted mb-1">Chưa có sản phẩm</h3>
+              <p className="text-admin-muted text-sm mb-5">Bắt đầu thêm sản phẩm vào cửa hàng của bạn</p>
               <button
                 onClick={openCreateModal}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-admin-primary hover:bg-admin-primary-hover text-white rounded-lg text-sm font-medium"
               >
                 <Plus className="w-4 h-4" />
                 Thêm sản phẩm đầu tiên
@@ -439,27 +439,27 @@ export default function AdminProducts() {
       {showDeleteModal && selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-inverse/40"
             onClick={() => {
               setShowDeleteModal(false);
               setSelectedProduct(null);
             }}
           />
-          <div className="relative bg-white rounded-xl shadow-lg w-full max-w-sm overflow-hidden">
+          <div className="relative bg-admin-surface rounded-xl shadow-lg w-full max-w-sm overflow-hidden">
             <div className="p-6 text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-3">
+              <div className="mx-auto w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-3">
                 <Trash2 className="w-5 h-5 text-red-600" />
               </div>
-              <h3 className="text-base font-bold text-gray-900">Xoá sản phẩm</h3>
-              <p className="mt-2 text-sm text-gray-600">
+              <h3 className="text-base font-bold text-admin-muted">Xoá sản phẩm</h3>
+              <p className="mt-2 text-sm text-admin-muted">
                 Bạn có chắc muốn xoá{" "}
-                <span className="font-semibold text-gray-900">"{selectedProduct.title}"</span>?
+                <span className="font-semibold text-admin-muted">"{selectedProduct.title}"</span>?
                 Hành động này không thể hoàn tác.
               </p>
             </div>
             <div className="flex gap-2 px-6 pb-5">
               <button
-                className="flex-1 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg"
+                className="flex-1 px-3 py-2 text-sm font-medium text-admin-muted bg-admin-bg hover:bg-admin-bg rounded-lg"
                 onClick={() => {
                   setShowDeleteModal(false);
                   setSelectedProduct(null);
@@ -468,7 +468,7 @@ export default function AdminProducts() {
                 Huỷ
               </button>
               <button
-                className="flex-1 px-3 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg"
+                className="flex-1 px-3 py-2 text-sm font-medium text-white bg-error hover:bg-red-700 rounded-lg"
                 onClick={confirmDelete}
               >
                 Xác nhận xoá
@@ -481,20 +481,20 @@ export default function AdminProducts() {
       {/* ═══════════════ CREATE / EDIT MODAL ═══════════════ */}
       {showEditModal && (isCreating || selectedProduct) && (
         <div className="fixed inset-0 z-50 flex items-start justify-center p-4 overflow-y-auto">
-          <div className="fixed inset-0 bg-black/40" onClick={cancelEdit} />
-          <div className="relative bg-white rounded-xl shadow-lg w-full max-w-2xl my-8 overflow-hidden">
+          <div className="fixed inset-0 bg-inverse/40" onClick={cancelEdit} />
+          <div className="relative bg-admin-surface rounded-xl shadow-lg w-full max-w-2xl my-8 overflow-hidden">
             {/* Modal Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-3.5 border-b border-gray-200 bg-white">
+            <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-3.5 border-b border-admin-border bg-admin-surface">
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 bg-indigo-600 rounded-md">
+                <div className="p-1.5 bg-admin-primary rounded-md">
                   <Package className="w-4 h-4 text-white" />
                 </div>
-                <h3 className="text-base font-bold text-gray-900">
+                <h3 className="text-base font-bold text-admin-muted">
                   {isCreating ? "Thêm sản phẩm mới" : "Chỉnh sửa sản phẩm"}
                 </h3>
               </div>
-              <button onClick={cancelEdit} className="p-1.5 hover:bg-gray-100 rounded-md">
-                <X className="w-5 h-5 text-gray-400" />
+              <button onClick={cancelEdit} className="p-1.5 hover:bg-admin-bg rounded-md">
+                <X className="w-5 h-5 text-admin-muted" />
               </button>
             </div>
 
@@ -502,7 +502,7 @@ export default function AdminProducts() {
             <div className="p-5 space-y-6 max-h-[75vh] overflow-y-auto">
               {/* Section: Basic Info */}
               <section>
-                <SectionTitle color="bg-indigo-500">Thông tin cơ bản</SectionTitle>
+                <SectionTitle color="bg-slate-200">Thông tin cơ bản</SectionTitle>
                 <div className="space-y-3 mt-3">
                   <Field label="Tiêu đề" required>
                     <input
@@ -550,12 +550,12 @@ export default function AdminProducts() {
                 {editValues.images.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-3 mb-3">
                     {editValues.images.map((url, i) => (
-                      <div key={i} className="relative group w-16 h-16 rounded-lg overflow-hidden border border-gray-200">
+                      <div key={i} className="relative group w-16 h-16 rounded-lg overflow-hidden border border-admin-border">
                         <img src={url} alt={`img-${i}`} className="w-full h-full object-cover" />
                         <button
                           type="button"
                           onClick={() => removeImage(i)}
-                          className="absolute top-0.5 right-0.5 p-0.5 bg-red-500 rounded-full opacity-0 group-hover:opacity-100"
+                          className="absolute top-0.5 right-0.5 p-0.5 bg-error rounded-full opacity-0 group-hover:opacity-100"
                         >
                           <XCircle className="w-3 h-3 text-white" />
                         </button>
@@ -620,7 +620,7 @@ export default function AdminProducts() {
 
               {/* Section: Pricing */}
               <section>
-                <SectionTitle color="bg-emerald-500">Chi phí thuê & Cọc</SectionTitle>
+                <SectionTitle color="bg-green-500">Chi phí thuê & Cọc</SectionTitle>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
                   <Field label="Phí thuê (VNĐ / ngày)" required>
                     <input
@@ -647,7 +647,7 @@ export default function AdminProducts() {
 
               {/* Section: Stock */}
               <section>
-                <SectionTitle color="bg-rose-500">Kho & Trạng thái</SectionTitle>
+                <SectionTitle color="bg-slate-200">Kho & Trạng thái</SectionTitle>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
                   <Field label="Số lượng tồn kho">
                     <input
@@ -659,10 +659,10 @@ export default function AdminProducts() {
                     />
                   </Field>
                   <div className="flex items-end">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg w-full border border-gray-200">
+                    <div className="flex items-center justify-between p-3 bg-admin-bg rounded-lg w-full border border-admin-border">
                       <div>
-                        <p className="text-sm font-medium text-gray-700">Sẵn sàng cho thuê</p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm font-medium text-admin-muted">Sẵn sàng cho thuê</p>
+                        <p className="text-xs text-admin-muted">
                           {editValues.isAvailable ? "Đang hiển thị" : "Đã ẩn"}
                         </p>
                       </div>
@@ -670,11 +670,11 @@ export default function AdminProducts() {
                         type="button"
                         onClick={() => setEditValues((v) => ({ ...v, isAvailable: !v.isAvailable }))}
                         className={`relative w-10 h-6 rounded-full ${
-                          editValues.isAvailable ? "bg-emerald-500" : "bg-gray-300"
+                          editValues.isAvailable ? "bg-green-500" : "bg-admin-bg"
                         }`}
                       >
                         <span
-                          className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm ${
+                          className={`absolute top-0.5 w-5 h-5 bg-admin-surface rounded-full shadow-sm ${
                             editValues.isAvailable ? "left-[18px]" : "left-0.5"
                           }`}
                         />
@@ -686,20 +686,20 @@ export default function AdminProducts() {
             </div>
 
             {/* Modal Footer */}
-            <div className="sticky bottom-0 flex items-center justify-end gap-2 px-5 py-3.5 border-t border-gray-200 bg-gray-50">
+            <div className="sticky bottom-0 flex items-center justify-end gap-2 px-5 py-3.5 border-t border-admin-border bg-admin-bg">
               <button
                 onClick={cancelEdit}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50"
+                className="px-4 py-2 text-sm font-medium text-admin-muted bg-admin-surface border border-admin-border rounded-lg hover:bg-admin-bg"
               >
                 Huỷ
               </button>
               <button
                 onClick={isCreating ? createProduct : saveEdit}
                 disabled={saving}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-admin-primary hover:bg-admin-primary-hover rounded-lg disabled:opacity-50"
               >
                 {saving ? (
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-text-inverse/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <Save className="w-4 h-4" />
                 )}
@@ -716,7 +716,7 @@ export default function AdminProducts() {
 /* ── Reusable sub-components ─────────────────────────────── */
 function SectionTitle({ color, children }) {
   return (
-    <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
+    <h4 className="text-xs font-bold text-admin-muted uppercase tracking-wider flex items-center gap-2">
       <div className={`w-1 h-3.5 ${color} rounded-full`} />
       {children}
     </h4>
@@ -726,9 +726,9 @@ function SectionTitle({ color, children }) {
 function Field({ label, required, children, className = "" }) {
   return (
     <div className={className}>
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+      <label className="block text-sm font-medium text-admin-muted mb-1">
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="text-red-600 ml-0.5">*</span>}
       </label>
       {children}
     </div>

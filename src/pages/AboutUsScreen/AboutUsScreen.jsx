@@ -171,7 +171,7 @@ export default function AboutUsScreen() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-[10%]"
         >
-          <Heart className="w-8 h-8 text-text-secondary opacity-60" />
+          <Heart className="w-8 h-8 text-muted opacity-60" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -183,7 +183,7 @@ export default function AboutUsScreen() {
           }}
           className="absolute top-40 right-[15%]"
         >
-          <Sparkles className="w-6 h-6 text-text-secondary opacity-40" />
+          <Sparkles className="w-6 h-6 text-muted opacity-40" />
         </motion.div>
 
         <motion.div
@@ -208,7 +208,7 @@ export default function AboutUsScreen() {
       </section>
 
       {/* Our Story Section */}
-      <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-12">
+      <section className="w-full bg-surface py-20 lg:py-28 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -217,10 +217,10 @@ export default function AboutUsScreen() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl text-text-primary font-bold mb-6">
+            <h2 className="text-4xl lg:text-5xl text-heading font-bold mb-6">
               Câu Chuyện Của Chúng Tôi
             </h2>
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-text-primary leading-relaxed">
+            <div className="max-w-4xl mx-auto space-y-6 text-lg text-heading leading-relaxed">
               <p>
                 Julia biến thời trang cao cấp thành trải nghiệm gần gũi và dễ
                 tiếp cận, giúp khách hàng tự tin tỏa sáng trong từng khoảnh khắc
@@ -247,12 +247,12 @@ export default function AboutUsScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-none p-8 text-center shadow-xl"
+                className="bg-surface rounded-none p-8 text-center shadow-xl"
               >
-                <div className="text-4xl lg:text-5xl font-bold text-text-secondary mb-2">
+                <div className="text-4xl lg:text-5xl font-bold text-muted mb-2">
                   {stat.number}
                 </div>
-                <div className="text-text-primary font-semibold">
+                <div className="text-body font-semibold">
                   {stat.label}
                 </div>
               </motion.div>
@@ -269,7 +269,7 @@ export default function AboutUsScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className=" text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className=" text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Giá Trị Cốt Lõi
           </motion.h2>
@@ -277,7 +277,7 @@ export default function AboutUsScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             Sáng tạo trong xu hướng, tận tâm với khách hàng, bền vững và uy tín
             trong từng trải nghiệm chia sẻ
@@ -295,21 +295,21 @@ export default function AboutUsScreen() {
                 key={idx}
                 variants={scaleVariants}
                 whileHover={{ scale: 1.03, y: -10 }}
-                className="bg-white rounded-none p-8 shadow-xl group"
+                className="bg-surface rounded-none p-8 shadow-xl group"
               >
                 <div className="flex items-center">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className={` text-text-secondary w-20 h-20 rounded-none flex items-center justify-center mb-6`}
+                    className={` text-muted w-20 h-20 rounded-none flex items-center justify-center mb-6`}
                   >
                     {value.icon}
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-4 group-hover:text-text-secondary transition-colors">
+                  <h3 className="text-2xl font-bold text-heading mb-4 group-hover:text-muted transition-colors">
                     {value.title}
                   </h3>
                 </div>
-                <p className="text-text-primary leading-relaxed">
+                <p className="text-heading leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -326,7 +326,7 @@ export default function AboutUsScreen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className=" text-4xl lg:text-5xl text-center mb-6 text-text-primary font-bold"
+            className=" text-4xl lg:text-5xl text-center mb-6 text-heading font-bold"
           >
             Liên Hệ Với Chúng Tôi
           </motion.h2>
@@ -334,7 +334,7 @@ export default function AboutUsScreen() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-text-primary text-lg mb-16 max-w-3xl mx-auto"
+            className="text-center text-body text-lg mb-16 max-w-3xl mx-auto"
           >
             Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn
           </motion.p>
@@ -353,21 +353,21 @@ export default function AboutUsScreen() {
                   key={idx}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, x: 10 }}
-                  className="bg-white rounded-none p-6 shadow-xl flex items-start gap-4"
+                  className="bg-surface rounded-none p-6 shadow-xl flex items-start gap-4"
                 >
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="bg-linear-to-r from-secondary to-primary text-white p-4 rounded-none shrink-0"
+                    className="bg-btn-primary hover:bg-btn-hover text-body p-4 rounded-none shrink-0"
                   >
                     {info.icon}
                   </motion.div>
                   <div>
-                    <h3 className="text-xl font-bold text-text-primary mb-2">
+                    <h3 className="text-xl font-bold text-heading mb-2">
                       {info.title}
                     </h3>
                     {info.details.map((detail, i) => (
-                      <p key={i} className="text-text-primary">
+                      <p key={i} className="text-heading">
                         {detail}
                       </p>
                     ))}
@@ -378,9 +378,9 @@ export default function AboutUsScreen() {
               {/* Social Media */}
               <motion.div
                 variants={itemVariants}
-                className="bg-white rounded-none p-6 shadow-xl"
+                className="bg-surface rounded-none p-6 shadow-xl"
               >
-                <h3 className="text-xl font-bold text-text-primary mb-4">
+                <h3 className="text-xl font-bold text-heading mb-4">
                   Theo Dõi Chúng Tôi
                 </h3>
                 <div className="flex gap-4">
@@ -390,7 +390,7 @@ export default function AboutUsScreen() {
                       href={social.link}
                       whileHover={{ scale: 1.2, rotate: 360 }}
                       whileTap={{ scale: 0.9 }}
-                      className="bg-linear-to-r from-secondary to-primary text-white p-4 rounded-none shadow-lg"
+                      className="bg-btn-primary hover:bg-btn-hover text-heading p-4 rounded-none shadow-lg"
                     >
                       {social.icon}
                     </motion.a>
@@ -405,14 +405,14 @@ export default function AboutUsScreen() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-none p-8 shadow-2xl"
+              className="bg-surface rounded-none p-8 shadow-2xl"
             >
-              <h3 className="text-2xl font-bold text-text-primary mb-6">
+              <h3 className="text-2xl font-bold text-heading mb-6">
                 Gửi Tin Nhắn
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-text-primary font-semibold mb-2">
+                  <label className="block text-heading font-semibold mb-2">
                     Họ và Tên *
                   </label>
                   <input
@@ -426,7 +426,7 @@ export default function AboutUsScreen() {
                 </div>
 
                 <div>
-                  <label className="block text-text-primary font-semibold mb-2">
+                  <label className="block text-body font-semibold mb-2">
                     Email *
                   </label>
                   <input
@@ -440,7 +440,7 @@ export default function AboutUsScreen() {
                 </div>
 
                 <div>
-                  <label className="block text-text-primary font-semibold mb-2">
+                  <label className="block text-body font-semibold mb-2">
                     Số Điện Thoại
                   </label>
                   <input
@@ -453,7 +453,7 @@ export default function AboutUsScreen() {
                 </div>
 
                 <div>
-                  <label className="block text-text-primary font-semibold mb-2">
+                  <label className="block text-body font-semibold mb-2">
                     Chủ Đề *
                   </label>
                   <input
@@ -467,7 +467,7 @@ export default function AboutUsScreen() {
                 </div>
 
                 <div>
-                  <label className="block text-text-primary font-semibold mb-2">
+                  <label className="block text-body font-semibold mb-2">
                     Nội Dung *
                   </label>
                   <textarea
@@ -488,7 +488,7 @@ export default function AboutUsScreen() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   disabled={formStatus === "loading"}
-                  className="w-full bg-linear-to-r from-secondary to-primary text-white py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 shadow-xl transition-all disabled:opacity-50"
+                  className="w-full bg-btn-primary hover:bg-btn-hover text-body py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 shadow-xl transition-all disabled:opacity-50"
                 >
                   {formStatus === "loading" ? (
                     <>
@@ -521,10 +521,10 @@ export default function AboutUsScreen() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-green-50 border-2 border-green-200 rounded-none p-4 flex items-center gap-3"
+                    className="bg-success-bg border-2 border-success rounded-none p-4 flex items-center gap-3"
                   >
-                    <CheckCircle className="w-6 h-6 text-green-600" />
-                    <p className="text-green-800 font-semibold">
+                    <CheckCircle className="w-6 h-6 text-success" />
+                    <p className="text-success font-semibold">
                       Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất có thể.
                     </p>
                   </motion.div>
@@ -552,7 +552,7 @@ export default function AboutUsScreen() {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-16 h-16 text-text-secondary" />
+              <Sparkles className="w-16 h-16 text-muted" />
             </motion.div>
           </motion.div>
 
@@ -580,7 +580,7 @@ export default function AboutUsScreen() {
                 boxShadow: "0 20px 60px rgba(217, 123, 168, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-secondary text-white px-8 py-4 rounded-none text-lg font-bold shadow-xl"
+              className="bg-secondary text-heading px-8 py-4 rounded-none text-lg font-bold shadow-xl"
             >
               Xem Bộ Sưu Tập
             </motion.button>
@@ -591,7 +591,7 @@ export default function AboutUsScreen() {
                 color: "var(--color-primary)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent text-white px-8 py-4 rounded-none text-lg font-bold border-2 border-white transition-all"
+              className="bg-transparent text-white px-8 py-4 rounded-none text-lg font-bold border-2 border-text-inverse transition-all"
             >
               Đặt Lịch Tư Vấn
             </motion.button>

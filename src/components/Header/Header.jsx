@@ -60,7 +60,7 @@ const Header = ({ scrolled }) => {
     <motion.header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-primary/95 shadow-sm backdrop-blur-md border-b border-white/10"
+          ? "bg-primary/95 shadow-sm backdrop-blur-md border-b border-text-inverse/10"
           : "bg-primary border-b border-transparent transition-colors duration-300"
       }`}
     >
@@ -81,7 +81,7 @@ const Header = ({ scrolled }) => {
               <div className="absolute inset-0 bg-secondary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-white text-2xl lg:text-3xl font-bold tracking-wider uppercase">
+              <span className="text-white text-2xl lg:text-3xl font-bold tracking-wider ">
                 Julia
               </span>
             </div>
@@ -96,7 +96,7 @@ const Header = ({ scrolled }) => {
                   key={item.name}
                   href={item.href}
                   whileHover={{ y: -2 }}
-                  className="relative px-4 py-2 text-white text-sm font-medium transition-colors duration-300 hover:text-text-secondary group"
+                  className="relative px-4 py-2 text-white text-sm font-medium transition-colors duration-300 hover:text-muted group"
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-secondary to-transparent group-hover:w-full transition-all duration-300" />
@@ -143,7 +143,9 @@ const Header = ({ scrolled }) => {
                   >
                     <Search
                       className={`w-5 h-5 ${
-                        isSearchExpanded ? "text-text-primary" : "text-white"
+                        isSearchExpanded
+                          ? "text-body"
+                          : "text-white"
                       }`}
                     />
                   </motion.div>
@@ -152,7 +154,7 @@ const Header = ({ scrolled }) => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm sản phẩm..."
-                    className="w-full h-full pl-12 pr-4 rounded-full bg-white text-text-primary placeholder-primary/60 focus:outline-none focus:ring-2 focus:ring-secondary shadow-lg text-sm"
+                    className="w-full h-full pl-12 pr-4 rounded-full bg-surface text-body placeholder-primary/60 focus:outline-none focus:ring-2 focus:ring-secondary shadow-lg text-sm"
                     animate={{
                       opacity: isSearchExpanded ? 1 : 0,
                     }}
@@ -168,12 +170,12 @@ const Header = ({ scrolled }) => {
               <motion.button
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative p-2 rounded-full text-white hover:bg-white/10 transition-all duration-300"
+                className="relative p-2 rounded-full text-white hover:bg-surface/10 transition-all duration-300"
                 aria-label="Shopping cart"
                 onClick={() => navigate(route.cart)}
               >
                 <ShoppingCart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-text-primary text-xs font-bold rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-body text-xs font-bold rounded-full flex items-center justify-center shadow-md">
                   {countCart}
                 </span>
               </motion.button>
@@ -185,7 +187,7 @@ const Header = ({ scrolled }) => {
                     whileHover={{ scale: 1.05, y: -1 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setUserMenuOpen((v) => !v)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-full text-white hover:bg-white/10 transition-all duration-300"
+                    className="flex items-center gap-2 px-3 py-2 rounded-full text-white hover:bg-surface/10 transition-all duration-300"
                     aria-label="User menu"
                     id="desktop-user-menu-btn"
                   >
@@ -211,7 +213,7 @@ const Header = ({ scrolled }) => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.95 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute right-0 mt-2 w-48 bg-white border border-background-alt/60 shadow-xl overflow-hidden z-50"
+                        className="absolute right-0 mt-2 w-48 bg-surface border border-background-alt/60 shadow-xl overflow-hidden z-50"
                       >
                         {/* Profile link */}
                         <motion.button
@@ -220,10 +222,10 @@ const Header = ({ scrolled }) => {
                             navigate(route.profile);
                             setUserMenuOpen(false);
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-text-primary font-medium transition-colors border-b border-background-alt/40"
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-body font-medium transition-colors border-b border-background-alt/40"
                           id="dropdown-profile-link"
                         >
-                          <UserCircle className="w-4 h-4 text-text-secondary" />
+                          <UserCircle className="w-4 h-4 text-muted" />
                           Trang cá nhân
                         </motion.button>
                         {/* My Orders link */}
@@ -233,17 +235,17 @@ const Header = ({ scrolled }) => {
                             navigate(route.myOrders);
                             setUserMenuOpen(false);
                           }}
-                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-text-primary font-medium transition-colors border-b border-background-alt/40"
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-body font-medium transition-colors border-b border-background-alt/40"
                           id="dropdown-orders-link"
                         >
-                          <ShoppingBag className="w-4 h-4 text-text-secondary" />
+                          <ShoppingBag className="w-4 h-4 text-muted" />
                           Đơn hàng của tôi
                         </motion.button>
                         {/* Logout */}
                         <motion.button
                           whileHover={{ backgroundColor: "#fff5f5" }}
                           onClick={handleLogout}
-                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-500 font-medium transition-colors"
+                          className="w-full flex items-center gap-3 px-4 py-3 text-sm text-error font-medium transition-colors"
                           id="dropdown-logout-btn"
                         >
                           <LogOut className="w-4 h-4" />
@@ -257,7 +259,7 @@ const Header = ({ scrolled }) => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -1 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-full text-white hover:bg-white/10 transition-all duration-300"
+                  className="flex items-center gap-2 px-3 py-2 rounded-full text-white hover:bg-surface/10 transition-all duration-300"
                   aria-label="Login"
                   onClick={() => navigate(route.login)}
                 >
@@ -273,7 +275,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Cart Icon */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="relative p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-white/20 hover:border-secondary/60 transition-all duration-300"
+              className="relative p-2.5 rounded-lg bg-surface/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-surface/20 hover:border-secondary/60 transition-all duration-300"
               aria-label="Shopping cart"
               onClick={() =>
                 user
@@ -282,7 +284,7 @@ const Header = ({ scrolled }) => {
               }
             >
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-secondary text-text-primary text-[10px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-secondary text-body text-[10px] font-bold rounded-full flex items-center justify-center">
                 {countCart}
               </span>
             </motion.button>
@@ -290,7 +292,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Login / Profile Icon */}
             <motion.button
               whileTap={{ scale: 0.9 }}
-              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-white/20 hover:border-secondary/60 transition-all duration-300"
+              className="p-2.5 rounded-lg bg-surface/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-surface/20 hover:border-secondary/60 transition-all duration-300"
               aria-label="User account"
               onClick={() => {
                 if (user) {
@@ -307,7 +309,7 @@ const Header = ({ scrolled }) => {
             {user && (
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                className="p-2.5 rounded-lg bg-red-500/10 backdrop-blur-sm border border-red-500/30 text-white hover:bg-red-500/20 hover:border-red-500/60 transition-all duration-300"
+                className="p-2.5 rounded-lg bg-error/10 backdrop-blur-sm border border-error/30 text-white hover:bg-error/20 hover:border-error/60 transition-all duration-300"
                 aria-label="Logout"
                 onClick={handleLogout}
               >
@@ -318,7 +320,7 @@ const Header = ({ scrolled }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setOpen(true)}
-              className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-white/20 hover:border-secondary/60 transition-all duration-300"
+              className="p-2.5 rounded-lg bg-surface/10 backdrop-blur-sm border border-secondary/30 text-white hover:bg-surface/20 hover:border-secondary/60 transition-all duration-300"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
@@ -341,7 +343,7 @@ const Header = ({ scrolled }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-inverse/80 backdrop-blur-sm"
               onClick={() => setOpen(false)}
             />
 
@@ -355,12 +357,12 @@ const Header = ({ scrolled }) => {
             >
               {/* Close Button */}
               <div className="flex justify-between items-center p-6 border-b border-secondary/20">
-                <span className="text-text-secondary text-lg font-semibold tracking-wider">
+                <span className="text-muted text-lg font-semibold tracking-wider">
                   MENU
                 </span>
                 <button
                   onClick={() => setOpen(false)}
-                  className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                  className="p-2 rounded-full bg-surface/10 text-white hover:bg-surface/20 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -384,13 +386,13 @@ const Header = ({ scrolled }) => {
                   }}
                   className="relative"
                 >
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                   <input
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Tìm kiếm sản phẩm..."
-                    className="w-full pl-12 pr-4 py-3 rounded-lg bg-white backdrop-blur-sm border border-secondary/30 text-text-primary placeholder-primary/60 focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all text-sm"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg bg-surface backdrop-blur-sm border border-secondary/30 text-body placeholder-primary/60 focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-all text-sm"
                   />
                 </form>
               </div>
@@ -405,7 +407,7 @@ const Header = ({ scrolled }) => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="block px-4 py-3 text-white text-lg font-medium rounded-lg hover:bg-white/10 hover:text-text-secondary transition-all duration-300 border border-transparent hover:border-secondary/30"
+                    className="block px-4 py-3 text-white text-lg font-medium rounded-lg hover:bg-surface/10 hover:text-muted transition-all duration-300 border border-transparent hover:border-secondary/30"
                   >
                     {item.name}
                   </motion.a>
@@ -421,7 +423,7 @@ const Header = ({ scrolled }) => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navigationItems.length * 0.1 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-text-secondary text-lg font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 border border-secondary/30 hover:border-secondary/60"
+                    className="w-full flex items-center gap-3 px-4 py-3 text-muted text-lg font-semibold rounded-lg hover:bg-surface/10 transition-all duration-300 border border-secondary/30 hover:border-secondary/60"
                     id="mobile-profile-link"
                   >
                     <UserCircle className="w-5 h-5" />
@@ -439,7 +441,7 @@ const Header = ({ scrolled }) => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: navigationItems.length * 0.1 + 0.1 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-text-secondary text-lg font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 border border-secondary/30 hover:border-secondary/60"
+                    className="w-full flex items-center gap-3 px-4 py-3 text-muted text-lg font-semibold rounded-lg hover:bg-surface/10 transition-all duration-300 border border-secondary/30 hover:border-secondary/60"
                     id="mobile-orders-link"
                   >
                     <ShoppingBag className="w-5 h-5" />
@@ -456,5 +458,3 @@ const Header = ({ scrolled }) => {
 };
 
 export default Header;
-
-
