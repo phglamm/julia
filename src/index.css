@@ -6,33 +6,28 @@
      1. MÀU NỀN & KHỐI (Dùng cho Nền, Nút bấm, Card...)
      Cách dùng: bg-primary, bg-secondary, bg-surface...
   ======================================================= */
-  --color-primary: #f4b6c7; /* Màu chủ đạo (Nút bấm, điểm nhấn) */
-  --color-secondary: #fce6ec; /* Màu phụ (Hiệu ứng hover, nền phụ) */
-  --color-background-alt: #fef3f6; /* Màu nền của toàn bộ trang web */
-  --color-surface: #ffffff; /* Màu nền của các khối hộp (Card) */
-  --color-inverse: #875161; /* Màu tương phản mạnh */
+  --color-primary: #bc9482; /* Warm Taupe (Màu Footer, Section tối) */
+  --color-secondary: #f3e4d9; /* Soft Peach/Beige (Màu Header, Nền phụ) */
+  --color-background-alt: #f9f5f1; /* Cream/Off-white (Màu nền website chính) */
+  --color-surface: #ffffff; /* Trắng (Màu nền Card, Box) */
+  --color-inverse: #2a201c; /* Espresso (Màu tương phản đậm) */
 
   /* ====================================================
      2. MÀU CHỮ (Typography)
      Cách dùng: text-heading, text-body, text-muted...
   ======================================================= */
-  --color-heading: #754252; /* Chữ tiêu đề lớn (h1, h2, h3...) */
-  --color-body: #8a5a68; /* Chữ văn bản bình thường (đoạn văn) */
-  --color-muted: #a87e8a; /* Chữ phụ, mờ hơn (ghi chú, phụ đề) */
-  --color-accent: #c47b90; /* Chữ nhấn mạnh, màu nổi bật */
+  --color-heading: #2a201c; /* Chữ tiêu đề (Espresso đen nâu) */
+  --color-body: #4a3c34; /* Chữ văn bản bình thường (Nâu đậm) */
+  --color-muted: #8c7a70; /* Chữ phụ, mờ hơn (Taupe) */
+  --color-accent: #d19e8a; /* Chữ nhấn mạnh (Terracotta/Cam đất) */
 
   /* ====================================================
      4. MÀU NÚT BẤM VÀ HIỆU ỨNG (Buttons & Effects)
      Cách dùng: bg-btn-primary, hover:bg-btn-hover
   ======================================================= */
-  --color-btn-primary: #f4b6c7; /* Nền nút chính */
-  --color-btn-hover: #e8a3b6; /* Nền nút khi hover */
-  --color-btn-glow: rgba(
-    244,
-    182,
-    199,
-    0.5
-  ); /* Bóng phát sáng khi hover (glow) */
+  --color-btn-primary: #d19e8a; /* Nền nút chính (Terracotta sáng) */
+  --color-btn-hover: #bc8a75; /* Nền nút khi hover (Terracotta đậm) */
+  --color-btn-glow: rgba(209, 158, 138, 0.4); /* Bóng phát sáng (Glow) */
 
   /* ====================================================
      5. MÀU TRẠNG THÁI (Lỗi, Thành công, Cảnh báo)

@@ -570,7 +570,7 @@ export default function PolicyScreen() {
       {/* Penalty Policy Section */}
       <section
         id="penalty"
-        className="w-full bg-linear-to-b from-[#F5D7E8] to-background-alt py-20 lg:py-28 px-6 lg:px-12"
+        className="w-full bg-linear-to-b from-secondary to-background-alt py-20 lg:py-28 px-6 lg:px-12"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -625,9 +625,7 @@ export default function PolicyScreen() {
                       <AlertTriangle className="w-5 h-5" />
                       <span className="font-bold text-muted">Mức phạt:</span>
                     </div>
-                    <p className="text-muted font-semibold">
-                      {policy.penalty}
-                    </p>
+                    <p className="text-muted font-semibold">{policy.penalty}</p>
                   </div>
                 </div>
               </motion.div>
@@ -746,7 +744,10 @@ export default function PolicyScreen() {
               <motion.div
                 key={idx}
                 variants={scaleVariants}
-                whileHover={{ scale: 1.05, borderColor: "var(--color-secondary)" }}
+                whileHover={{
+                  scale: 1.05,
+                  borderColor: "var(--color-secondary)",
+                }}
                 className="bg-surface/10 backdrop-blur-lg rounded-3xl p-8 border border-text-inverse/20 shadow-2xl"
               >
                 <motion.div
@@ -800,7 +801,7 @@ export default function PolicyScreen() {
                   <ShieldCheck className="w-5 h-5 text-muted" />
                   <span className="font-bold">{badge}</span>
                 </motion.div>
-              )
+              ),
             )}
           </motion.div>
         </div>
@@ -944,5 +945,3 @@ export default function PolicyScreen() {
     </div>
   );
 }
-
-
