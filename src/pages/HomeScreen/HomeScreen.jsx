@@ -84,7 +84,7 @@ const HomeScreen = () => {
         const resp = await productService.getAllProducts({
           limit: 8,
         });
-        setNewProducts(resp.data || []);
+        setNewProducts(resp.data.products || []);
       } catch (err) {
         setNewError(err.message || "Failed to load new products");
       } finally {
@@ -451,13 +451,29 @@ const HomeScreen = () => {
                         <motion.img
                           whileHover={{ scale: 1.15 }}
                           transition={{ duration: 0.6, ease: "easeOut" }}
-                          src={imgSrc(p.imageLink)}
+                          src={imgSrc(p.images?.[0] || p.imageLink)}
                           alt={p.title}
                           className="object-cover w-full h-full"
                           onError={(e) =>
                             (e.currentTarget.src = "/images/placeholder.png")
                           }
                         />
+                        {/* Tags */}
+                        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+                          {p.condition === "new" && (
+                            <span className="px-2 py-1 bg-[#682535] text-[#FFFFFF] text-[10px] font-bold uppercase rounded-none shadow-sm">
+                              Mới
+                            </span>
+                          )}
+                          {p.brand && (
+                            <span className="px-2 py-1 bg-[#FFFFFF]/90 text-[#874D5F] text-[10px] font-bold uppercase rounded-none shadow-sm backdrop-blur-sm border border-[#EAD2D8]/50">
+                              {typeof p.brand === "object"
+                                ? p.brand.name
+                                : p.brand}
+                            </span>
+                          )}
+                        </div>
+
                         {/* Overlay gradient on hover */}
                         <motion.div
                           initial={{ opacity: 0 }}
@@ -499,25 +515,48 @@ const HomeScreen = () => {
                           </p>
                         )}
 
-                        <div className="flex items-center justify-between pt-4 border-t border-[#EAD2D8]/30">
-                          <div>
-                            <div className="text-2xl font-bold text-[#682535] group-hover:text-[#C599A6] transition-colors duration-300">
-                              {formatPrice(p.price)}
-                            </div>
-                            <div className="text-xs text-[#874D5F] mt-1">
-                              / 3 ngày
-                            </div>
+                        <div className="flex items-center gap-2 text-xs text-[#874D5F] mb-4">
+                          <span className="px-2 py-1 bg-[#F6F3E6] rounded-none">
+                            {p.size}
+                          </span>
+                          <span>•</span>
+                          <span className="capitalize">
+                            {p.gender === "male"
+                              ? "Nam"
+                              : p.gender === "female"
+                                ? "Nữ"
+                                : "Unisex"}
+                          </span>
+                        </div>
+
+                        <div className="mt-auto pt-4 border-t border-[#EAD2D8]/30">
+                          <div className="flex flex-col gap-1 mb-4">
+                            <p className="text-sm font-bold text-[#682535]">
+                              Giá trị:{" "}
+                              {formatPrice(
+                                p.depositAmount || p.price,
+                              )}
+                            </p>
+                            <p className="text-xs text-[#874D5F]">
+                              Phí thuê:{" "}
+                              <span className="font-bold text-[#C599A6] text-base">
+                                {formatPrice(
+                                  p.rentalPrice || p.price,
+                                )}
+                              </span>{" "}
+                              / {p.minRentalDays || 3} ngày
+                            </p>
                           </div>
                           <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="bg-linear-to-r from-[#C599A6] to-[#A47784] text-white px-5 py-2 rounded-none font-semibold shadow-lg hover:shadow-sm border border-[#EAD2D8]/50 transition-all duration-300 flex items-center gap-1"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={(e) => {
                               e.stopPropagation();
                               navigate(`/product/${p._id}`);
                             }}
+                            className="w-full py-3 bg-[#682535] text-[#FFFFFF] rounded-none font-bold shadow-sm hover:bg-[#874D5F] transition-colors flex items-center justify-center gap-2"
                           >
-                            Xem
+                            Xem chi tiết
                             <ChevronRight className="w-4 h-4" />
                           </motion.button>
                         </div>
